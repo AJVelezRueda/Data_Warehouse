@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    color: #572EE5;
+}
+
+.logo{
+	height: 15px;
+}
