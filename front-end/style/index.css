@@ -13,7 +13,7 @@ body {
 }
 
 .logo{
-	height: 50px;
+	height: 40px;
 }
 
 .nav-bar {
@@ -24,23 +24,29 @@ body {
 	align-items: center;
 	padding-left: 3%;
 	padding-right: 3%;
-	margin-top: 6px;
-	height: 24vh;
+	min-height: 20vh;
+	overflow: hidden;
+	padding-bottom: 0;
 }
 
-ul {
+nav ul {
 	display: flex;
 	justify-content: end;
 	width: 100%;
+	list-style-type : none;
+	margin : 0;
+	padding : 0;
+	max-height: max-content;
+	line-height: 13vh;
 }
 
-ul li {
+nav ul li {
 	margin-left: 5px;
 	padding: 0 3%;
 	list-style: none;
 }
 
-ul li:hover {
+nav ul li:hover {
 	font-weight: bold;
-	border-bottom: solid 1px white;
+	border-bottom: solid 2px white;
 }
