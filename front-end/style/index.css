@@ -72,10 +72,15 @@ nav ul li:hover {
 .download-button,
 .plus-button {
     background: transparent;
-    border: 2px solid #572EE5;
+    border: 2px solid #3232b8;
     border-radius: 21px;
-    color: #572EE5;
+    color: #3232b8;
     height: 36px;
     width: 100px;
     display: block;
+}
+
+button:hover {
+    background: #3232b8;
+    color: white;
 }
