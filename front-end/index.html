@@ -37,13 +37,32 @@
             <button class="plus-button" id="plus">Exportar Contactos</button>
             <button class="plus-button" id="plus">Agregar Contactos</button>
         </div>
-
     </section>
     <section class="contacts">
 
     </section>
     <section class="new-contact">
+        <section class="new-contact-header">
+            <form action="/action_page.php">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Name.." required>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder=" Last name.." required>
+                <label for="lname">Email</label>
+                <input type="text" id="email" name="email" placeholder=" Email.." required>
+                <label for="lname">Company</label>
+                <input type="text" id="company" name="company" placeholder=" Company.." required>
+                <label for="country">Country</label>
+                <select id="country" name="country">
+				  <option value="australia">Australia</option>
+				  <option value="canada">Canada</option>
+				  <option value="usa">USA</option>
+				</select>
+            </form>
+        </section>
+        <section class="all-contcat-data">
 
+        </section>
     </section>
 </body>
 
