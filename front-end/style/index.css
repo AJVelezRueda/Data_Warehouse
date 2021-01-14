@@ -59,8 +59,9 @@ nav ul li:hover {
 }
 
 .search-input {
-    height: 3.5em;
-    border: 2px solid #3232b8;
+    height: 2.5em;
+    width: 33vw;
+    border: 2px solid rgb(224, 221, 221);
     border-radius: 4px;
 }
 
@@ -75,8 +76,8 @@ nav ul li:hover {
     border: 2px solid #3232b8;
     border-radius: 4px;
     color: #3232b8;
-    height: 3.5em;
-    width: 8vw;
+    height: 2.5em;
+    width: 14vw;
     display: block;
     margin-left: 5px;
 }
@@ -90,4 +91,24 @@ button:hover {
 input {
     height: 2.5em;
     border-radius: 4px;
+    margin-top: 10px;
+    border: 1px solid rgb(224, 221, 221);
+}
+label{
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+select{
+    height: 2.5em;
+    width: 14vw;
+    border:rgb(224, 221, 221) 1px solid;
+}
+
+.header-form {    
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4,25%);
+    padding: 1% 5%;
+
 }
