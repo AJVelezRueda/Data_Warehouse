@@ -59,9 +59,9 @@ nav ul li:hover {
 }
 
 .search-input {
-    height: 42px;
+    height: 3.5em;
     border: 2px solid #3232b8;
-    border-radius: 12px;
+    border-radius: 4px;
 }
 
 .export-import {
@@ -73,10 +73,10 @@ nav ul li:hover {
 .plus-button {
     background: transparent;
     border: 2px solid #3232b8;
-    border-radius: 10px;
+    border-radius: 4px;
     color: #3232b8;
-    height: 42px;
-    width: 173px;
+    height: 3.5em;
+    width: 8vw;
     display: block;
     margin-left: 5px;
 }
@@ -85,4 +85,9 @@ button:hover {
     background: #3232b8;
     color: white;
     font-weight: bolder;
+}
+
+input {
+    height: 2.5em;
+    border-radius: 4px;
 }
