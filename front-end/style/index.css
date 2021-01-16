@@ -61,7 +61,7 @@ nav ul li:hover {
 .search-input {
     height: 2.5em;
     width: 33vw;
-    border: 2px solid rgb(224, 221, 221);
+    border: 2px solid #D9D9D9;
     border-radius: 4px;
 }
 
@@ -92,7 +92,7 @@ input {
     height: 2.5em;
     border-radius: 4px;
     margin-top: 10px;
-    border: 1px solid rgb(224, 221, 221);
+    border: 1px solid #D9D9D9;
 }
 
 label {
@@ -103,7 +103,6 @@ label {
 select {
     height: 2.5em;
     width: 14vw;
-    border: rgb(224, 221, 221) 1px solid;
 }
 
 .header-form,
@@ -112,4 +111,13 @@ select {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4, 25%);
     padding: 1% 5%;
+}
+
+.upload-button {
+    height: 2.5em;
+    width: 17em;
+    margin-top: 2%;
+    color: #E85858;
+    font-weight: bold;
+    background: #D9D9D9;
 }
