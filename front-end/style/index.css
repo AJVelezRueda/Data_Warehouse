@@ -142,7 +142,12 @@ select {
 }
 
 .sort-img {
-    width: 10px;
+    width: 13px;
+    margin-left: 10px;
+}
+
+.contacts-table {
+    padding: 1% 4%;
 }
 
 .contacts-grid {
@@ -154,4 +159,9 @@ select {
 .contact-table-header {
     display: flex;
     flex-direction: row;
+}
+
+.contact-table-row {
+    display: flex;
+    flex-direction: column;
 }
