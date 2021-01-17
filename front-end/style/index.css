@@ -140,3 +140,18 @@ select {
 .new-contact {
     display: none;
 }
+
+.sort-img {
+    width: 10px;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 17%);
+    grid-template-rows: 1fr;
+}
+
+.contact-table-header {
+    display: flex;
+    flex-direction: row;
+}
