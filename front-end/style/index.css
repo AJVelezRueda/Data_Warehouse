@@ -148,7 +148,10 @@
     }
     
     .contacts-table {
-        padding: 1% 4%;
+        padding: 1% 1%;
+        border: solid 1px #9599bd;
+        width: 90%;
+        margin-left: 5%;
     }
     
     .contacts-grid {
@@ -194,15 +197,6 @@
         width: 153px;
         height: 12px;
         background: #c9c6c6;
-        border-radius: 15px;
         margin-left: 10px;
-    }
-    
-    .actual-state {
-        width: 140px;
-        height: 12px;
-        background: seagreen;
-        position: absolute;
-        border-radius: 15px;
-        margin-left: 32px;
+        border-radius: 20px;
     }
