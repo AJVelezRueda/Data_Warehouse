@@ -153,7 +153,7 @@
     
     .contacts-grid {
         display: grid;
-        grid-template-columns: repeat(6, 17%);
+        grid-template-columns: repeat(7, 14%);
         grid-template-rows: 1fr;
         align-items: center;
     }
@@ -183,4 +183,26 @@
     
     .selected {
         background: #58E8D2;
+    }
+    
+    .progress {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .progress-bar {
+        width: 153px;
+        height: 12px;
+        background: #c9c6c6;
+        border-radius: 15px;
+        margin-left: 10px;
+    }
+    
+    .actual-state {
+        width: 140px;
+        height: 12px;
+        background: seagreen;
+        position: absolute;
+        border-radius: 15px;
+        margin-left: 32px;
     }
