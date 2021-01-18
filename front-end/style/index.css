@@ -193,10 +193,10 @@
         flex-direction: row;
     }
     
-    .progress-bar {
-        width: 153px;
+    progress {
+        width: 125px;
         height: 12px;
-        background: #c9c6c6;
-        margin-left: 10px;
-        border-radius: 20px;
+        background: #dfdcdc;
+        margin-left: 9px;
+        border-radius: 35px;
     }
