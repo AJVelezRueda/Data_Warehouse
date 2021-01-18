@@ -56,7 +56,10 @@ nav ul li:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1% 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 2%;
+    padding-bottom: 5%;
 }
 
 .search-input {
@@ -243,6 +246,7 @@ progress {
     color: #2C719C;
     padding: 0 1%;
     border: #2C719C solid 2px;
+    height: 30px;
 }
 
 .delete-contacts {
