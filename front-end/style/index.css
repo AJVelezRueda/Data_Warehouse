@@ -62,7 +62,7 @@
     .search-input {
         height: 2.5em;
         width: 33vw;
-        border: 2px solid #D9D9D9;
+        border: 2px solid #9599bd;
         border-radius: 4px;
     }
     
@@ -152,6 +152,7 @@
         border: solid 1px #9599bd;
         width: 90%;
         margin-left: 5%;
+        margin-top: 2%;
     }
     
     .contacts-grid {
@@ -199,4 +200,22 @@
         background: #dfdcdc;
         margin-left: 9px;
         border-radius: 35px;
+    }
+    
+    .pages-displayer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1% 0;
+    }
+    
+    .add-rows {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .add-rows img {
+        width: 15px;
+        margin-left: 10px;
+        color: #9599bd;
     }
