@@ -127,6 +127,12 @@ select {
     margin-top: 14px;
 }
 
+.more-options {
+    border: 1px solid #33739C;
+    margin-top: 5px;
+    padding: 2% 1%;
+}
+
 .header-form,
 .tail-form {
     display: grid;

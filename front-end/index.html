@@ -30,7 +30,25 @@
             <input type="text" placeholder="  Buscar..." name="search" class="search-input" id="search-input">
             <img src="./assets/images/drop-down-arrow.png" alt="expand-options" class="expand-options-img">
             <img src="./assets/images/lupa _fina.png" alt="lupa" class="lupa-img" id="lupa">
-
+            <div class="more-options">
+                <div><label for="name">Name</label>
+                    <input type="text" id="name" class="name" placeholder=" Nombre del contacto..." required>
+                    <label for="institution">Institución</label>
+                    <input type="text" id="institution" class="institution" placeholder=" Institución..." required>
+                </div>
+                <div>
+                    <label for="comission-search-label">Comisión</label>
+                    <select id="comission-search" name="comission-search">
+					    <option value="all">Todos</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="country-search-label">Pais</label>
+                    <select id="country-search" name="country-search">
+					    <option value="all">Todos</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="export-import">
             <button class="download-button" id="download">Descarga</button>
@@ -88,7 +106,7 @@
             </div>
             <div class="contact-table-header">
                 <figcaption>
-                    Canal
+                    Comisión
                 </figcaption>
                 <figure>
                     <img src="./assets/images/sort.png" alt="sort" class="sort-img">
@@ -121,13 +139,13 @@
                 <p class="secondary-text">Asia</p>
             </div>
             <div class="contact-table-row">
-                <p class="principal-text">Compañía</p>
+                <p class="principal-text">UNQ</p>
             </div>
             <div class="contact-table-row">
-                <p class="principal-text">Cargo</p>
+                <p class="principal-text">Postdoc</p>
             </div>
             <div class="contact-table-row">
-                <p class="principal-text">Canal</p>
+                <p class="principal-text">Bioquimica</p>
             </div>
             <div class="contact-table-row progress">
                 <p class="principal-text">70%</p>
@@ -183,14 +201,14 @@
 				  <option value="latam">Latam</option>
 				  <option value="europa">Europa</option>
 				</select>
-                <label for="country">Provincia</label>
+                <label for="region">Provincia</label>
                 <select id="region" name="region">
 					<option value="bsas">Buenos Aires</option>
 					<option value="cordoba">Córdoba</option>
 				</select>
-                <select id="canal" name="canal">
-					<option value="email">Mail</option>
-					<option value="phone">Teléfono</option>
+                <select id="comission" name="comission">
+					<option value="biochem">Bioquímica</option>
+					<option value="physiscs">Física</option>
 				</select>
                 <label for="cv">CV</label>
                 <button class="upload-button" id="upload-cv">Cargar CV</button>
