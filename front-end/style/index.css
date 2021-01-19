@@ -110,18 +110,21 @@ select {
     margin-top: 8px;
 }
 
-.lupa-button {
-    background: transparent;
-    border: none;
+.search-section img {
+    width: 24px;
+    position: absolute;
     z-index: 10;
 }
 
 .lupa-img {
-    width: 26px;
-    position: absolute;
-    margin-top: -18px;
-    margin-left: 3px;
+    margin-top: 15px;
+    margin-left: 9px;
     z-index: 1;
+}
+
+.expand-options-img {
+    margin-left: -38px;
+    margin-top: 14px;
 }
 
 .header-form,
