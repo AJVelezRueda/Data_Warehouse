@@ -165,7 +165,8 @@ select {
     margin-left: 10px;
 }
 
-.contacts-table {
+.contacts-table,
+.projects-table {
     padding: 1% 1%;
     border: solid 1px #9599bd;
     width: 90%;
@@ -173,7 +174,8 @@ select {
     margin-top: 1%;
 }
 
-.contacts-grid {
+.contacts-grid,
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(8, 13%);
     grid-template-rows: 1fr;
@@ -188,7 +190,8 @@ select {
     color: #9599bd;
 }
 
-.contact-table-header {
+.contact-table-header,
+.project-table-header {
     display: flex;
     flex-direction: row;
 }
