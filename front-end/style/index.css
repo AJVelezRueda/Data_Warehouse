@@ -52,6 +52,11 @@ nav ul li:hover {
     border-bottom: solid 2px white;
 }
 
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
 .keypad {
     display: flex;
     flex-direction: row;
