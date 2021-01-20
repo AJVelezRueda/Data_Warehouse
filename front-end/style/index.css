@@ -111,7 +111,7 @@ select {
 }
 
 .search-section img {
-    width: 24px;
+    width: 22px;
     position: absolute;
     z-index: 10;
 }
@@ -131,6 +131,7 @@ select {
     border: 1px solid #33739C;
     margin-top: 5px;
     padding: 2% 1%;
+    display: none;
 }
 
 .header-form,
