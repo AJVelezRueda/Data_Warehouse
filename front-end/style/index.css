@@ -13,6 +13,14 @@ body {
     color: #33739C;
 }
 
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
 .logo {
     height: 40px;
 }
@@ -28,6 +36,7 @@ body {
     max-height: 4em;
     overflow: hidden;
     padding-bottom: 0;
+    position: fixed;
 }
 
 nav ul {
@@ -44,7 +53,6 @@ nav ul {
 nav ul li {
     margin-left: 5px;
     padding: 0 3%;
-    list-style: none;
 }
 
 nav ul li:hover {
@@ -257,7 +265,8 @@ progress {
     color: #9599bd;
 }
 
-.selected-contacts {
+.selected-contacts,
+.selected-projects {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -265,12 +274,14 @@ progress {
     padding-right: 5%;
 }
 
-.selected-contacts img {
+.selected-contacts img,
+.selected-projects img {
     width: 15px;
     margin-right: 5px;
 }
 
-.selected-contacts button {
+.selected-contacts button,
+.selected-projects button {
     background: #58E8D2;
     color: #2C719C;
     padding: 0 1%;
@@ -278,7 +289,8 @@ progress {
     height: 30px;
 }
 
-.delete-contacts {
+.delete-contacts,
+.delete-projects {
     display: flex;
     flex-direction: row;
     justify-items: center;
@@ -288,4 +300,24 @@ progress {
     padding: 2% 5%;
     display: flex;
     justify-content: flex-end;
+}
+
+.project-view {
+    padding: 1% 5%;
+    border: 1px solid;
+    margin-left: 5%;
+    margin: 5%;
+}
+
+.authors-list-project {
+    display: flex;
+    flex-direction: row;
+}
+
+.authors-list-project li {
+    margin-left: 3px;
+}
+
+.project-view-header h3 {
+    text-align: center;
 }
