@@ -87,11 +87,11 @@ paths:
           - in: path
             type: integer
             name: id
-            description: User Id
+            description: contact Id
             required: true
           - in: body
             name: body
-            description: Update an user
+            description: Update an contact
             required: true
       responses:
         '200':

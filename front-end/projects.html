@@ -19,68 +19,22 @@
                 <li>
                     <a href="index.html" title=""></a>Contactos</li>
                 <li>
-                    <a href="" title=""></a>Evaluadores</li>
+                    <a href="index.html" title=""></a>Evaluadores</li>
                 <li>
                     <a href="projects.html" title=""></a>Proyectos</li>
             </ul>
         </nav>
     </header>
-    <section class="keypad">
-        <div class="search-section">
-            <input type="text" placeholder="  Buscar..." name="search" class="search-input" id="search-input">
-            <img src="./assets/images/drop-down-arrow.png" alt="expand-options" class="expand-options-img">
-            <img src="./assets/images/lupa _fina.png" alt="lupa" class="lupa-img" id="lupa">
-            <div class="more-options">
-                <div><label for="name">Nombre</label>
-                    <input type="text" id="name" class="name" placeholder=" Nombre del contacto..." required>
-                    <label for="institution">Institución</label>
-                    <input type="text" id="institution" class="institution" placeholder=" Institución..." required>
-                </div>
-                <div>
-                    <label for="comission-search-label">Comisión</label>
-                    <select id="comission-search" name="comission-search">
-					    <option value="all">Todos</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="institution-search-label">Institution</label>
-                    <select id="institution-search" name="institution-search">
-					    <option value="all">Todos</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="progress-search-label">Progress</label>
-                    <select id="progress-search" name="progress-search">
-					    <option value="all">Todos</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="export-import">
-            <button class="download-button" id="download">Descarga</button>
-            <button class="plus-button" id="export">Exportar Contactos</button>
-            <button class="plus-button" id="add">Agregar Contactos</button>
-        </div>
+    <section class="selected-projects">
     </section>
-    <section class="selected-contacts">
-        <button class="slected-button" id="selected-button">1 Contacto seleccionado</button>
-        <div class="delete-contacts">
-            <figure>
-                <img src="./assets/images/trash.png">
-            </figure>
-            <figcaption>
-                Eliminar contactos
-            </figcaption>
-        </div>
-    </section>
-    <section class="contacts-table">
-        <section class="contacts-grid">
+    <section class="projects-table">
+        <section class="projects-grid">
             <div class="select-column">
-                <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
+                <input type="checkbox" id="authors-check-header" name="authors-check" value="authors-check">
             </div>
             <div class="contact-table-header">
                 <figcaption>
-                    Contacto
+                    Autores
                 </figcaption>
                 <figure>
                     <img src="./assets/images/sort.png" alt="sort" class="sort-img">
@@ -88,7 +42,7 @@
             </div>
             <div class="contact-table-header">
                 <figcaption>
-                    País/Región
+                    Nombre del proyecto
                 </figcaption>
                 <figure>
                     <img src="./assets/images/sort.png" alt="sort" class="sort-img">
@@ -178,47 +132,7 @@
                 <p>1 - 10 de 30</p>
             </div>
     </section>
-    <section class="new-contact">
-        <section class="new-contact-header">
-            <form class="header-form">
-                <label for="fname">Nombre</label>
-                <input type="text" id="fname" name="firstname" placeholder="Nombre.." required>
-                <label for="lname">Apellido</label>
-                <input type="text" id="lname" name="lastname" placeholder=" Apellido.." required>
-                <label for="lname">Email</label>
-                <input type="text" id="email" name="email" placeholder=" Email.." required>
-                <label for="lname">Institución</label>
-                <input type="text" id="company" name="company" placeholder=" Comisión.." required>
-                <label for="country">País</label>
-                <select id="country" name="country">
-				  <option value="australia">Australia</option>
-				  <option value="canada">Canada</option>
-				  <option value="usa">USA</option>
-				</select>
-            </form>
-            <form class="tail-form">
-                <label for="country">País</label>
-                <select id="pais" name="pais">
-				  <option value="latam">Argentina</option>
-				  <option value="europa">Bolivia</option>
-				</select>
-                <label for="region">Provincia</label>
-                <select id="region" name="region">
-					<option value="bsas">Buenos Aires</option>
-					<option value="cordoba">Córdoba</option>
-                </select>
-                <label for="comission">Comisión</label>
-                <select id="comission" name="comission">
-					<option value="biochem">Bioquímica</option>
-					<option value="physiscs">Física</option>
-				</select>
-                <label for="cv">CV</label>
-                <button class="upload-button" id="upload-cv">Cargar CV</button>
-                <button class="upload-button" id="upload-button">Cargar Contacto</button>
-            </form>
-        </section>
-    </section>
-    <section class="reviewers">
+    <section class="projects">
 
     </section>
 </body>
