@@ -177,16 +177,18 @@ select {
 .contacts-grid,
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(8, 13%);
+    grid-template-columns: 4% repeat(7, 15%);
     grid-template-rows: 1fr;
     align-items: center;
 }
 
-.contacts-grid p.principal-text {
+.contacts-grid p.principal-text,
+.projects-grid p.principal-text {
     color: #2C719C;
 }
 
-.contacts-grid p.secondary-text {
+.contacts-grid p.secondary-text,
+.projects-grid p.secondary-text {
     color: #9599bd;
 }
 
@@ -194,17 +196,26 @@ select {
 .project-table-header {
     display: flex;
     flex-direction: row;
+    padding: 0 5%;
 }
 
-.contact-table-row {
+.contact-table-row,
+.project-table-row {
     display: flex;
     flex-direction: column;
     color: #D9D9D9;
+    padding: 0 5%;
 }
 
-.contact-table-row img {
+.contact-table-row img,
+.project-table-row img {
     width: 20px;
     margin-left: 8px;
+}
+
+.project-table-row li {
+    list-style: none;
+    color: #2C719C;
 }
 
 .select-column {
@@ -271,4 +282,10 @@ progress {
     display: flex;
     flex-direction: row;
     justify-items: center;
+}
+
+.add-project {
+    padding: 2% 5%;
+    display: flex;
+    justify-content: flex-end;
 }

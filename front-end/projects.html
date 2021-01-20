@@ -28,6 +28,9 @@
             </ul>
         </nav>
     </header>
+    <section class="add-project">
+        <button class="plus-button" id="add">Subir Proyecto Para Evaluar</button>
+    </section>
     <section class="selected-projects">
     </section>
     <section class="projects-table">
@@ -89,32 +92,44 @@
                 </p>
             </div>
         </section>
-        <section class="contacts-grid selected">
+        <section class="projects-grid selected">
             <div class="select-column">
-                <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
+                <input type="checkbox" id="project-check-header" name="project-check" value="project-check">
             </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Pendorcha Flores</p>
-                <p class="secondary-text">pendorcha@flores.com</p>
+            <div class="project-table-row">
+                <ul class="authors-list" id="authors-list">
+                    <li>
+                        <a>Pendorcha Flores</a>
+                    </li>
+                    <li>
+                        <a>Roberto Carlos</a>
+                    </li>
+                </ul>
             </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Kamchatka</p>
-                <p class="secondary-text">Asia</p>
+            <div class="project-table-row">
+                <p class="principal-text">PCR analysis in batch processing</p>
             </div>
-            <div class="contact-table-row">
-                <p class="principal-text">UNQ</p>
+            <div class="project-table-row">
+                <p class="principal-text">Universidad Nacional de Quilmes</p>
             </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Postdoc</p>
+            <div class="project-table-row">
+                <ul class="reviewers-list" id="reviewers-list">
+                    <li>
+                        <a>Pendorcha Flores</a>
+                    </li>
+                    <li>
+                        <a>Roberto Carlos</a>
+                    </li>
+                </ul>
             </div>
-            <div class="contact-table-row">
+            <div class="project-table-row">
                 <p class="principal-text">Bioquimica</p>
             </div>
-            <div class="contact-table-row progress">
+            <div class="project-table-row progress">
                 <p class="principal-text">70%</p>
                 <progress id="file" max="100" value="70" class="progress-bar"></progress>
             </div>
-            <div class="contact-table-row">
+            <div class="project-table-row">
                 <img src="./assets/images/actions.png" alt="actions" id="actions">
                 <div class="">
                     <img src="./assets/images/trash.png" alt="trash" id="trash">
@@ -122,6 +137,7 @@
                 </div>
             </div>
         </section>
+
         <div class="pages-displayer">
             <div class="add-rows">
                 <figcaption>
