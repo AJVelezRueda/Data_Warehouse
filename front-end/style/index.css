@@ -173,7 +173,8 @@ select {
     margin-left: 10px;
 }
 
-.contacts-table {
+.contacts-table,
+.companies-table {
     padding: 1% 1%;
     border: solid 1px #9599bd;
     width: 90%;
@@ -181,35 +182,41 @@ select {
     margin-top: 1%;
 }
 
-.contacts-grid {
+.contacts-grid,
+.companies-grid {
     display: grid;
     grid-template-columns: 4% repeat(7, 15%);
     grid-template-rows: 1fr;
     align-items: center;
 }
 
-.contacts-grid p.principal-text {
+.contacts-grid p.principal-text,
+.companies-grid p.principal-text {
     color: #2C719C;
 }
 
-.contacts-grid p.secondary-text {
+.contacts-grid p.secondary-text,
+.companies-grid p.secondary-text {
     color: #9599bd;
 }
 
-.contact-table-header {
+.contact-table-header,
+.companies-table-header {
     display: flex;
     flex-direction: row;
     padding: 0 5%;
 }
 
-.contact-table-row {
+.contact-table-row,
+.companies-table-row {
     display: flex;
     flex-direction: column;
     color: #D9D9D9;
     padding: 0 5%;
 }
 
-.contact-table-row img {
+.contact-table-row img,
+.companies-table-row img {
     width: 20px;
     margin-left: 8px;
 }
@@ -286,4 +293,5 @@ progress {
     width: 28vw;
     margin-left: 32%;
     margin-right: 32%;
+    display: none;
 }
