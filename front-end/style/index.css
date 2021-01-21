@@ -283,5 +283,7 @@ progress {
 .users {
     padding: 5% 5%;
     border: 1px solid black;
-    width: 86vh;
+    width: 28vw;
+    margin-left: 32%;
+    margin-right: 32%;
 }
