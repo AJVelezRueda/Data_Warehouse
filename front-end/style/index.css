@@ -173,8 +173,7 @@ select {
     margin-left: 10px;
 }
 
-.contacts-table,
-.companies-table {
+.contacts-table {
     padding: 1% 1%;
     border: solid 1px #9599bd;
     width: 90%;
@@ -182,10 +181,24 @@ select {
     margin-top: 1%;
 }
 
-.contacts-grid,
-.companies-grid {
+.companies-table {
+    padding: 2% 2%;
+    border: solid 1px #9599bd;
+    width: 70%;
+    margin-left: 12%;
+    margin-top: 1%;
+}
+
+.contacts-grid {
     display: grid;
     grid-template-columns: 4% repeat(7, 15%);
+    grid-template-rows: 1fr;
+    align-items: center;
+}
+
+.companies-grid {
+    display: grid;
+    grid-template-columns: 7% repeat(4, 23%);
     grid-template-rows: 1fr;
     align-items: center;
 }
