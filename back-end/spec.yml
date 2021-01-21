@@ -19,9 +19,9 @@ tags:
 schemes:
 - https
 paths:
-  /proyectos:
+  /companies:
     get:
-      summary: lista los proyectos que están siendo evaluados
+      summary: lista los companies que están siendo evaluados
       parameters:
         - in: path
           type: integer
@@ -29,12 +29,12 @@ paths:
           description: order Id
           required: true
     post:
-      summary: confirma la carga de un nuevo proyecto
-  /proyectos/{id}:
+      summary: confirma la carga de una nueva compañía
+  /companies/{id}:
     put: 
-      summary: actualiza el estado de un proyecto
+      summary: actualiza el estado de un compañía
     get:
-      summary: muestra información de un proyecto
+      summary: muestra información de un compañía
       parameters:
         - in: path
           type: integer
@@ -42,15 +42,15 @@ paths:
           description: order Id
           required: true
     delete:
-      summary: borra un proyecto de la la base de datos 
-  /evaluadores:
+      summary: borra un compañía de la la base de datos 
+  /usuarios:
     get:
-      summary: lista los y las evaluadores/as
+      summary: lista los y las usuarios/as
     post:
-      summary: agrega un nuevo evaluador/a disponble para revisar proyectos
-  /evaluadores/{id}:
+      summary: agrega un nuevo/a usuario/a disponble para revisar compañías
+  /usuarios/{id}:
     delete:
-      summary: quita un  evaluador/a de la base de datos
+      summary: quita un usuario de la base de datos
     put:
       summary: actualiza la información del/ de la evualuador/a 
       parameters:
