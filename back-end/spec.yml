@@ -43,23 +43,23 @@ paths:
           required: true
     delete:
       summary: borra un compañía de la la base de datos 
-  /usuarios:
+  /users:
     get:
       summary: lista los y las usuarios/as
     post:
       summary: agrega un nuevo/a usuario/a disponble para revisar compañías
-  /usuarios/{id}:
+  /users/{id}:
     delete:
       summary: quita un usuario de la base de datos
     put:
-      summary: actualiza la información del/ de la evualuador/a 
+      summary: actualiza la información del/ de la usuario/a 
       parameters:
         - in: path
           type: integer
           name: id
           description: product Id
           required: true
-  /contactos:
+  /contacts:
     get:
       summary: lista los contactos
       produces:
@@ -78,7 +78,7 @@ paths:
           description: Not Found
         '500':
           description: Internal server error
-  /contactos/{id}:
+  /contacts/{id}:
     get:
       summary: expone los datos de un contacto
     put:
@@ -92,6 +92,47 @@ paths:
           - in: body
             name: body
             description: Update an contact
+            required: true
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Not Found
+        '500':
+          description: Internal server error
+  /regions:
+    get:
+      summary: lista los regiones
+      produces:
+      - application/json
+    post:
+      summary: agrega un nuevo regiones
+      parameters:
+        - in: body
+          name: body
+          description: Update an user
+          required: true
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: Not Found
+        '500':
+          description: Internal server error
+  /regions/{id}:
+    get:
+      summary: expone los datos de un regiones
+    put:
+      summary: actualiza los datos de un regiones
+      parameters:
+          - in: path
+            type: integer
+            name: id
+            description: region Id
+            required: true
+          - in: body
+            name: body
+            description: Update an region
             required: true
       responses:
         '200':

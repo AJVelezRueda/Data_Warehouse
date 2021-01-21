@@ -154,7 +154,8 @@ select {
     padding: 1% 5%;
 }
 
-.upload-button {
+.upload-button,
+.create-button {
     height: 2.5em;
     width: 17em;
     margin-top: 2%;
@@ -172,8 +173,7 @@ select {
     margin-left: 10px;
 }
 
-.contacts-table,
-.projects-table {
+.contacts-table {
     padding: 1% 1%;
     border: solid 1px #9599bd;
     width: 90%;
@@ -181,48 +181,37 @@ select {
     margin-top: 1%;
 }
 
-.contacts-grid,
-.projects-grid {
+.contacts-grid {
     display: grid;
     grid-template-columns: 4% repeat(7, 15%);
     grid-template-rows: 1fr;
     align-items: center;
 }
 
-.contacts-grid p.principal-text,
-.projects-grid p.principal-text {
+.contacts-grid p.principal-text {
     color: #2C719C;
 }
 
-.contacts-grid p.secondary-text,
-.projects-grid p.secondary-text {
+.contacts-grid p.secondary-text {
     color: #9599bd;
 }
 
-.contact-table-header,
-.project-table-header {
+.contact-table-header {
     display: flex;
     flex-direction: row;
     padding: 0 5%;
 }
 
-.contact-table-row,
-.project-table-row {
+.contact-table-row {
     display: flex;
     flex-direction: column;
     color: #D9D9D9;
     padding: 0 5%;
 }
 
-.contact-table-row img,
-.project-table-row img {
+.contact-table-row img {
     width: 20px;
     margin-left: 8px;
-}
-
-.project-table-row li {
-    list-style: none;
-    color: #2C719C;
 }
 
 .select-column {
@@ -264,8 +253,7 @@ progress {
     color: #9599bd;
 }
 
-.selected-contacts,
-.selected-projects {
+.selected-contacts {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -273,14 +261,12 @@ progress {
     padding-right: 5%;
 }
 
-.selected-contacts img,
-.selected-projects img {
+.selected-contacts img {
     width: 15px;
     margin-right: 5px;
 }
 
-.selected-contacts button,
-.selected-projects button {
+.selected-contacts button {
     background: #58E8D2;
     color: #2C719C;
     padding: 0 1%;
@@ -288,45 +274,14 @@ progress {
     height: 30px;
 }
 
-.delete-contacts,
-.delete-projects {
+.delete-contacts {
     display: flex;
     flex-direction: row;
     justify-items: center;
 }
 
-.add-project {
-    padding: 2% 5%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.project-view {
+.users {
     padding: 5% 5%;
-    border: 1px solid;
-    margin-left: 5%;
-    margin: 5%;
-    font-size: 20px;
-}
-
-.authors-list-project {
-    display: flex;
-    flex-direction: row;
-}
-
-.authors-list-project li {
-    margin-left: 3px;
-}
-
-.project-view article {
-    margin-top: 20px;
-}
-
-.project-view-header h3 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.authors-list-project {
-    justify-content: center;
+    border: 1px solid black;
+    width: 86vh;
 }
