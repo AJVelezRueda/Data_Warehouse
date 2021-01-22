@@ -352,6 +352,12 @@
         background: #D9D9D9;
     }
     
+    .region-section button:hover {
+        color: #D9D9D9;
+        font-weight: bold;
+        background: #33739C;
+    }
+    
     .country-row {
         display: flex;
         flex-direction: row;
@@ -372,5 +378,8 @@
     }
     
     .region-section {
+        border: 1px solid #33739C;
         padding: 2% 2%;
+        margin-left: 17%;
+        margin-right: 17%;
     }
