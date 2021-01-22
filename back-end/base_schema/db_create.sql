@@ -14,34 +14,45 @@ CREATE TABLE `users` (
 );
 
 DROP TABLE IF EXISTS `companies`;
+
 CREATE TABLE `companies` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `price` DECIMAL(10,2) NOT NULL,
+  `adress` varchar(45) NOT NULL,
+  `countries_id` DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (`countries_id`) REFERENCES countries (id),
   PRIMARY KEY (`id`)
 );
 
 
-DROP TABLE IF EXISTS `orders`;
+DROP TABLE IF EXISTS `regions`;
 
-CREATE TABLE `orders` (
+CREATE TABLE `regions` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `description` varchar(200) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `payment_method` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`user_id`) REFERENCES users (id)
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `items`;
-CREATE TABLE `items` (
+
+DROP TABLE IF EXISTS `countries`;
+
+CREATE TABLE `countries` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `product_id` int NOT NULL,
-  `order_id` int NOT NULL,
-  `cantidad` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`product_id`) REFERENCES companies (id),
-  FOREIGN KEY (`order_id`) REFERENCES orders (id)
+  `name` varchar(45) NOT NULL,
+  `regions_id` DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (`regions_id`) REFERENCES regions (id),
+  PRIMARY KEY (`id`)
 );
+
+
+DROP TABLE IF EXISTS `cities`;
+
+CREATE TABLE `cities` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `countries_id` DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (`countries_id`) REFERENCES countries (id),
+  PRIMARY KEY (`id`)
+);
+
+
