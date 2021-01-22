@@ -300,8 +300,7 @@ progress {
     justify-items: center;
 }
 
-.users,
-.countries-edit-table {
+.users {
     padding: 5% 5%;
     border: #2C719C solid 2px;
     width: 28vw;
@@ -331,4 +330,28 @@ progress {
     color: #33739C;
     font-weight: bold;
     background: #D9D9D9;
+}
+
+.region-head,
+.country-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.country-row {
+    padding: 1% 2%;
+    justify-content: space-around;
+}
+
+.country-row img {
+    height: 23px;
+}
+
+.country-row div {
+    display: flex;
+    flex-direction: row;
+}
+
+.countries-section {
+    padding: 2% 2%;
 }
