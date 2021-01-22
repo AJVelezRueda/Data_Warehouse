@@ -1,6 +1,6 @@
-CREATE SCHEMA `delilah_db` ;
-CREATE USER 'delilah'@'localhost' IDENTIFIED BY 'D3L1L4HIS@W3S0m3!i5N\'T1t?';
-GRANT ALL PRIVILEGES ON delilah_db.* TO 'delilah'@'localhost' WITH GRANT OPTION;
+CREATE SCHEMA `dataWare_db` ;
+CREATE USER 'dataWare'@'localhost' IDENTIFIED BY 'D4T4IS@W3S0m3!i5N\'T1t?';
+GRANT ALL PRIVILEGES ON dataWare_db.* TO 'dataWare'@'localhost' WITH GRANT OPTION;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -13,8 +13,8 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE `products` (
+DROP TABLE IF EXISTS `companies`;
+CREATE TABLE `companies` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
@@ -42,6 +42,6 @@ CREATE TABLE `items` (
   `order_id` int NOT NULL,
   `cantidad` DECIMAL(10,2) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`product_id`) REFERENCES products (id),
+  FOREIGN KEY (`product_id`) REFERENCES companies (id),
   FOREIGN KEY (`order_id`) REFERENCES orders (id)
 );
