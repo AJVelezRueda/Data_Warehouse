@@ -300,9 +300,10 @@ progress {
     justify-items: center;
 }
 
-.users {
+.users,
+.countries-edit-table {
     padding: 5% 5%;
-    border: 1px solid black;
+    border: #2C719C solid 2px;
     width: 28vw;
     margin-left: 32%;
     margin-right: 32%;
@@ -312,16 +313,19 @@ progress {
 .companies-section {
     display: flex;
     flex-direction: column;
+    display: none;
 }
 
-.companies-header {
+.companies-header,
+.countries-section-header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 2% 2%;
 }
 
-.companies-header button {
+.companies-header button,
+.countries-section button {
     height: 2.5em;
     width: 17em;
     color: #33739C;
