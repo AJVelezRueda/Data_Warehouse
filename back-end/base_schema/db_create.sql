@@ -2,6 +2,7 @@ CREATE SCHEMA `dataWare_db` ;
 CREATE USER 'dataWare'@'localhost' IDENTIFIED BY 'D4T4IS@W3S0m3!i5N\'T1t?';
 GRANT ALL PRIVILEGES ON dataWare_db.* TO 'dataWare'@'localhost' WITH GRANT OPTION;
 
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -13,18 +14,6 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 );
 
-DROP TABLE IF EXISTS `companies`;
-
-CREATE TABLE `companies` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `adress` varchar(45) NOT NULL,
-  `countries_id` DECIMAL(10,2) NOT NULL,
-  FOREIGN KEY (`countries_id`) REFERENCES countries (id),
-  PRIMARY KEY (`id`)
-);
-
-
 DROP TABLE IF EXISTS `regions`;
 
 CREATE TABLE `regions` (
@@ -35,13 +24,12 @@ CREATE TABLE `regions` (
 
 
 DROP TABLE IF EXISTS `countries`;
-
 CREATE TABLE `countries` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `regions_id` DECIMAL(10,2) NOT NULL,
-  FOREIGN KEY (`regions_id`) REFERENCES regions (id),
-  PRIMARY KEY (`id`)
+  `regions_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`regions_id`) REFERENCES regions (id)
 );
 
 
@@ -50,9 +38,21 @@ DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  `countries_id` DECIMAL(10,2) NOT NULL,
+  `countries_id` int NOT NULL,
   FOREIGN KEY (`countries_id`) REFERENCES countries (id),
   PRIMARY KEY (`id`)
 );
+
+DROP TABLE IF EXISTS `companies`;
+CREATE TABLE `companies` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  `adress` varchar(45) NOT NULL,
+  `countries_id` int NOT NULL,
+  FOREIGN KEY (`countries_id`) REFERENCES countries (id),
+  PRIMARY KEY (`id`)
+);
+
+
 
 
