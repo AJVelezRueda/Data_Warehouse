@@ -1,6 +1,6 @@
 CREATE SCHEMA `dataWare_test` ;
 CREATE USER 'dataWare'@'localhost' IDENTIFIED BY 'D4T4IS@W3S0m3!i5N\'T1t?';
-GRANT ALL PRIVILEGES ON dataWare_db.* TO 'dataWare'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON dataWare_test.* TO 'dataWare'@'localhost' WITH GRANT OPTION;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (

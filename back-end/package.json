@@ -5,19 +5,19 @@
     "main": "app.js",
     "scripts": {
         "start": "node ./app.js",
-        "dev": "DB_NAME=dev ACCESS_TOKEN_SECRET=my_super_awesome_dev_decret node ./app.js",
-        "test": "DB_NAME=test ACCESS_TOKEN_SECRET=my_super_awesome_test_secret mocha --timeout 2000"
+        "dev": "DB_NAME=dataWare_db ACCESS_TOKEN_SECRET=my_super_awesome_dev_decret node ./app.js",
+        "test": "DB_NAME=dataWare_test ACCESS_TOKEN_SECRET=my_super_awesome_test_secret mocha --timeout 2000"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/AJVelezRueda/delilah_project.git"
+        "url": "git+https://github.com/AJVelezRueda/Data_Warehouse.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/AJVelezRueda/delilah_project/issues"
+        "url": "https://github.com/AJVelezRueda/Data_Warehouse/issues"
     },
-    "homepage": "https://github.com/AJVelezRueda/delilah_project#readme",
+    "homepage": "https://github.com/AJVelezRueda/Data_Warehouse/blob/master/back-end/Readme.md",
     "dependencies": {
         "express": "4.17.1",
         "express-rate-limit": "^5.2.3",

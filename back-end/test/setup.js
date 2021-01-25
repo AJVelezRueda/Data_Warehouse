@@ -19,7 +19,7 @@ function withToken(operation) {
     if (!token) throw new Error("Please signup first");
 
     return operation.set("Authorization", `Bearer ${token}`)
-}
+};
 
 function sampleUser() {
     return {
