@@ -5,8 +5,8 @@
     "main": "app.js",
     "scripts": {
         "start": "node ./app.js",
-        "dev": "DB_NAME=dataWare_db ACCESS_TOKEN_SECRET=my_super_awesome_dev_decret node ./app.js",
-        "test": "DB_NAME=dataWare_test ACCESS_TOKEN_SECRET=my_super_awesome_test_secret mocha --timeout 2000"
+        "dev": "DB_NAME=dataWare_db DB_USERNAME=dataWare ACCESS_TOKEN_SECRET=my_super_awesome_dev_decret node ./app.js",
+        "test": "DB_NAME=dataWare_test DB_USERNAME=dataWare ACCESS_TOKEN_SECRET=my_super_awesome_test_secret mocha --timeout 2000"
     },
     "repository": {
         "type": "git",
