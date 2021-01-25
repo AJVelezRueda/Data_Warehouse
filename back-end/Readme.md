@@ -1,4 +1,4 @@
-**Delilah Project**
+**Data Warehouse Project**
 
 REST API Project 
 
@@ -16,16 +16,16 @@ REST API Project
     - MySql
 
 + Clone locally the using the following command in bash shell:
-    ```git clone https://github.com/AJVelezRueda/delilah_project.git```
+    ```git clone https://github.com/AJVelezRueda/Data_Warehouse.git```
 
     
-    ```cd delilah_project```
+    ```cd Data_Warehouse```
 
 
 + Installing all dependences:
     ```npm install```
 
-+ Run the server by using the following command in the shell (must be inside /delilah_project):
++ Run the server by using the following command in the shell (must be inside /Data_Warehouse):
    ```npm run app.js```
 
 + Run in mysql workbrench the **/base_schema/db_create.sql** before using the app
