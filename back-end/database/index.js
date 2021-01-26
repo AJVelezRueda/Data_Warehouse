@@ -6,8 +6,6 @@ const db = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, 'D4T4IS@W
     dialect: 'mysql'
 })
 
-console.log(db);
-
 async function getResourceById(table, id) {
     const resource = await db.query(`select * from ${table} where id = :id`, {
         replacements: { id: id },

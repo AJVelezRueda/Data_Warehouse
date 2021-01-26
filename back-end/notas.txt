@@ -1,0 +1,4 @@
+TODO
+- Falta crear el script de la tabla de contactos (debe hacerse después que las ciudades)
+- reemplazar la contraseña de la base en el código por process.env.DB_PASWORD
+- 
