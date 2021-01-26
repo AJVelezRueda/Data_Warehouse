@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, deleteResoueceById } = require("../database");
-const { insertNewCity, insertNewCountry } = require("../models/regions-repository");
+const { insertNewCity, insertNewCountry, insertNewRegion } = require("../models/regions-repository");
 
 
 
@@ -39,5 +39,6 @@ async function create(newRegion) {
 
 module.exports = {
     clean,
-    create
+    create,
+    createCountry
 }
