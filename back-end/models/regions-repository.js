@@ -29,13 +29,7 @@ async function insertNewCountry(newCountry) {
 
 
 async function insertNewRegion(newRegion) {
-    await db.query(`
-    insert into items  (name)
-                values ( :name)
-`, {
-        replacements: newRegion,
-        type: QueryTypes.INSERT
-    });
+
 }
 
 
