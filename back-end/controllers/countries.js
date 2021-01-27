@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, deleteResoueceById } = require("../database");
-const { insertNewCountry } = require("../models/countries-repository");
+const { insertNewCountry, getCountriesData } = require("../models/countries-repository");
 
 async function clean() {
     cleanTable('countries');
@@ -8,8 +8,8 @@ async function clean() {
 
 async function create(req, res) {
     const countries = {
-        name: req.body.name
-        regions_id: req.regions_id,
+        name: req.body.name,
+        regions_id: req.regions_id
     };
 
     try {
@@ -21,8 +21,15 @@ async function create(req, res) {
     }
 }
 
+async function listAll() {
+    const countries = await getCountriesData();
+    res.json({ countries }).status(200);
+}
+
+
 
 module.exports = {
     clean,
-    create
+    create,
+    listAll
 }
