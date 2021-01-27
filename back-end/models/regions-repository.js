@@ -15,6 +15,11 @@ async function insertNewRegion(newRegion) {
 }
 
 
+async function getRegionsData() {
+    return await db.query("select id, name from regions", { type: QueryTypes.SELECT });
+}
+
 module.exports = {
-    insertNewRegion
+    insertNewRegion,
+    getRegionsData
 }

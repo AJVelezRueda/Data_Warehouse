@@ -17,6 +17,15 @@ describe('Regions', () => {
 
     beforeEach(async() => await signup(agent));
 
+    describe('GET /regions', () => {
+        it('should return a list of all regions', async() => {
+            const result = await withToken(agent.get('/regions'))
+            assert.equal(result.status, 200);
+            assert.deepEqual(result.body, { regions: [] });
+        });
+    });
+
+
     describe('POST /regions', () => {
         it('should return a region id', async() => {
             const { body } = await withToken(agent.post('/regions')).send({ name: "Latam" });
