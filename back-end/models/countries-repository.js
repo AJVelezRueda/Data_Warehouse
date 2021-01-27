@@ -17,12 +17,24 @@ async function insertNewCountry(newCountry) {
     return result[0]
 }
 
-async function getCountriesData() {
-    return await db.query("select id, name, regions_id from countries", { type: QueryTypes.SELECT })
+async function getCountriesByID(countries_id) {
+    const countries = await db.query(`SELECT
+    countries.name,
+    regions.name,
+    regions.id
+    FROM countries
+    INNER JOIN regions ON regions.id = countries.regions_id
+    WHERE countries.countries_id = :countries_id
+    `, {
+        replacements: { countries_id },
+        type: QueryTypes.SELECT
+    });
+
+
+    return countries;
 }
 
 
 module.exports = {
-    insertNewCountry,
-    getCountriesData
+    insertNewCountry
 }
