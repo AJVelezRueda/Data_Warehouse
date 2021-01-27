@@ -25,7 +25,6 @@ describe('Regions', () => {
         });
     });
 
-
     describe('POST /regions', () => {
         it('should return a region id', async() => {
             const { body } = await withToken(agent.post('/regions')).send({ name: "Latam" });

@@ -7,7 +7,7 @@ const salt = 10;
 
 async function insertNewCountry(newCountry) {
     await db.query(`
-    insert into items  (name, regions_id)
+    insert into countries  (name, regions_id)
                 values ( :name, :regions_id)
 `, {
         replacements: newCountry,
