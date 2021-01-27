@@ -1,6 +1,6 @@
 const user = require('../controllers/user');
 const session = require('../controllers/session');
-
+const regions = require('../controllers/regions');
 const { filterAdmin } = require("./authentication.js");
 
 
@@ -11,6 +11,8 @@ function routes(app) {
 
     app.put('/users/:id', user.update);
     app.delete('/users/:id', user.remove, filterAdmin);
+
+    app.post('/regions', regions.create, filterAdmin);
 
     app.post('/login', session.login);
 }

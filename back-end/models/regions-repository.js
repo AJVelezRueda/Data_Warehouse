@@ -1,18 +1,17 @@
 const { QueryTypes } = require("sequelize");
 const { db } = require("../database");
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const salt = 10;
 
 
 async function insertNewRegion(newRegion) {
-    await db.query(`
-    insert into items  (name)
-                values ( :name)
+    const result = await db.query(`
+    insert into regions (name)
+                values (:name)
 `, {
         replacements: newRegion,
         type: QueryTypes.INSERT
     });
+
+    return result[0]
 }
 
 
