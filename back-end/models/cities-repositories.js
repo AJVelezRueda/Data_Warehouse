@@ -5,17 +5,17 @@ const jwt = require('jsonwebtoken');
 const salt = 10;
 
 
-async function insertNewRegion(newRegion) {
+async function insertNewCity(newCity) {
     await db.query(`
-    insert into items  (name)
-                values ( :name)
+    insert into items  (name, countries_id)
+                values ( :name, :countries_id)
 `, {
-        replacements: newRegion,
+        replacements: newCity,
         type: QueryTypes.INSERT
     });
 }
 
 
 module.exports = {
-    insertNewRegion
+    insertNewCity
 }
