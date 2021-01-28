@@ -47,4 +47,24 @@ describe('Countries', () => {
         });
     });
 
+    describe('GET /countries/:id', () => {
+        it('should return a list of all countries', async() => {
+            const { regions_id } = await foundARegion();
+
+            const result = await withToken(agent.post('/countries'))
+                .send({
+                    name: 'Argentina',
+                    regions_id: regions_id,
+                });
+
+            const res = await withToken(agent.get('/countries/1'))
+            assert.equal(res.status, 200);
+            assert.deepEqual(res.body, {
+                id: 1,
+                name: 'Argentina',
+                regions_id: 'Latam'
+            });
+        });
+    });
+
 });

@@ -30,11 +30,11 @@ async function getCountriesByID(countries_id) {
         type: QueryTypes.SELECT
     });
 
-
     return countries;
 }
 
 
 module.exports = {
-    insertNewCountry
+    insertNewCountry,
+    getCountriesByID
 }

@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, getAllResources } = require("../database");
-const { insertNewCountry } = require("../models/countries-repository");
+const { insertNewCountry, getCountriesByID } = require("../models/countries-repository");
 
 
 async function clean() {
@@ -27,10 +27,16 @@ async function listAll(req, res) {
     res.json({ countries }).status(200);
 }
 
+async function get(req, res) {
+    const { country } = await getCountriesByID(Number(req.params.id))
+
+    res.json(country).status(200);
+}
 
 
 module.exports = {
     clean,
     listAll,
-    create
+    create,
+    get
 }
