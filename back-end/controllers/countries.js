@@ -1,5 +1,5 @@
 const { QueryTypes } = require("sequelize");
-const { db, cleanTable, deleteResoueceById } = require("../database");
+const { db, cleanTable, getAllResources } = require("../database");
 const { insertNewCountry } = require("../models/countries-repository");
 
 async function clean() {
@@ -30,6 +30,5 @@ async function listAll(req, res) {
 
 module.exports = {
     clean,
-    create,
     listAll
 }
