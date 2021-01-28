@@ -5,6 +5,7 @@ const chaiHttp = require('chai-http');
 const server = require('../app');
 const assert = chai.assert;
 const countries = require('../controllers/countries');
+const regions = require('../controllers/regions');
 chai.use(chaiHttp);
 
 const { withToken, signup } = require("./setup");
@@ -17,6 +18,13 @@ describe('Countries', () => {
 
     beforeEach(async() => await signup(agent));
 
+    async function foundARegion() {
+        const { body: { id: regions_id } } = await withToken(agent.post('/regions')).send({
+            name: "Latam"
+        });
+        return { regions_id };
+    }
+
     describe('GET /countries', () => {
         it('should return a list of all countries', async() => {
             const result = await withToken(agent.get('/countries'))
@@ -25,5 +33,18 @@ describe('Countries', () => {
         });
     });
 
+    describe('POST /countries', () => {
+        it('should return a list of all countries', async() => {
+            const { regions_id } = await foundARegion();
+
+            const result = await withToken(agent.post('/countries'))
+                .send({
+                    name: 'Argentina',
+                    regions_id: regions_id,
+                });
+            assert.isNotNull(result.body.id);
+            assert.deepEqual(result.status, 201);
+        });
+    });
 
 });
