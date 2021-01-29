@@ -24,7 +24,7 @@ async function getCountriesByID(countries_id) {
     regions.id
     FROM countries
     INNER JOIN regions ON regions.id = countries.regions_id
-    WHERE countries.countries_id = :countries_id
+    WHERE countries.id = :countries_id
     `, {
         replacements: { countries_id },
         type: QueryTypes.SELECT
