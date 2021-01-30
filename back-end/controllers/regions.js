@@ -17,7 +17,6 @@ async function create(req, res) {
     }
 }
 
-
 async function listAll(req, res) {
     const regions = await getRegionsData();
     res.json({ regions }).status(200);
@@ -31,9 +30,15 @@ async function get(req, res) {
 }
 
 
+async function remove(req, res) {
+    deleteResoueceById('regions', Number(req.params.id));
+    res.status(200).end();
+}
+
 module.exports = {
     clean,
     create,
     listAll,
-    get
+    get,
+    remove
 }

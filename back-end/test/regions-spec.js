@@ -38,7 +38,6 @@ describe('Regions', () => {
             const { body } = await withToken(agent.post('/regions')).send({ name: "Latam" });
             const regionId = body.id;
 
-
             const res = await withToken(agent.get(`/regions/${regionId}`))
 
             assert.equal(res.status, 200);
@@ -46,7 +45,22 @@ describe('Regions', () => {
                 id: 1,
                 name: 'Latam'
             });
+        });
+    });
 
+
+    describe('DELETE /regions/:id', () => {
+        it('should return 200 status after deleting a region', async() => {
+            const { body } = await withToken(agent.post('/regions')).send({ name: "Latam" });
+            const regionId = body.id;
+
+            const res = await withToken(agent.delete(`/regions/${regionId}`));
+            assert.equal(res.status, 200);
+
+            const newres = await withToken(agent.get('/regions'));
+
+            assert.equal(newres.status, 200);
+            assert.deepEqual(newres.body, { regions: [] });
         });
     });
 

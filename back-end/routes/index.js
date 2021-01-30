@@ -17,6 +17,8 @@ function routes(app) {
     app.get('/regions/:id', regions.get, filterAdmin);
     app.post('/regions', regions.create, filterAdmin);
 
+    app.delete('/regions/:id', regions.remove, filterAdmin);
+
     app.get('/countries', countries.listAll, filterAdmin);
     app.get('/countries/:id', countries.get, filterAdmin);
     app.post('/countries', countries.create, filterAdmin);
