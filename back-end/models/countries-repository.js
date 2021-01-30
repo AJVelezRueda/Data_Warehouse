@@ -14,7 +14,7 @@ async function insertNewCountry(newCountry) {
         type: QueryTypes.INSERT
     });
 
-    return result[0]
+    return result[0];
 }
 
 async function getCountriesByID(countries_id) {
