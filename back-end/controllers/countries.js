@@ -23,7 +23,7 @@ async function create(req, res) {
 }
 
 async function listAll(req, res) {
-    const countries = await getAllResources('countries');
+    const countries = await getCountriesByID('countries');
     res.json({ countries }).status(200);
 }
 
