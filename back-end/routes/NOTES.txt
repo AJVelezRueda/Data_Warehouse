@@ -4,3 +4,13 @@
 - Dentro de la carpeta controllers, los módulos que manejan la interacción ente la vista y el modelo. Tendré uno por cada ruta.
 
 - En la raíz del proyecto tengo el app.js 
+
+
+
+    describe('GET /cities', () => {
+        it('should return a list of all cities', async() => {
+            const result = await withToken(agent.get('/cities'))
+            assert.equal(result.status, 200);
+            assert.deepEqual(result.body, { countries: [] });
+        });
+    });

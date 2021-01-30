@@ -36,7 +36,7 @@ describe('Countries', () => {
     });
 
     describe('POST /countries', () => {
-        it('should return a list of all countries', async() => {
+        it('should return a 201 status after posting a country', async() => {
             const { regions_id } = await foundARegion();
 
             const result = await withToken(agent.post('/countries'))
