@@ -23,6 +23,8 @@ function routes(app) {
     app.get('/countries/:id', countries.get, filterAdmin);
     app.post('/countries', countries.create, filterAdmin);
 
+    app.delete('/countries/:id', countries.remove, filterAdmin);
+
     app.post('/login', session.login);
 }
 

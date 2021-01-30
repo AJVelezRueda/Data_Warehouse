@@ -60,6 +60,8 @@ describe('Countries', () => {
                 });
 
             const res = await withToken(agent.get('/countries/1'))
+
+
             assert.equal(res.status, 200);
             assert.deepEqual(res.body, {
                 name: 'Argentina',
@@ -68,5 +70,21 @@ describe('Countries', () => {
             });
         });
     });
+
+    describe('DELETE /countries/:id', () => {
+        it('should return 200 status after deleting a country', async() => {
+            const { regions_id } = await foundARegion();
+
+            const result = await withToken(agent.post('/countries'))
+                .send({
+                    name: 'Argentina',
+                    regions_id: regions_id,
+                });
+
+            const res = await withToken(agent.delete(`/countries/1`));
+            assert.equal(res.status, 200);
+        });
+    });
+
 
 });
