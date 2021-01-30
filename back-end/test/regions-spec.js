@@ -33,5 +33,21 @@ describe('Regions', () => {
         });
     });
 
+    describe('GET /regions/:id', () => {
+        it('should return an object region', async() => {
+            const { body } = await withToken(agent.post('/regions')).send({ name: "Latam" });
+            const regionId = body.id;
+
+
+            const res = await withToken(agent.get(`/regions/${regionId}`))
+
+            assert.equal(res.status, 200);
+            assert.deepEqual(res.body, {
+                id: 1,
+                name: 'Latam'
+            });
+
+        });
+    });
 
 });

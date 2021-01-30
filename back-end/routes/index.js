@@ -14,6 +14,7 @@ function routes(app) {
     app.delete('/users/:id', user.remove, filterAdmin);
 
     app.get('/regions', regions.listAll, filterAdmin);
+    app.get('/regions/:id', regions.get, filterAdmin);
     app.post('/regions', regions.create, filterAdmin);
 
     app.get('/countries', countries.listAll, filterAdmin);
