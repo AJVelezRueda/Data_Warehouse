@@ -19,9 +19,9 @@ async function insertNewCountry(newCountry) {
 
 async function getCountriesByID(countries_id) {
     const countries = await db.query(`SELECT
-    countries.name,
-    regions.name,
-    regions.id
+    countries.name as name,
+    regions.name as region_name,
+    regions.id as region_id
     FROM countries
     INNER JOIN regions ON regions.id = countries.regions_id
     WHERE countries.id = :countries_id
@@ -29,8 +29,7 @@ async function getCountriesByID(countries_id) {
         replacements: { countries_id },
         type: QueryTypes.SELECT
     });
-
-    return countries;
+    return countries[0];
 }
 
 

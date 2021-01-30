@@ -15,6 +15,8 @@ const agent = chai.request.agent(server);
 describe('Countries', () => {
     beforeEach(async() => await countries.clean());
     afterEach(async() => await countries.clean());
+    beforeEach(async() => await regions.clean());
+    afterEach(async() => await regions.clean());
 
     beforeEach(async() => await signup(agent));
 
@@ -48,7 +50,7 @@ describe('Countries', () => {
     });
 
     describe('GET /countries/:id', () => {
-        it('should return a list of all countries', async() => {
+        it('should return an object country', async() => {
             const { regions_id } = await foundARegion();
 
             const result = await withToken(agent.post('/countries'))
@@ -60,9 +62,9 @@ describe('Countries', () => {
             const res = await withToken(agent.get('/countries/1'))
             assert.equal(res.status, 200);
             assert.deepEqual(res.body, {
-                id: 1,
                 name: 'Argentina',
-                regions_id: 'Latam'
+                region_id: 1,
+                region_name: 'Latam'
             });
         });
     });

@@ -28,7 +28,7 @@ async function listAll(req, res) {
 }
 
 async function get(req, res) {
-    const { country } = await getCountriesByID(Number(req.params.id))
+    const country = await getCountriesByID(Number(req.params.id))
 
     res.json(country).status(200);
 }
