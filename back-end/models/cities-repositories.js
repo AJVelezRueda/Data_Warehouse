@@ -7,7 +7,7 @@ const salt = 10;
 
 async function insertNewCity(newCity) {
     await db.query(`
-    insert into items  (name, countries_id)
+    insert into cities  (name, countries_id)
                 values ( :name, :countries_id)
 `, {
         replacements: newCity,
