@@ -29,29 +29,35 @@ describe('Countries', () => {
         const { body: { id: regions_id } } = await withToken(agent.post('/regions')).send({
             name: "Latam"
         });
-        return { regions_id };
+        return regions_id;
+    }
+
+
+    async function foundACountry(regions_id) {
+        const {
+            body: { id: countries_id }
+        } = await withToken(agent.post('/countries'))
+            .send({
+                name: 'Argentina',
+                regions_id: regions_id,
+            });
+
+        return countries_id;
     }
 
     describe('GET /cities', () => {
-        it('should return a list of all cities', async() => {
-            const result = await withToken(agent.get('/cities'))
+        it('should return an empty list of all cities', async() => {
+            const result = await withToken(agent.get('/cities'));
             assert.equal(result.status, 200);
-            assert.deepEqual(result.body, { countries: [] });
+            assert.deepEqual(result.body, { cities: [] });
         });
     });
 
 
     describe('POST /cities', () => {
         it('should return a 201 status after posting a city', async() => {
-            const { regions_id } = await foundARegion();
-
-            const {
-                body: { id: countries_id }
-            } = await withToken(agent.post('/countries'))
-                .send({
-                    name: 'Argentina',
-                    regions_id: regions_id,
-                });
+            const regions_id = await foundARegion();
+            const countries_id = await foundACountry(regions_id);
 
             const result = await withToken(agent.post('/cities'))
                 .send({
@@ -60,7 +66,6 @@ describe('Countries', () => {
                 });
 
             assert.isNotNull(result.body.id);
-
         });
     });
 });

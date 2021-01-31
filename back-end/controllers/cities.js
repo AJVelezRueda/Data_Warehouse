@@ -22,7 +22,7 @@ async function create(req, res) {
     }
 }
 
-async function listAll() {
+async function listAll(req, res) {
     const cities = await getAllResources('cities');
     res.json({ cities }).status(200);
 }
