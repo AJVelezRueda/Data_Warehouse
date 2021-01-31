@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, getAllResources, deleteResoueceById } = require("../database");
-const { insertNewCity } = require("../models/cities-repositories");
+const { insertNewCity, getCityByID } = require("../models/cities-repositories");
 
 
 async function clean() {
@@ -27,9 +27,22 @@ async function listAll(req, res) {
     res.json({ cities }).status(200);
 }
 
+async function get(req, res) {
+    const city = await getCityByID(Number(req.params.id))
+
+    res.json(city).status(200);
+}
+
+async function remove(req, res) {
+    deleteResoueceById('cities', Number(req.params.id));
+    res.status(200).end();
+}
+
 
 module.exports = {
     clean,
     create,
-    listAll
+    listAll,
+    get,
+    remove
 }

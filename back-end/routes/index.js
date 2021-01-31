@@ -28,6 +28,9 @@ function routes(app) {
 
     app.get('/cities', cities.listAll, filterAdmin);
     app.post('/cities', cities.create, filterAdmin);
+    app.get('/cities/:id', cities.get, filterAdmin);
+
+    app.delete('/cities/:id', cities.remove, filterAdmin);
 
     app.post('/login', session.login);
 }

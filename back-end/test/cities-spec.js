@@ -32,7 +32,6 @@ describe('Countries', () => {
         return regions_id;
     }
 
-
     async function foundACountry(regions_id) {
         const {
             body: { id: countries_id }
@@ -66,6 +65,49 @@ describe('Countries', () => {
                 });
 
             assert.isNotNull(result.body.id);
+        });
+    });
+
+
+    describe('GET /cities/:id', () => {
+        it('should return an object city', async() => {
+            const regions_id = await foundARegion();
+            const countries_id = await foundACountry(regions_id);
+
+            const result = await withToken(agent.post('/cities'))
+                .send({
+                    name: 'Bacare caca',
+                    countries_id: countries_id,
+                });
+
+            assert.isNotNull(result.body.id);
+
+            const res = await withToken(agent.get('/cities/1'));
+            assert.equal(res.status, 200);
+            assert.deepEqual(res.body, {
+                name: 'Bacare caca',
+                countries_id: 1,
+                countries_name: 'Argentina'
+            });
+        });
+    });
+
+
+    describe('DELETE /cities/:id', () => {
+        it('should return 200 status after deleting a city', async() => {
+            const regions_id = await foundARegion();
+            const countries_id = await foundACountry(regions_id);
+
+            const result = await withToken(agent.post('/cities'))
+                .send({
+                    name: 'Bacare caca',
+                    countries_id: countries_id,
+                });
+
+            assert.isNotNull(result.body.id);
+
+            const res = await withToken(agent.delete(`/cities/1`));
+            assert.equal(res.status, 200);
         });
     });
 });
