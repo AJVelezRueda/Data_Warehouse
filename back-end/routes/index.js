@@ -26,6 +26,7 @@ function routes(app) {
 
     app.delete('/countries/:id', countries.remove, filterAdmin);
 
+    app.get('/cities', cities.listAll, filterAdmin);
     app.post('/cities', cities.create, filterAdmin);
 
     app.post('/login', session.login);

@@ -22,8 +22,14 @@ async function create(req, res) {
     }
 }
 
+async function listAll() {
+    const cities = await getAllResources('cities');
+    res.json({ cities }).status(200);
+}
+
 
 module.exports = {
     clean,
-    create
+    create,
+    listAll
 }

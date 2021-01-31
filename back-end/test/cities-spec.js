@@ -32,6 +32,13 @@ describe('Countries', () => {
         return { regions_id };
     }
 
+    describe('GET /cities', () => {
+        it('should return a list of all cities', async() => {
+            const result = await withToken(agent.get('/cities'))
+            assert.equal(result.status, 200);
+            assert.deepEqual(result.body, { countries: [] });
+        });
+    });
 
 
     describe('POST /cities', () => {
@@ -54,7 +61,6 @@ describe('Countries', () => {
 
             assert.isNotNull(result.body.id);
 
-            assert.deepEqual(result.status, 201);
         });
     });
 });
