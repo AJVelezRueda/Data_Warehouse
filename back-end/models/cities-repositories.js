@@ -28,7 +28,6 @@ async function getCityByID(cities_id) {
         replacements: { cities_id },
         type: QueryTypes.SELECT
     });
-    console.log(cities);
     return cities[0];
 }
 
