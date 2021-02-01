@@ -9,7 +9,6 @@ async function clean() {
     cleanTable('preferences');
 }
 
-
 async function insertPreferences(contacts_id, preferences) {
     for (let preference of preferences) {
         const newPreference = {
