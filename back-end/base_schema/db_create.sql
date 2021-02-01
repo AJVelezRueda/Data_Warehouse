@@ -54,5 +54,30 @@ CREATE TABLE `companies` (
 );
 
 
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `contact_name`  varchar(100) NOT NULL,
+  `contact_email` varchar(100) NOT NULL,
+  `contact_adress` varchar(100) NOT NULL,
+  `contact_phone` varchar(100) NOT NULL,
+  `preferences`  varchar(200) NOT NULL,
+  `cities_id` int NOT NULL,
+  FOREIGN KEY (`cities_id`) REFERENCES cities (id),
+  PRIMARY KEY (`id`)
+);
+
+
+DROP TABLE IF EXISTS `preferences`;
+CREATE TABLE `preferences` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `intrest` int NOT NULL,
+  `channel` varchar(100) NOT NULL,
+  `contacts_id` int NOT NULL,
+  FOREIGN KEY (`contacts_id`) REFERENCES contacts (id),
+  PRIMARY KEY (`id`)
+);
+
+
 
 
