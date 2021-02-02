@@ -10,7 +10,7 @@ const cities = require('../controllers/cities');
 const contact = require('../controllers/contacts');
 chai.use(chaiHttp);
 
-const { withToken, getToken, signup, getcontactId } = require("./setup");
+const { withToken, signup } = require("./setup");
 
 const agent = chai.request.agent(server);
 
@@ -28,6 +28,7 @@ describe('contacts', () => {
     beforeEach(async() => await cities.clean());
     afterEach(async() => await cities.clean());
 
+    beforeEach(async() => await signup(agent));
 
     async function foundARegion() {
         const { body: { id: regions_id } } = await withToken(agent.post('/regions')).send({
