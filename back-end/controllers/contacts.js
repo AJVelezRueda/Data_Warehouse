@@ -1,5 +1,5 @@
 const { QueryTypes } = require("sequelize");
-const { db, cleanTable } = require("../database");
+const { db, cleanTable, getAllResources } = require("../database");
 const { insertNewContact } = require("../models/contacts-repository");
 const { insertNewPreference } = require("../models/preferences-repository");
 
@@ -23,7 +23,6 @@ async function insertPreferences(contacts_id, preferences) {
 
 async function create(req, res) {
     const contact = {
-        name: req.body.name,
         cities_id: req.body.countries_id,
         contact_name: req.body.contact_name,
         contact_email: req.body.contact_email,
@@ -43,8 +42,14 @@ async function create(req, res) {
     }
 }
 
+async function listAll(req, res) {
+    const contacts = await getAllResources('contacts');
+    res.json({ contacts }).status(200);
+}
+
 
 module.exports = {
     clean,
-    create
+    create,
+    listAll
 }

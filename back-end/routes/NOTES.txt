@@ -7,10 +7,18 @@
 
 
 
-    describe('GET /cities', () => {
-        it('should return a list of all cities', async() => {
-            const result = await withToken(agent.get('/cities'))
-            assert.equal(result.status, 200);
-            assert.deepEqual(result.body, { countries: [] });
-        });
-    });
+    async function createAContact(cities_id) {
+
+        const { body: { id: contact_id } } = await withToken(agent.post('/contacts'))
+            .send({
+                preferences: [{ channel: 'Whatsapp', intrest: 70 }],
+                contact_name: "Lola Mora",
+                cities_id,
+                contact_email: "laLola@gmail.com",
+                contact_adress: "calle falsa 1234",
+                contact_phone: "2222515442",
+
+            });
+
+        return contact_id;
+    }

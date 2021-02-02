@@ -3,6 +3,7 @@ const session = require('../controllers/session');
 const regions = require('../controllers/regions');
 const countries = require('../controllers/countries');
 const cities = require('../controllers/cities');
+const contacts = require('../controllers/contacts');
 const { filterAdmin } = require("./authentication.js");
 
 
@@ -31,6 +32,9 @@ function routes(app) {
     app.get('/cities/:id', cities.get, filterAdmin);
 
     app.delete('/cities/:id', cities.remove, filterAdmin);
+
+    app.post('/contacts', contacts.create, filterAdmin);
+    app.get('/contacts', contacts.listAll, filterAdmin);
 
     app.post('/login', session.login);
 }
