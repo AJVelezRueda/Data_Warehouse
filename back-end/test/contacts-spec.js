@@ -30,40 +30,6 @@ describe('contacts', () => {
 
     beforeEach(async() => await signup(agent));
 
-    async function foundARegion() {
-        const { body: { id: regions_id } } = await withToken(agent.post('/regions')).send({
-            name: "Latam"
-        });
-        return regions_id;
-    }
-
-    async function foundACountry(regions_id) {
-        const {
-            body: { id: countries_id }
-        } = await withToken(agent.post('/countries'))
-            .send({
-                name: 'Argentina',
-                regions_id: regions_id,
-            });
-
-        return countries_id;
-    }
-
-
-    async function foundACity() {
-        const regions_id = await foundARegion();
-        const countries_id = foundACountry(regions_id);
-
-        const {
-            body: { id: cities_id }
-        } = await withToken(agent.post('/cities'))
-            .send({
-                name: 'Bacare caca',
-                countries_id: countries_id,
-            });
-
-        return cities_id;
-    }
 
     describe('GET /contacts', () => {
         it('should return an empty list of all contacts', async() => {
@@ -73,18 +39,38 @@ describe('contacts', () => {
         });
     });
 
+    async function foundACity() {
+        const { body: { id: regions_id } } = await withToken(agent.post('/regions')).send({
+            name: "Latam"
+        });
+
+        const {
+            body: { id: countries_id }
+        } = await withToken(agent.post('/countries'))
+            .send({
+                name: 'Argentina',
+                regions_id: regions_id,
+            });
+
+        const result = await withToken(agent.post('/cities'))
+            .send({
+                name: 'Bacare caca',
+                countries_id: countries_id,
+            });
+
+        console.log(result.body.id);
+        return result.body.id;
+    };
 
     describe('POST /contacts', () => {
         it('should return a 201 status after posting a contact', async() => {
-            const regions_id = await foundARegion();
-            const countries_id = await foundACountry(regions_id);
-            const cities_id = await foundACity(countries_id);
+            const cities_id = await foundACity();
 
             const result = await withToken(agent.post('/contacts'))
                 .send({
                     preferences: [{ channel: 'Whatsapp', intrest: 70 }],
                     contact_name: "Lola Mora",
-                    cities_id,
+                    cities_id: cities_id,
                     contact_email: "laLola@gmail.com",
                     contact_adress: "calle falsa 1234",
                     contact_phone: "2222515442",

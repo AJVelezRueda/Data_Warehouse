@@ -23,7 +23,7 @@ async function insertPreferences(contacts_id, preferences) {
 
 async function create(req, res) {
     const contact = {
-        cities_id: req.body.countries_id,
+        cities_id,
         contact_name: req.body.contact_name,
         contact_email: req.body.contact_email,
         contact_adress: req.body.adress,

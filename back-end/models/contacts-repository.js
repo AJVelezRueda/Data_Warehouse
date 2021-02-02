@@ -7,8 +7,8 @@ const salt = 10;
 
 async function insertNewContact(contact) {
     const result = await db.query(`
-    insert into contacts (name, cities_id, contact_name, contact_email, contact_adress, contact_phone) 
-    values (:name, :cities_id, :contact_name, :contact_email, :contact_adress, :contact_phone)
+    insert into contacts (cities_id, contact_name, contact_email, contact_adress, contact_phone) 
+    values (:cities_id, :contact_name, :contact_email, :contact_adress, :contact_phone)
 `, {
         replacements: contact,
         type: QueryTypes.INSERT

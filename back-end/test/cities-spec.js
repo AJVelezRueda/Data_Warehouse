@@ -82,8 +82,6 @@ describe('Countries', () => {
 
             assert.isNotNull(result.body.id);
 
-            console.log(result.body.id);
-
             const res = await withToken(agent.get('/cities/1'));
             assert.equal(res.status, 200);
             assert.deepEqual(res.body, {
