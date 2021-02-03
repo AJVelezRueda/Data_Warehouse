@@ -44,9 +44,7 @@ describe('contacts', () => {
             name: "Latam"
         });
 
-        const {
-            body: { id: countries_id }
-        } = await withToken(agent.post('/countries'))
+        const res = await withToken(agent.post('/countries'))
             .send({
                 name: 'Argentina',
                 regions_id: regions_id,
@@ -55,11 +53,11 @@ describe('contacts', () => {
         const result = await withToken(agent.post('/cities'))
             .send({
                 name: 'Bacare caca',
-                countries_id: countries_id,
+                countries_id: res.body.id,
             });
 
-        console.log(result.body.id);
-        return result.body.id;
+        const cities_id = result.body.id
+        return cities_id;
     };
 
     describe('POST /contacts', () => {

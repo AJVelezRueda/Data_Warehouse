@@ -31,7 +31,6 @@ async function create(req, res) {
     };
 
     const preferences = req.body.preferences;
-
     try {
         const contacts_id = await insertNewContact(contact);
         await insertPreferences(contacts_id, preferences);
