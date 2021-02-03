@@ -6,13 +6,15 @@ const salt = 10;
 
 
 async function insertNewCity(newCity) {
-    await db.query(`
+    const result = await db.query(`
     insert into cities  (name, countries_id)
                 values ( :name, :countries_id)
 `, {
         replacements: newCity,
         type: QueryTypes.INSERT
     });
+
+    return result[0];
 }
 
 

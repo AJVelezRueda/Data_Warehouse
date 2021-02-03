@@ -3,7 +3,7 @@ const { db, cleanTable, deleteResoueceById, getResourceById } = require("../data
 const { insertNewRegion, getRegionsData } = require("../models/regions-repository");
 
 async function clean() {
-    cleanTable('regions');
+    await cleanTable('regions');
 }
 
 async function create(req, res) {

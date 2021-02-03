@@ -4,7 +4,7 @@ const { insertNewCity, getCityByID } = require("../models/cities-repositories");
 
 
 async function clean() {
-    cleanTable('cities');
+    await cleanTable('cities');
 }
 
 async function create(req, res) {
@@ -15,10 +15,10 @@ async function create(req, res) {
 
     try {
         const cities_id = await insertNewCity(city);
-        res.status(201).json({ id: cities_id });
+        res.json({ id: cities_id }).status(201);
 
     } catch (e) {
-        res.status(500).json({ message: e.message });
+        res.json({ message: e.message }).status(500);
     }
 }
 

@@ -56,7 +56,7 @@ describe('contacts', () => {
                 countries_id: res.body.id,
             });
 
-        const cities_id = result.body.id
+        const cities_id = result.body.id;
         return cities_id;
     };
 
@@ -75,7 +75,7 @@ describe('contacts', () => {
                 });
 
             assert.isNotNull(result.body.id);
-            assert.equal(result.status, 201);
+            assert.equal(result.body.message, 201);
         });
     });
 

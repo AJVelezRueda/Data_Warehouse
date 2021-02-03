@@ -4,7 +4,7 @@ const { insertNewCountry, getCountriesByID } = require("../models/countries-repo
 
 
 async function clean() {
-    cleanTable('countries');
+    await cleanTable('countries');
 }
 
 async function create(req, res) {
