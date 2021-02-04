@@ -32,21 +32,18 @@ async function create(req, res) {
     };
 
     const preferences = req.body.preferences;
-    console.log('creando contacto');
     try {
         const contacts_id = await insertNewContact(contact);
-        console.log(contacts_id);
         await insertPreferences(contacts_id, preferences);
         res.status(201).json({ id: contacts_id });
-        console.log('contacto creado');
     } catch (e) {
-        res.status(500).json({ message: e.message });
+        res.json({ message: e.message }).status(500);
     }
 }
 
 async function listAll(req, res) {
     const contacts = await getAllResources('contacts');
-    res.json({ contacts }).status(200);
+    res.status(200).json({ contacts });
 }
 
 

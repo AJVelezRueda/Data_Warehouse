@@ -73,9 +73,9 @@ describe('contacts', () => {
                     contact_adress: "calle falsa 1234",
                     contact_phone: "2222515442",
                 });
-
+            console.log(result.body);
             assert.isNotNull(result.body.id);
-            assert.equal(result.body.message, 201);
+            assert.equal(result.status, 201);
         });
     });
 
