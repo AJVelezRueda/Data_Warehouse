@@ -59,7 +59,6 @@ CREATE TABLE `contacts` (
   `contact_email` varchar(100) NOT NULL,
   `contact_adress` varchar(100) NOT NULL,
   `contact_phone` varchar(100) NOT NULL,
-  `preferences`  varchar(200) NOT NULL,
   `cities_id` int NOT NULL,
   FOREIGN KEY (`cities_id`) REFERENCES cities (id),
   PRIMARY KEY (`id`)
