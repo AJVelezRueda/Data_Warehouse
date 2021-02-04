@@ -18,6 +18,25 @@ async function insertNewContact(contact) {
 }
 
 
+async function getCtactsByID(cities_id) {
+    const contact = await db.query(`SELECT
+    
+    cities.id as cities_id, 
+    contact_name, 
+    contact_email, 
+    contact_adress, 
+    contact_phone
+    FROM contacts
+    INNER JOIN cities ON cities.id = contacts.cities_id
+    WHERE cities.id = :cities_id
+    `, {
+        replacements: { cities_id },
+        type: QueryTypes.SELECT
+    });
+    return contact[0];
+};
+
 module.exports = {
-    insertNewContact
+    insertNewContact,
+    getCtactsByID
 }
