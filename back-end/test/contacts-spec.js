@@ -73,12 +73,39 @@ describe('contacts', () => {
                     contact_adress: "calle falsa 1234",
                     contact_phone: "2222515442",
                 });
-            console.log(result.body);
+
             assert.isNotNull(result.body.id);
             assert.equal(result.status, 201);
         });
     });
 
+    describe('GET /contacts/:id', () => {
+        it('should return an object ccontact', async() => {
+            const cities_id = await foundACity();
 
+            const result = await withToken(agent.post('/contacts'))
+                .send({
+                    preferences: [{ channel: 'Whatsapp', intrest: 70 }],
+                    contact_name: "Lola Mora",
+                    cities_id: cities_id,
+                    contact_email: "laLola@gmail.com",
+                    contact_adress: "calle falsa 1234",
+                    contact_phone: "2222515442",
+                });
+
+            assert.isNotNull(result.body.id);
+
+            const res = await withToken(agent.get('/contacts/1'));
+            assert.equal(res.status, 200);
+            assert.deepEqual(res.body, {
+                preferences: [{ contacts_id: 1, intrest: 70, channel: 'Whatsapp' }],
+                contact_name: "Lola Mora",
+                cities_id: cities_id,
+                contact_email: "laLola@gmail.com",
+                contact_adress: "calle falsa 1234",
+                contact_phone: "2222515442",
+            });
+        });
+    });
 
 });

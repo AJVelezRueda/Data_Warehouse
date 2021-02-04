@@ -1,7 +1,7 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, getAllResources } = require("../database");
 const { insertNewContact, getCtactsByID } = require("../models/contacts-repository");
-const { insertNewPreference } = require("../models/preferences-repository");
+const { insertNewPreference, getPreferencesByID } = require("../models/preferences-repository");
 
 
 async function clean() {
@@ -47,9 +47,9 @@ async function listAll(req, res) {
 }
 
 async function get(req, res) {
-    const country = await getCtactsByID(Number(req.params.id))
-
-    res.json(country).status(200);
+    const contact = await getCtactsByID(Number(req.params.id));
+    contact.preferences = await getPreferencesByID(contact.cities_id);
+    res.json(contact).status(200);
 }
 
 module.exports = {

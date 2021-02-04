@@ -16,8 +16,22 @@ async function insertNewPreference(preferences) {
 
     return result[0];
 }
-
+async function getPreferencesByID(contacts_id) {
+    const preferences = await db.query(`SELECT
+    contacts.id as contacts_id, 
+    intrest, 
+    channel
+    FROM preferences
+    INNER JOIN contacts ON contacts.id = preferences.contacts_id
+    WHERE contacts.id = :contacts_id
+    `, {
+        replacements: { contacts_id },
+        type: QueryTypes.SELECT
+    });
+    return preferences;
+};
 
 module.exports = {
-    insertNewPreference
+    insertNewPreference,
+    getPreferencesByID
 }

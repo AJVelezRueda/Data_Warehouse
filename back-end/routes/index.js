@@ -35,6 +35,7 @@ function routes(app) {
 
     app.post('/contacts', contacts.create, filterAdmin);
     app.get('/contacts', contacts.listAll, filterAdmin);
+    app.get('/contacts/:id', contacts.get, filterAdmin);
 
     app.post('/login', session.login);
 }
