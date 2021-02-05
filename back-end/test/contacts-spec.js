@@ -60,6 +60,24 @@ describe('contacts', () => {
         return cities_id;
     };
 
+
+    async function createAContact() {
+        const cities_id = await foundACity();
+
+        const { body: { id: contacts_id } } = await withToken(agent.post('/contacts'))
+            .send({
+                preferences: [{ channel: 'Whatsapp', intrest: 70 }],
+                contact_name: "Lola Mora",
+                cities_id: cities_id,
+                contact_email: "laLola@gmail.com",
+                contact_adress: "calle falsa 1234",
+                contact_phone: "2222515442",
+            });
+
+        return contacts_id;
+    }
+
+
     describe('POST /contacts', () => {
         it('should return a 201 status after posting a contact', async() => {
             const cities_id = await foundACity();
@@ -105,6 +123,27 @@ describe('contacts', () => {
                 contact_adress: "calle falsa 1234",
                 contact_phone: "2222515442",
             });
+        });
+    });
+
+    describe('DELETE /contacts/:id', () => {
+        it('should return 200 status after deleting a city', async() => {
+            const cities_id = await foundACity();
+
+            const result = await withToken(agent.post('/contacts'))
+                .send({
+                    preferences: [{ channel: 'Whatsapp', intrest: 70 }],
+                    contact_name: "Lola Mora",
+                    cities_id: cities_id,
+                    contact_email: "laLola@gmail.com",
+                    contact_adress: "calle falsa 1234",
+                    contact_phone: "2222515442",
+                });
+
+            assert.isNotNull(result.body.id);
+
+            const res = await withToken(agent.delete(`/contacts/1`));
+            assert.equal(res.status, 200);
         });
     });
 

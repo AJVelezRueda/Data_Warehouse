@@ -31,7 +31,16 @@ async function getPreferencesByID(contacts_id) {
     return preferences;
 };
 
+async function deletePreferencesItems(id) {
+    await db.query(`delete from preferences where order_id = :id`, {
+        replacements: { id: id },
+        type: QueryTypes.DELETE
+    });
+}
+
+
 module.exports = {
     insertNewPreference,
-    getPreferencesByID
+    getPreferencesByID,
+    deletePreferencesItems
 }

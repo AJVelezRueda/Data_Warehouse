@@ -1,12 +1,17 @@
 const { QueryTypes } = require("sequelize");
-const { db, cleanTable, getAllResources } = require("../database");
+const { db, cleanTable, getAllResources, deleteResoueceById } = require("../database");
 const { insertNewContact, getCtactsByID } = require("../models/contacts-repository");
-const { insertNewPreference, getPreferencesByID } = require("../models/preferences-repository");
+const { insertNewPreference, getPreferencesByID, deletePreferencesItems } = require("../models/preferences-repository");
 
 
 async function clean() {
     await cleanTable('contacts');
     await cleanTable('preferences');
+}
+
+async function deleteContactById(id) {
+    await deleteResoueceById('contacts', id);
+    await deletePreferencesItems(id);
 }
 
 async function insertPreferences(contacts_id, preferences) {
@@ -52,9 +57,15 @@ async function get(req, res) {
     res.json(contact).status(200);
 }
 
+async function remove(req, res) {
+    await deleteContactById(Number(req.params.id));
+    res.status(200).end();
+}
+
 module.exports = {
     clean,
     create,
     listAll,
-    get
+    get,
+    remove
 }
