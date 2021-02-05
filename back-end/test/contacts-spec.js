@@ -141,7 +141,6 @@ describe('contacts', () => {
                 });
 
             assert.isNotNull(result.body.id);
-
             const res = await withToken(agent.delete(`/contacts/1`));
             assert.equal(res.status, 200);
         });

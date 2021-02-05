@@ -32,7 +32,7 @@ async function getPreferencesByID(contacts_id) {
 };
 
 async function deletePreferencesItems(id) {
-    await db.query(`delete from preferences where order_id = :id`, {
+    await db.query(`delete from preferences where contacts_id = :id`, {
         replacements: { id: id },
         type: QueryTypes.DELETE
     });

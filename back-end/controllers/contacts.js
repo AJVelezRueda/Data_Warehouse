@@ -10,8 +10,8 @@ async function clean() {
 }
 
 async function deleteContactById(id) {
-    await deleteResoueceById('contacts', id);
     await deletePreferencesItems(id);
+    await deleteResoueceById('contacts', id);
 }
 
 async function insertPreferences(contacts_id, preferences) {
