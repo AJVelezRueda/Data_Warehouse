@@ -14,8 +14,17 @@ async function createRegion() {
 }
 
 function regionSectionAnable() {
+    const divSectionHeader = document.createElement('div');
+    const divTittle = document.createElement('div');
+    const divInput = document.createElement('div');
+    const sectionCountry = document.createElement('section');
+
     contactsSection.classList.add('disable');
     regionSection.classList.remove('disable');
+    regionSection.classList.add('enable');
+
+
+
 }
 
 

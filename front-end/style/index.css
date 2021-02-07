@@ -341,6 +341,7 @@
         margin-right: 17%;
         position: relative;
         background: white;
+        flex-direction: column;
     }
     
     .region-section:hover {
@@ -349,16 +350,25 @@
     
     .region-section-header {
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 2% 0;
+        flex-direction: column;
     }
     
     .region-head {
-        display: flex;
-        flex-direction: row;
         padding: 1% 2%;
         justify-content: space-around;
+    }
+    
+    .region-tittle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-left: 0;
+    }
+    
+    .region-input,
+    .country-input,
+    .city-input {
+        padding: 1% 25%;
     }
     
     .region-section button {
@@ -376,20 +386,16 @@
     }
     
     .country-row {
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .country-row {
         padding: 1% 6%;
         justify-content: space-around;
     }
     
     .country-row img {
         height: 23px;
+        margin-left: 2px;
     }
     
-    .country-row div {
+    .icons-section {
         display: flex;
         flex-direction: row;
     }
