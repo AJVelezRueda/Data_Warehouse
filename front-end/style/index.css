@@ -21,6 +21,18 @@
         list-style: none;
     }
     
+    .disable {
+        display: none;
+    }
+    
+    .enable {
+        display: flex;
+    }
+    
+    .blur {
+        filter: blur(1px);
+    }
+    
     .logo {
         height: 40px;
     }
@@ -143,7 +155,6 @@
         border: 1px solid #33739C;
         margin-top: 5px;
         padding: 2% 1%;
-        display: none;
     }
     
     .header-form,
@@ -164,21 +175,9 @@
         background: #D9D9D9;
     }
     
-    .new-contact {
-        display: none;
-    }
-    
     .sort-img {
         width: 13px;
         margin-left: 10px;
-    }
-    
-    .disable {
-        display: none;
-    }
-    
-    .blur {
-        filter: blur(1px);
     }
     
     .contacts-table {
@@ -314,13 +313,10 @@
         width: 28vw;
         margin-left: 32%;
         margin-right: 32%;
-        display: none;
     }
     
     .companies-section {
-        display: flex;
         flex-direction: column;
-        display: none;
     }
     
     .companies-header {

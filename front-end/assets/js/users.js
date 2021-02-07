@@ -22,5 +22,5 @@ async function createUser() {
 
 
 function getUser() {
-    return getResource(createUrl('users'));
+    return await getResource(createUrl('users'));
 }

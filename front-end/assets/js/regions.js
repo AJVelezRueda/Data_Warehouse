@@ -1,15 +1,25 @@
 const regionSection = document.getElementById('region-section');
 const contactsSection = document.getElementById('contacts-section');
-const regiosnButton = document.getElementById('region-nav-button');
+const regionsButton = document.getElementById('region-nav-button');
 
 function getRegions() {
     return getResource(createUrl('regions'));
 }
 
-
 async function createRegion() {
     const resourceData = {
         name: "Latam"
     };
-    createResource('regions', resourceData);
+    await createResource('regions', resourceData);
 }
+
+function regionSectionAnable() {
+    contactsSection.classList.add('disable');
+    regionSection.classList.remove('disable');
+}
+
+
+
+regionsButton.addEventListener("click", () => {
+    regionSectionAnable();
+});
