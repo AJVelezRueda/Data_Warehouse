@@ -322,30 +322,10 @@
         <button class="create-button" id="create-button">Crear</button>
     </section>
     <section class="region-section disable" id="region-section">
-        <div class="region-section-header">
-            <div class="region-tittle">
-                <h2>Región</h2>
-                <button class="add-region" id="add-region">Agregar región</button>
-            </div>
-            <div class="region-input">
-                <label for="region-name">Region name</label>
-                <input type="text" id="region-name" name="region-name" placeholder="Region name.." required>
-            </div>
-        </div>
         <section class="region-row">
-            <div class="region-head">
-                <div class="region-tittle">
-                    <h2>Sudamérica</h2>
-                    <button class="add-country" id="add-country">Agregar país</button>
-                </div>
-                <div class="country-input">
-                    <label for="country-name">Country name</label>
-                    <input type="text" id="country-name" name="country-name" placeholder="Country name.." required>
-                </div>
-            </div>
-            <div class="country-row">
+            <div class="country-row" id="country-row">
                 <div class="country-head">
-                    <div class="region-tittle">
+                    <div class="region-tittle" id="country-row-tittle">
                         <div class="icons-section">
                             <h3>Argentina</h3>
                             <img src="./assets/images/trash.png" alt="trash" id="trash">
@@ -353,7 +333,7 @@
                         </div>
                         <button class="add-city" id="add-city">Agregar ciudad</button>
                     </div>
-                    <div class="city-input">
+                    <div class="city-input" id="city-input">
                         <label for="city-name">City name</label>
                         <input type="text" id="city-name" name="city-name" placeholder="City name.." required>
                     </div>

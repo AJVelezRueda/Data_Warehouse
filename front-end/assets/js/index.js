@@ -28,3 +28,13 @@ async function createResource(resource, resourceData) {
         .catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response));
 }
+
+
+function creatImgObject(imgSrc, imgClassName, imgAltName) {
+    const img = document.createElement('img');
+    img.className = imgClassName;
+    img.alt = imgAltName;
+    img.id = imgAltName;
+    img.src = imgSrc;
+    return img
+}
