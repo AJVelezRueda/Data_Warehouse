@@ -18,16 +18,13 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     const divTittle = document.createElement('div');
     const divInput = document.createElement('div');
     const tittle = document.createElement('h2');
-    const addButton = createButton('Agregar ' + buttonText, "add-" + buttonText)
-    const label = document.createElement('label');
+    const addButton = createButton('Agregar ' + buttonText, "add-" + buttonText);
+    const label = createLabel(tittleText + "-name", tittleText + " name");
     const input = createInputTextType(tittleText + "-name", tittleText + " name...");
 
 
     divTittle.className = 'region-tittle';
     divInput.className = `region-input disable`;
-
-    label.htmlFor = `${ tittleText }-name`;
-    label.innerHTML = `${ tittleText } name`;
 
     tittle.innerHTML = `${ tittleText }`;
 
@@ -41,10 +38,6 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     parent.appendChild(divInput);
 }
 
-
-function createLabel() {
-
-}
 
 function createIconsSection(tittleText) {
     const iconSection = document.createElement('div');
@@ -62,10 +55,36 @@ function createIconsSection(tittleText) {
     return iconSection;
 }
 
+
+function createCountrySection(countryName) {
+    const countryRow = createSection("country-row", "country-row");
+    const countryRowHead = createSection("country-section", "country-section");
+    const countryTittleDiv = createDiv("region-tittle", "country-row-tittle");
+    const countryInputDiv = createDiv("city-input disable", "city-input");
+    const countryIconDiv = createIconsSection(countryName);
+    const addButton = createButton('Agregar ciudad', "add-city");
+    const label = createLabel("city-name", countryName);
+    const input = createInputTextType("city-name", "City name...");
+
+    countryTittleDiv.appendChild(countryIconDiv);
+    countryTittleDiv.appendChild(addButton);
+    countryInputDiv.appendChild(label);
+    countryInputDiv.appendChild(input);
+
+    countryRowHead.appendChild(countryTittleDiv);
+    countryRowHead.appendChild(countryInputDiv);
+
+    countryRow.appendChild(countryRowHead)
+
+    return countryRow;
+}
+
+
 function regionSectionAnable() {
     const sectionHeader = document.createElement('section');
     const rowSection = document.createElement('section');
     const rowHead = document.createElement('section');
+    const countryRow = createCountrySection('argentina');
 
     contactsSection.classList.add('disable');
     regionSection.classList.remove('disable');
@@ -73,7 +92,7 @@ function regionSectionAnable() {
 
     sectionHeader.className = "region-section-header";
     rowSection.className = "region-row";
-    rowHead.className = "country-head";
+    rowHead.className = "region-head";
 
     regionHeaderRender(sectionHeader, 'region', 'Region');
     regionHeaderRender(rowHead, 'sudamerica', 'País');
@@ -81,6 +100,7 @@ function regionSectionAnable() {
     regionSection.appendChild(sectionHeader);
     rowSection.appendChild(rowHead);
     regionSection.appendChild(rowSection);
+    regionSection.appendChild(countryRow);
 
 }
 

@@ -59,3 +59,30 @@ function createInputTextType(inputId, placeholderText) {
 
     return input;
 }
+
+function createLabel(labelFor, labelText) {
+    const label = document.createElement('label');
+
+    label.htmlFor = `${ labelFor }`;
+    label.innerHTML = `${ labelText}`;
+
+    return label;
+}
+
+function createDiv(className, idName) {
+    const div = document.createElement('div');
+
+    div.className = className;
+    div.id = idName;
+
+    return div;
+}
+
+function createSection(className, idName) {
+    const section = document.createElement('section');
+
+    section.className = className;
+    section.id = idName;
+
+    return section;
+}
