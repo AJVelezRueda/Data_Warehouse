@@ -7,29 +7,31 @@
     <title>Data Warehouse</title>
     <meta name="author" content="Ana Julia Velez Rueda">
     <link rel="stylesheet" href="style/index.css">
+    <script src="assets/js/index.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="assets/js/regions.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body>
     <header id="header">
-        <nav class="nav-bar">
+        <nav class="nav-bar" id="nav-bar">
             <figure>
                 <img src="assets/images/logo.png" alt="logo" class="logo">
             </figure>
             <ul class="nav-options">
                 <li>
-                    <a href="index.html" title="">Contactos</a></li>
+                    <a href="index.html" id="contacts-nav-button">Contactos</a></li>
                 <li>
-                    <a href="index.html" title="">Compañia</a></li>
+                    <a href="index.html" id="companies-nav-button">Compañias</a></li>
                 <li>
-                    <a href="projects.html" title="">Usuarios</a>
+                    <a href="index.html" id="users-nav-button">Usuarios</a>
                 </li>
                 <li>
-                    <a href="projects.html" title="">Region/Ciudad</a>
+                    <a href="#region-section" id="region-nav-button">Region/Ciudad</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <section class="keypad">
+    <section class="keypad" id="keypad-section">
         <div class="search-section">
             <input type="text" placeholder="  Buscar..." name="search" class="search-input" id="search-input">
             <img src="./assets/images/drop-down-arrow.png" alt="expand-options" class="expand-options-img">
@@ -66,123 +68,125 @@
             <button class="plus-button" id="add">Agregar Contactos</button>
         </div>
     </section>
-    <section class="selected-contacts">
-        <button class="slected-button" id="selected-button">1 Contacto seleccionado</button>
-        <div class="delete-contacts">
-            <figure>
-                <img src="./assets/images/trash.png">
-            </figure>
-            <figcaption>
-                Eliminar contactos
-            </figcaption>
-        </div>
-    </section>
-    <section class="contacts-table">
-        <section class="contacts-grid">
-            <div class="select-column">
-                <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
-            </div>
-            <div class="contact-table-header">
-                <figcaption>
-                    Contacto
-                </figcaption>
+    <section class="contacts-section" id="contacts-section">
+        <section class="selected-contacts" id="selected-contacts">
+            <button class="slected-button" id="selected-button">1 Contacto seleccionado</button>
+            <div class="delete-contacts">
                 <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    <img src="./assets/images/trash.png">
                 </figure>
-            </div>
-            <div class="contact-table-header">
                 <figcaption>
-                    País/Región
+                    Eliminar contactos
                 </figcaption>
-                <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
-                </figure>
-            </div>
-            <div class="contact-table-header">
-                <figcaption>
-                    Compañía
-                </figcaption>
-                <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
-                </figure>
-            </div>
-            <div class="contact-table-header">
-                <figcaption>
-                    Cargo
-                </figcaption>
-                <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
-                </figure>
-            </div>
-            <div class="contact-table-header">
-                <figcaption>
-                    Canales
-                </figcaption>
-                <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
-                </figure>
-            </div>
-            <div class="contact-table-header">
-                <figcaption>
-                    Interés
-                </figcaption>
-                <figure>
-                    <img src="./assets/images/sort.png" alt="sort" class="sort-img">
-                </figure>
-            </div>
-            <div class="contact-table-header">
-                <p>
-                    Acciones
-                </p>
             </div>
         </section>
-        <section class="contacts-grid selected">
-            <div class="select-column">
-                <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
-            </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Pendorcha Flores</p>
-                <p class="secondary-text">pendorcha@flores.com</p>
-            </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Kamchatka</p>
-                <p class="secondary-text">Asia</p>
-            </div>
-            <div class="contact-table-row">
-                <p class="principal-text">UNQ</p>
-            </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Postdoc</p>
-            </div>
-            <div class="contact-table-row">
-                <p class="principal-text">Whatsapp</p>
-            </div>
-            <div class="contact-table-row progress">
-                <p class="principal-text">70%</p>
-                <progress id="file" max="100" value="70" class="progress-bar"></progress>
-            </div>
-            <div class="contact-table-row">
-                <img src="./assets/images/actions.png" alt="actions" id="actions">
-                <div class="">
-                    <img src="./assets/images/trash.png" alt="trash" id="trash">
-                    <img src="./assets/images/pen.png" alt="pen" id="pen">
+        <section class="contacts-table" id="contacts-table">
+            <section class="contacts-grid">
+                <div class="select-column">
+                    <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
                 </div>
-            </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        Contacto
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        País/Región
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        Compañía
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        Cargo
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        Canales
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <figcaption>
+                        Interés
+                    </figcaption>
+                    <figure>
+                        <img src="./assets/images/sort.png" alt="sort" class="sort-img">
+                    </figure>
+                </div>
+                <div class="contact-table-header">
+                    <p>
+                        Acciones
+                    </p>
+                </div>
+            </section>
+            <section class="contacts-grid selected">
+                <div class="select-column">
+                    <input type="checkbox" id="contact-check-header" name="contact-check" value="contact-check">
+                </div>
+                <div class="contact-table-row">
+                    <p class="principal-text">Pendorcha Flores</p>
+                    <p class="secondary-text">pendorcha@flores.com</p>
+                </div>
+                <div class="contact-table-row">
+                    <p class="principal-text">Kamchatka</p>
+                    <p class="secondary-text">Asia</p>
+                </div>
+                <div class="contact-table-row">
+                    <p class="principal-text">UNQ</p>
+                </div>
+                <div class="contact-table-row">
+                    <p class="principal-text">Postdoc</p>
+                </div>
+                <div class="contact-table-row">
+                    <p class="principal-text">Whatsapp</p>
+                </div>
+                <div class="contact-table-row progress">
+                    <p class="principal-text">70%</p>
+                    <progress id="file" max="100" value="70" class="progress-bar"></progress>
+                </div>
+                <div class="contact-table-row">
+                    <img src="./assets/images/actions.png" alt="actions" id="actions">
+                    <div class="">
+                        <img src="./assets/images/trash.png" alt="trash" id="trash">
+                        <img src="./assets/images/pen.png" alt="pen" id="pen">
+                    </div>
+                </div>
+            </section>
+            <div class="pages-displayer">
+                <div class="add-rows">
+                    <figcaption>
+                        Filas por página 2
+                    </figcaption>
+                    <figure>
+                        <img src="assets/images/expand-button.png" alt="more-pages" class="expand-button">
+                    </figure>
+                </div>
+                <div class="pages-detail">
+                    <p>1 - 10 de 30</p>
+                </div>
         </section>
-        <div class="pages-displayer">
-            <div class="add-rows">
-                <figcaption>
-                    Filas por página 2
-                </figcaption>
-                <figure>
-                    <img src="assets/images/expand-button.png" alt="more-pages" class="expand-button">
-                </figure>
-            </div>
-            <div class="pages-detail">
-                <p>1 - 10 de 30</p>
-            </div>
     </section>
-    <section class="new-contact">
+    <section class="new-contact" id="new-contact-section">
         <section class="new-contact-header">
             <form class="header-form">
                 <label for="fname">Nombre</label>
@@ -226,7 +230,7 @@
             </form>
         </section>
     </section>
-    <section class="companies-section">
+    <section class="companies-section" id="companies-section">
         <div class="companies-header">
             <h2>Compañías</h2>
             <button class="create-company" id="create-company">Agregar</button>
@@ -290,7 +294,7 @@
             </section>
         </section>
     </section>
-    <section class="users">
+    <section class="users" id="users-section">
         <div>
             <label for="name">Nombre</label>
             <input type="text" id="name" name="firstname" placeholder="Nombre.." required>
@@ -317,7 +321,7 @@
         </div>
         <button class="create-button" id="create-button">Crear</button>
     </section>
-    <section class="region-section">
+    <section class="region-section" id="region-section">
         <div class="region-section-header">
             <h2>Región</h2>
             <button class="add-region" id="add-region">Agregar región</button>
