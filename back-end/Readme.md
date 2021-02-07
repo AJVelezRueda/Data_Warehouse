@@ -29,3 +29,9 @@ REST API Project
    ```npm run app.js```
 
 + Run in mysql workbrench the **/base_schema/db_create.sql** before using the app
+
+
++ You can run the back-end project by using 
+
+    ```npm run dev```
+ and it will be running in the http://localhost:3000

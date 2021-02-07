@@ -29,8 +29,5 @@ Caso de uso signup:
         -> el cliente se guarda el token al igual que en el paso anterior
     -> {POST /logout (DELETE /session); ojo que bajo este esquema no es necesario realente hacer una operacion a nivel servidor, basta con borrar el local storage en el cliente}
 
-TO DO
------
-- agregar
-    - rateLimit
+
 

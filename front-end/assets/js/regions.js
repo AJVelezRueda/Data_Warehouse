@@ -20,16 +20,11 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     const tittle = document.createElement('h2');
     const addButton = createButton('Agregar ' + buttonText, "add-" + buttonText)
     const label = document.createElement('label');
-    const input = document.createElement('input');
+    const input = createInputTextType(tittleText + "-name", tittleText + " name...");
 
 
     divTittle.className = 'region-tittle';
     divInput.className = `region-input disable`;
-
-    input.type = "text";
-    input.name = `${ tittleText }-name`;
-    input.id = `${ tittleText }-name`;
-    input.placeholder = `${ tittleText } name..`;
 
     label.htmlFor = `${ tittleText }-name`;
     label.innerHTML = `${ tittleText } name`;
@@ -46,13 +41,9 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     parent.appendChild(divInput);
 }
 
-function createButton(buttonText, buttonId) {
-    const button = document.createElement('button');
 
-    button.id = `${ buttonId }`;
-    button.innerHTML = `${ buttonText }`;
+function createLabel() {
 
-    return button;
 }
 
 function createIconsSection(tittleText) {
@@ -92,8 +83,6 @@ function regionSectionAnable() {
     regionSection.appendChild(rowSection);
 
 }
-
-
 
 regionsButton.addEventListener("click", () => {
     regionSectionAnable();

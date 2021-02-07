@@ -1,2 +1,2 @@
 TODO
-- dialogo back fornt 
+-pasar el createImg y button desde el region.js al index.js (front)

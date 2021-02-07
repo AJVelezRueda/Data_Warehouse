@@ -38,3 +38,24 @@ function creatImgObject(imgSrc, imgClassName, imgAltName) {
     img.src = imgSrc;
     return img
 }
+
+function createButton(buttonText, buttonId) {
+    const button = document.createElement('button');
+
+    button.id = `${ buttonId }`;
+    button.innerHTML = `${ buttonText }`;
+
+    return button;
+}
+
+
+function createInputTextType(inputId, placeholderText) {
+    const input = document.createElement('input');
+
+    input.type = "text";
+    input.name = `${ inputId }-name`;
+    input.id = `${ inputId }-name`;
+    input.placeholder = `${ placeholderText }`;
+
+    return input;
+}
