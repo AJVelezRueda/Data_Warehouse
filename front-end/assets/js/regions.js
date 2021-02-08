@@ -85,13 +85,12 @@ function createCountrySection(countryName) {
     return countryRow;
 }
 
-
-
 function regionSectionAnable() {
     const sectionHeader = createSection("region-section-header", "region-section-header");
     const rowSection = createSection("region-row", "region-row");
     const rowHead = createSection("region-head", "region-head");
     const countryRow = createCountrySection('argentina');
+    const closeButton = createCloseButton();
 
     objectBluringAndFocusing(contactsSection);
     enableDomObject(regionSection);
@@ -101,8 +100,14 @@ function regionSectionAnable() {
 
     regionSection.appendChild(sectionHeader);
     rowSection.appendChild(rowHead);
+    regionSection.appendChild(closeButton);
     regionSection.appendChild(rowSection);
     regionSection.appendChild(countryRow);
+
+
+    closeButton.addEventListener("click", () => {
+        regionSection.removeChild(sectionHeader);;
+    })
 }
 
 
