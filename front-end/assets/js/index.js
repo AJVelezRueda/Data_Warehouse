@@ -49,6 +49,24 @@ function enableDomObject(object) {
     object.classList.remove('disable');
 }
 
+function objectBluringAndFocusing(object) {
+    if (!object.classList.contains('blur')) {
+        object.classList.add('blur');
+    } else {
+        object.classList.remove('blur');
+    }
+}
+
+function createCloseButton() {
+    const closeIcon = document.createElement('img');
+
+    closeIcon.src = "./assets/images/close.png";
+    closeIcon.className = "close-img";
+    closeIcon.alt = "close";
+
+    return closeIcon;
+}
+
 function createButton(buttonText, buttonId) {
     const button = document.createElement('button');
 
