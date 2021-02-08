@@ -39,6 +39,16 @@ function creatImgObject(imgSrc, imgClassName, imgAltName) {
     return img
 }
 
+function disableDomObject(object) {
+    object.classList.remove('enable');
+    object.classList.add('disable');
+}
+
+function enableDomObject(object) {
+    object.classList.add('enable');
+    object.classList.remove('disable');
+}
+
 function createButton(buttonText, buttonId) {
     const button = document.createElement('button');
 
@@ -47,7 +57,6 @@ function createButton(buttonText, buttonId) {
 
     return button;
 }
-
 
 function createInputTextType(inputId, placeholderText) {
     const input = document.createElement('input');

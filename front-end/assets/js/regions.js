@@ -36,6 +36,11 @@ function regionHeaderRender(parent, tittleText, buttonText) {
 
     parent.appendChild(divTittle);
     parent.appendChild(divInput);
+
+
+    addButton.addEventListener("click", () => {
+        enableDomObject(divInput);
+    });
 }
 
 
@@ -74,25 +79,23 @@ function createCountrySection(countryName) {
     countryRowHead.appendChild(countryTittleDiv);
     countryRowHead.appendChild(countryInputDiv);
 
-    countryRow.appendChild(countryRowHead)
+    countryRow.appendChild(countryRowHead);
+
+    addButton.addEventListener("click", () => {
+        enableDomObject(countryInputDiv);
+    });
 
     return countryRow;
 }
 
-
 function regionSectionAnable() {
-    const sectionHeader = document.createElement('section');
-    const rowSection = document.createElement('section');
-    const rowHead = document.createElement('section');
+    const sectionHeader = createSection("region-section-header", "region-section-header");
+    const rowSection = createSection("region-row", "region-row");
+    const rowHead = createSection("region-head", "region-head");
     const countryRow = createCountrySection('argentina');
 
-    contactsSection.classList.add('disable');
-    regionSection.classList.remove('disable');
-    regionSection.classList.add('enable');
-
-    sectionHeader.className = "region-section-header";
-    rowSection.className = "region-row";
-    rowHead.className = "region-head";
+    disableDomObject(contactsSection);
+    enableDomObject(regionSection);
 
     regionHeaderRender(sectionHeader, 'region', 'Region');
     regionHeaderRender(rowHead, 'sudamerica', 'País');
@@ -101,7 +104,6 @@ function regionSectionAnable() {
     rowSection.appendChild(rowHead);
     regionSection.appendChild(rowSection);
     regionSection.appendChild(countryRow);
-
 }
 
 regionsButton.addEventListener("click", () => {

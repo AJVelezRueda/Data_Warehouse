@@ -338,9 +338,9 @@
     
     .region-section {
         border: 1px solid #33739C;
+        width: 50%;
         padding: 2% 2%;
-        margin-left: 17%;
-        margin-right: 17%;
+        margin-left: 25%;
         position: relative;
         background: white;
         flex-direction: column;
