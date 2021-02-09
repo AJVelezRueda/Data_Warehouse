@@ -113,3 +113,17 @@ function createSection(className, idName) {
 
     return section;
 }
+
+
+function addFigureWithCaption(parent, src, figcaptionText) {
+    const figure = document.createElement('figure');
+    const figurecaption = document.createElement('figcaption');
+    const img = document.createElement('img');
+
+    img.src = src;
+    figure.appendChild(img);
+    figurecaption.innerHTML = figcaptionText;
+
+    parent.appendChild(figure);
+    parent.appendChild(figurecaption);
+}

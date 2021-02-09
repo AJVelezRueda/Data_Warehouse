@@ -26,8 +26,22 @@ function getContacts() {
 }
 
 
-function selectingContacts() {
-    const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts");
+function createSelectedContactsSection(contactsSelectedNumber) {
+    const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts enable");
+    const selectedInfoDiv = createDiv('selected-contacts-div', 'selected-contacts-div');
+    const selectedIfoDivText = document.createElement('p');
+    const deleteContactDiv = createDiv('delete-contacts', 'delete-contacts');
+    const trashFig = addFigureWithCaption(deleteContactDiv, "./assets/images/trash.png", 'Eliminar contactos');
 
+    if (ontactsSelectedNumber === 1) {
+        selectedIfoDivText.innerText = "1 Contacto seleccionado";
+    } else {
+        selectedIfoDivText.innerText = String(contactsSelectedNumber) + " Contacto seleccionado";
+    };
 
+    selectedInfoDiv.appendChild(selectedIfoDivText);
+    selectionInfoSection.appendChild(selectedInfoDiv);
+    selectionInfoSection.appendChild(trashFig);
+
+    return selectionInfoSection;
 }
