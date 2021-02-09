@@ -87,6 +87,22 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
+
+function checkedCheckBoCounter() {
+    return document.querySelectorAll('input[type="checkbox"]:checked').length;
+}
+
+
+function createACheckBox() {
+    const input = document.createElement('input');
+
+    input.type = "checkbox";
+    input.name = `contact-check`;
+    input.className = `contact-check`;
+
+    return input;
+}
+
 function createLabel(labelFor, labelText) {
     const label = document.createElement('label');
 
@@ -105,6 +121,56 @@ function createDiv(className, idName) {
     return div;
 }
 
+
+function createProgressDiv(className, progressmount) {
+    const div = document.createElement('div');
+    const p = document.createElement('p');
+    const progress = document.createElement('progress');
+
+    div.className = className;
+
+    p.className = "principal-text";
+    p.innerHTML = String(progressmount) + '%';
+
+    progress.className = 'progress-bar';
+    progress.max = '100';
+    progress.value = String(progressmount);
+
+    div.appendChild(p);
+    div.appendChild(progress);
+
+    return div;
+}
+
+
+function createActionsDiv() {
+    const mainDiv = document.createElement('div');
+    const div = document.createElement('div');
+    const imgActions = document.createElement('img');
+    const imgTrash = document.createElement('img');
+    const imgPen = document.createElement('img');
+
+    mainDiv.className = "contact-table-row";
+
+    div.className = "allowed-actions";
+
+    imgActions.src = "./assets/images/actions.png";
+    imgActions.alt = "actions";
+
+    imgTrash.src = "./assets/images/trash.png";
+    imgTrash.alt = "trash";
+
+    imgPen.src = "./assets/images/pen.png";
+    imgPen.alt = "pen";
+
+    mainDiv.appendChild(imgActions);
+    div.appendChild(imgTrash);
+    div.appendChild(imgPen);
+    mainDiv.appendChild(div);
+
+    return mainDiv;
+}
+
 function createSection(className, idName) {
     const section = document.createElement('section');
 
@@ -121,9 +187,29 @@ function addFigureWithCaption(parent, src, figcaptionText) {
     const img = document.createElement('img');
 
     img.src = src;
+    img.alt = 'figure-Img';
     figure.appendChild(img);
     figurecaption.innerHTML = figcaptionText;
 
     parent.appendChild(figure);
     parent.appendChild(figurecaption);
+}
+
+
+function createPrincipalText(text) {
+    const p = document.createElement('p');
+
+    p.className = "principal-text";
+    p.innerHTML = text;
+
+    return p;
+}
+
+function createSecondaryText(text) {
+    const p = document.createElement('p');
+
+    p.className = "secondary-text";
+    p.innerHTML = text;
+
+    return p;
 }
