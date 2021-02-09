@@ -1,4 +1,4 @@
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2MTI2NTI1NDF9.nsG7Opj5vPjXIVQSUzGM74zNUUH-gVgiK4q1DsajCms';
+const contactsSection = document.getElementById('contacts-section');
 
 async function createUser() {
     const url = createUrl('users');
@@ -23,4 +23,11 @@ async function createUser() {
 
 function getContacts() {
     return getResource(createUrl('contacts'));
+}
+
+
+function selectingContacts() {
+    const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts");
+
+
 }
