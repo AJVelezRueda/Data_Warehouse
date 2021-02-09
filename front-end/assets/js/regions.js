@@ -106,7 +106,14 @@ function regionSectionAnable() {
 
 
     closeButton.addEventListener("click", () => {
-        regionSection.removeChild(sectionHeader);;
+        regionSection.removeChild(sectionHeader);
+        regionSection.removeChild(rowSection);
+        regionSection.removeChild(countryRow);
+        regionSection.removeChild(closeButton);
+
+        disableDomObject(regionSection);
+        objectBluringAndFocusing(contactsSection);
+
     })
 }
 
