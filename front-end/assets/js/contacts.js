@@ -1,10 +1,8 @@
-const contactsSection = document.getElementById('contacts-section');
-
+const mainSection = document.getElementById('contacts-section');
 
 function getContacts() {
     return getResource(createUrl('contacts'));
 }
-
 
 function createSelectedContactsSection() {
     const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts enable");
@@ -29,6 +27,7 @@ function createSelectedContactsSection() {
 
 function contactRow(contactObject) {
     const contactId = contactObject.id;
+    const city = getCityById(contactObject.cities_id);
     const tableRow = createSection("contacts-grid", "contacts-grid" + String(contactId));
     const selecColumn = createDiv('select-column', 'select-column-row' + String(contactId));
     const nameColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
@@ -37,12 +36,12 @@ function contactRow(contactObject) {
     const roleColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const channelColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const intrestColumn = createProgressDiv("contact-table-row progress", 70);
+    const contactRole = createPrincipalText('Student');
     const actionColumn = createActionsDiv();
     const contactName = createPrincipalText(contactObject.contact_name);
     const contactEmail = createSecondaryText(contactObject.contact_email);
-    const contactCity = createPrincipalText(cityName);
-    const contactRegion = createSecondaryText(regionName);
-    const contactRole = createPrincipalText('Student');
+    const contactCity = createPrincipalText(city.name);
+    const contactRegion = createSecondaryText(city.countries_name);
 
 
 }

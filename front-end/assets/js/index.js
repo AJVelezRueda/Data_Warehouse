@@ -4,6 +4,10 @@ function createUrl(resource) {
     return `http://localhost:3000/${resource}`;
 }
 
+function createUrlById(resource, id) {
+    return `http://localhost:3000/${resource}/${id}`;
+}
+
 async function getResource(url) {
     return fetch(url, {
             headers: {

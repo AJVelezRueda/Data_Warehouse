@@ -6,11 +6,39 @@ function getRegions() {
     return getResource(createUrl('regions'));
 }
 
+function getCityById(id) {
+    return getResource(createUrlById('cities', id));
+}
+
+function getRegionById(id) {
+    return getResource(createUrlById('regions', id));
+}
+
+function getCountryById(id) {
+    return getResource(createUrlById('countries', id));
+}
+
 async function createRegion(regionName) {
     const resourceData = {
         name: regionName
     };
     await createResource('regions', resourceData);
+}
+
+async function createCountry(CountryName, regions_id) {
+    const resourceData = {
+        name: CountryName,
+        regions_id: regions_id
+    };
+    await createResource('countries', resourceData);
+}
+
+async function createCity(cityName, countries_id) {
+    const resourceData = {
+        name: cityName,
+        countries_id: countries_id
+    };
+    await createResource('cities', resourceData);
 }
 
 function createIconsSection(tittleText) {
