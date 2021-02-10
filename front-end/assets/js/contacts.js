@@ -5,17 +5,14 @@ function getContacts() {
 }
 
 function createSelectedContactsSection() {
-    const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts enable");
+    const selectionInfoSection = createSection("selected-contacts enable", "selected-contacts");
     const selectedInfoDiv = createDiv('selected-contacts-div', 'selected-contacts-div');
     const selectedIfoDivText = document.createElement('p');
     const deleteContactDiv = createDiv('delete-contacts', 'delete-contacts');
     const trashFig = addFigureWithCaption(deleteContactDiv, "./assets/images/trash.png", 'Eliminar contactos');
 
-    if (checkedCheckBoCounter() === 1) {
-        selectedIfoDivText.innerText = "1 Contacto seleccionado";
-    } else {
-        selectedIfoDivText.innerText = String(checkedCheckBoCounter()) + " Contacto seleccionado";
-    };
+    selectedIfoDivText.id = 'checkbox-counter';
+    selectedIfoDivText.innerText = "1 Contacto seleccionado";
 
     selectedInfoDiv.appendChild(selectedIfoDivText);
     selectionInfoSection.appendChild(selectedInfoDiv);
@@ -39,15 +36,41 @@ function contactRow(contactObject) {
     const contactEmail = createSecondaryText(contactObject.contact_email);
 
     const countryColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
-    const companyColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const roleColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const channelColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
-    const intrestColumn = createProgressDiv("contact-table-row progress", 70);
+    const intrestColumn = createProgressDiv("contact-table-row progress", contactObject.preferences[0].intrest);
     const contactRole = createPrincipalText('Student');
     const actionColumn = createActionsDiv();
     const contactCity = createPrincipalText(city.name);
     const contactRegion = createSecondaryText(city.countries_name);
+    const checkbox = createACheckBox();
 
     selecColumn.appendChild(checkInput);
+    nameColumn.appendChild(contactName);
+    nameColumn.appendChild(contactEmail);
+    countryColumn.appendChild(contactCity);
+    countryColumn.appendChild(contactRegion);
+    selecColumn.appendChild(checkbox);
+    roleColumn.appendChild(contactRole);
 
+    contactObject.preferences.forEach(element => {
+        channelColumn.appendChild(createPrincipalText(element.channel));
+    });
+
+    tableRow.appendChild(selecColumn);
+    tableRow.appendChild(nameColumn);
+    tableRow.appendChild(countryColumn);
+    tableRow.appendChild(channelColumn);
+    tableRow.appendChild(intrestColumn);
+    tableRow.appendChild(actionColumn);
+
+    checkbox.addEventListener('click', () => {
+        checkingRow(tableRow);
+        if (checkedCheckBoCounter() === 0) {
+            createSelectedContactsSection();
+        } else {
+            const counter = document.getElementById('checkbox-counter');
+            selectedIfoDivText.innerText = String(checkedCheckBoCounter()) + " Contactos seleccionados";
+        }
+    });
 }

@@ -34,6 +34,20 @@ async function createResource(resource, resourceData) {
 }
 
 
+async function deleteResource(resource, id) {
+    const url = createUrlById(resource, id);
+
+    return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+}
+
 function creatImgObject(imgSrc, imgClassName, imgAltName) {
     const img = document.createElement('img');
     img.className = imgClassName;
@@ -58,6 +72,14 @@ function objectBluringAndFocusing(object) {
         object.classList.add('blur');
     } else {
         object.classList.remove('blur');
+    }
+}
+
+function checkingRow(object) {
+    if (!object.classList.contains('selected')) {
+        object.classList.add('selected');
+    } else {
+        object.classList.remove('selected');
     }
 }
 
@@ -91,6 +113,13 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
+<<<<<<< HEAD
+=======
+function checkedCheckBoCounter() {
+    return document.querySelectorAll('input[type="checkbox"]:checked').length;
+}
+
+>>>>>>> c399771a7fba7955aceb4429695093ef31c41a84
 function createACheckBox() {
     const input = document.createElement('input');
 
@@ -144,6 +173,10 @@ function createProgressDiv(className, progressmount) {
     return div;
 }
 
+///////!!!complete this function
+function deleteActionAlert() {
+    const alertDiv = createDiv(className, idName);
+}
 
 function createActionsDiv() {
     const mainDiv = document.createElement('div');
@@ -181,7 +214,6 @@ function createSection(className, idName) {
 
     return section;
 }
-
 
 function addFigureWithCaption(parent, src, figcaptionText) {
     const figure = document.createElement('figure');
