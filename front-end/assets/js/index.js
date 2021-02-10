@@ -61,6 +61,14 @@ function objectBluringAndFocusing(object) {
     }
 }
 
+function checkingRow(object) {
+    if (!object.classList.contains('selected')) {
+        object.classList.add('selected');
+    } else {
+        object.classList.remove('selected');
+    }
+}
+
 function createCloseButton() {
     const closeIcon = document.createElement('img');
 
@@ -91,11 +99,9 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
-
 function checkedCheckBoCounter() {
     return document.querySelectorAll('input[type="checkbox"]:checked').length;
 }
-
 
 function createACheckBox() {
     const input = document.createElement('input');
@@ -183,7 +189,6 @@ function createSection(className, idName) {
 
     return section;
 }
-
 
 function addFigureWithCaption(parent, src, figcaptionText) {
     const figure = document.createElement('figure');
