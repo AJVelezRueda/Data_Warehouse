@@ -10,7 +10,7 @@ function createUrlById(resource, id) {
     return `http://localhost:3000/${resource}/${id}`;
 }
 
-async function getResource(url) {
+function getResource(url) {
     return fetch(url, {
             headers: {
                 'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ async function getResource(url) {
         .then(res => res.json());
 }
 
-async function createResource(resource, resourceData) {
+function createResource(resource, resourceData) {
     const url = createUrl(resource);
 
     return fetch(url, {
@@ -36,7 +36,7 @@ async function createResource(resource, resourceData) {
 }
 
 
-async function deleteResource(resource, id) {
+function deleteResource(resource, id) {
     const url = createUrlById(resource, id);
 
     return fetch(url, {
