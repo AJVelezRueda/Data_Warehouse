@@ -1,4 +1,6 @@
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE2MTI2NTI1NDF9.nsG7Opj5vPjXIVQSUzGM74zNUUH-gVgiK4q1DsajCms'
+const contactsSection = document.getElementById('contacts-section');
+
 
 function createUrl(resource) {
     return `http://localhost:3000/${resource}`;
@@ -113,13 +115,10 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
-<<<<<<< HEAD
-=======
 function checkedCheckBoCounter() {
     return document.querySelectorAll('input[type="checkbox"]:checked').length;
 }
 
->>>>>>> c399771a7fba7955aceb4429695093ef31c41a84
 function createACheckBox() {
     const input = document.createElement('input');
 
@@ -152,7 +151,6 @@ function createDiv(className, idName) {
     return div;
 }
 
-
 function createProgressDiv(className, progressmount) {
     const div = document.createElement('div');
     const p = document.createElement('p');
@@ -173,9 +171,30 @@ function createProgressDiv(className, progressmount) {
     return div;
 }
 
-///////!!!complete this function
 function deleteActionAlert() {
-    const alertDiv = createDiv(className, idName);
+    const alertDiv = createDiv('alert-div', 'alert-div');
+    const confirmButton = createButton("¿Desea continuar?", 'alert-button');
+    const alertTittle = document.createElement('h2');
+    const closeButton = createCloseButton();
+    const alertSection = document.getElementById('alert-section');
+
+    objectBluringAndFocusing(contactsSection);
+    enableDomObject(alertSection);
+
+    alertTittle.innerHTML = 'Está a punto de elminar un contacto';
+
+    alertDiv.appendChild(closeButton);
+    alertDiv.appendChild(alertTittle);
+    alertDiv.appendChild(confirmButton);
+    alertSection.appendChild(alertDiv)
+
+    closeButton.addEventListener("click", () => {
+        alertSection.removeChild(alertDiv);
+
+        disableDomObject(alertSection);
+        objectBluringAndFocusing(contactsSection);
+    })
+
 }
 
 function createActionsDiv() {
