@@ -34,6 +34,20 @@ async function createResource(resource, resourceData) {
 }
 
 
+async function deleteResource(resource, id) {
+    const url = createUrlById(resource, id);
+
+    return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+}
+
 function creatImgObject(imgSrc, imgClassName, imgAltName) {
     const img = document.createElement('img');
     img.className = imgClassName;
@@ -152,6 +166,10 @@ function createProgressDiv(className, progressmount) {
     return div;
 }
 
+///////!!!complete this function
+function deleteActionAlert() {
+    const alertDiv = createDiv(className, idName);
+}
 
 function createActionsDiv() {
     const mainDiv = document.createElement('div');
