@@ -41,11 +41,12 @@ async function contactRow(contactObject) {
     const roleColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const channelColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const intrestColumn = createProgressDiv("contact-table-row progress", preferences[0].intrest);
-    const contactRole = createPrincipalText('Student');
     const actionColumn = createActionsDiv();
     const contactCity = createPrincipalText(city.name);
     const contactRegion = createSecondaryText(city.countries_name);
     const checkbox = createACheckBox();
+    const contactRole = createPrincipalText('Student');
+    const contactCompany = createPrincipalText('CONICET');;
 
     nameColumn.appendChild(contactName);
     nameColumn.appendChild(contactEmail);
@@ -61,6 +62,8 @@ async function contactRow(contactObject) {
     tableRow.appendChild(selecColumn);
     tableRow.appendChild(nameColumn);
     tableRow.appendChild(countryColumn);
+    tableRow.appendChild(contactRole);
+    tableRow.appendChild(contactCompany);
     tableRow.appendChild(channelColumn);
     tableRow.appendChild(intrestColumn);
     tableRow.appendChild(actionColumn);
