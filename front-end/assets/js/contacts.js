@@ -132,7 +132,7 @@ function pagesDisplayer(contactsTotal) {
     mainDiv.appendChild(pagesDiv);
     mainDiv.appendChild(pagesDetail);
 
-    contactTable.appendChild(mainDiv);
+    mainSection.appendChild(mainDiv);
 }
 
 async function renderContactDataRow() {

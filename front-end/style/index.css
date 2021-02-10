@@ -183,8 +183,11 @@ select {
 }
 
 .contacts-table {
-    padding: 1% 1%;
-    border: solid 1px #9599bd;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    border: 1px solid #33739C;
     width: 90%;
     margin-left: 5%;
     margin-top: 1%;
@@ -268,7 +271,8 @@ progress {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1% 0;
+    padding: 1% 8%;
+    margin-top: -55px;
 }
 
 .add-rows {
