@@ -24,11 +24,45 @@ function createSelectedContactsSection() {
 }
 
 
-async function contactRow(contactObject) {
-    //const preferences = contactObject.preferences;
-    //const contactRole = contactObject.role;
-    //const contactCompany = contactObject.company;
+function createContactTableHeader() {
+    const headerSection = createSection("contacts-grid", "contact-grid-header");
+    const selecColumn = createDiv('select-column', 'select-column-header');
+    const nameColumn = createDiv("contact-table-header", 'contact-table-header');
+    const countryColumn = createDiv("contact-table-header", "contact-table-country");
+    const companyColumn = createDiv("contact-table-header", "contact-table-country");
+    const roleColumn = createDiv("contact-table-header", "contact-table-role");
+    const channelColumn = createDiv("contact-table-header", "contact-table-channel");
+    const intrestColumn = createDiv("contact-table-header", "contact-table-interest");
+    const actionColumn = createDiv("contact-table-header", "contact-table-actions");
+    const checkbox = createACheckBox();
+    const p = document.createElement('p');
 
+    headerFigures(nameColumn, "./assets/images/sort.png", "sort-img", "Contacto");
+    headerFigures(countryColumn, "./assets/images/sort.png", "sort-img", "Ciudad/País");
+    headerFigures(companyColumn, "./assets/images/sort.png", "sort-img", "Compañia");
+    headerFigures(roleColumn, "./assets/images/sort.png", "sort-img", "Cargo");
+    headerFigures(channelColumn, "./assets/images/sort.png", "sort-img", "Canal");
+    headerFigures(intrestColumn, "./assets/images/sort.png", "sort-img", "Interes");
+
+    p.innerText = "Acciones";
+
+    actionColumn.appendChild(p);
+
+    selecColumn.appendChild(checkbox);
+    headerSection.appendChild(selecColumn);
+    headerSection.appendChild(nameColumn);
+    headerSection.appendChild(countryColumn);
+    headerSection.appendChild(companyColumn);
+    headerSection.appendChild(roleColumn);
+    headerSection.appendChild(channelColumn);
+    headerSection.appendChild(intrestColumn);
+    headerSection.appendChild(actionColumn);
+
+    contactTable.appendChild(headerSection);
+}
+
+
+async function contactRow(contactObject) {
     const contactId = contactObject.id;
     const city = await getCityById(contactObject.cities_id);
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
@@ -47,6 +81,9 @@ async function contactRow(contactObject) {
     const checkbox = createACheckBox();
     const contactRole = createPrincipalText('Student');
     const contactCompany = createPrincipalText('CONICET');;
+    //const preferences = contactObject.preferences;
+    //const contactRole = contactObject.role;
+    //const contactCompany = contactObject.company;
 
     nameColumn.appendChild(contactName);
     nameColumn.appendChild(contactEmail);
@@ -86,5 +123,5 @@ async function renderContactDataRow() {
     contacts.forEach(element => contactRow(element));
 }
 
-
+createContactTableHeader();
 renderContactDataRow();

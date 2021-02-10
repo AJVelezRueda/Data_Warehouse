@@ -248,6 +248,21 @@ function addFigureWithCaption(parent, src, figcaptionText) {
     parent.appendChild(figurecaption);
 }
 
+function headerFigures(parent, src, imgClass, figcaptionText) {
+    const figure = document.createElement('figure');
+    const figurecaption = document.createElement('figcaption');
+    const img = document.createElement('img');
+
+    img.src = src;
+    img.classList = imgClass;
+    img.alt = 'figure-Img';
+    figure.appendChild(img);
+    figurecaption.innerHTML = figcaptionText;
+
+    parent.appendChild(figurecaption);
+    parent.appendChild(figure);
+}
+
 
 function createPrincipalText(text) {
     const p = document.createElement('p');
