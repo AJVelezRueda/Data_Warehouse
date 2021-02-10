@@ -91,12 +91,6 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
-
-function checkedCheckBoCounter() {
-    return document.querySelectorAll('input[type="checkbox"]:checked').length;
-}
-
-
 function createACheckBox() {
     const input = document.createElement('input');
 
@@ -105,6 +99,10 @@ function createACheckBox() {
     input.className = `contact-check`;
 
     return input;
+}
+
+function checkedCheckBoCounter() {
+    return document.querySelectorAll('input[type="checkbox"]:checked').length;
 }
 
 function createLabel(labelFor, labelText) {
