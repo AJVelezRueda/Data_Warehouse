@@ -345,8 +345,8 @@ progress {
 .region-section,
 .alert-section {
     border: 8px solid #33739C;
-    width: 45%;
     position: absolute;
+    width: 45%;
     z-index: 21;
     padding: 5% 7%;
     margin-left: 25%;

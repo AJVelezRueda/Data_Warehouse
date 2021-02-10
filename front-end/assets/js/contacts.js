@@ -118,9 +118,27 @@ async function contactRow(contactObject) {
     contactTable.appendChild(tableRow);
 }
 
+function pagesDisplayer(contactsTotal) {
+    const mainDiv = createDiv("pages-displayer", "pages-displayer");
+    const pagesDiv = createDiv("add-rows", "add-rows");
+    const pagesDetail = createDiv("pages-detail", "pages-detail");
+    const p = document.createElement('p');
+
+    p.innerHTML = `1 - ${contactsTotal} de ${contactsTotal}`;
+    pagesDetail.appendChild(p)
+
+    headerFigures(pagesDiv, "./assets/images/expand-button.png", "expand-button", "Filas por página " + contactsTotal);
+
+    mainDiv.appendChild(pagesDiv);
+    mainDiv.appendChild(pagesDetail);
+
+    contactTable.appendChild(mainDiv);
+}
+
 async function renderContactDataRow() {
     const contacts = await getContacts();
     contacts.forEach(element => contactRow(element));
+    pagesDisplayer(contacts.length);
 }
 
 createContactTableHeader();

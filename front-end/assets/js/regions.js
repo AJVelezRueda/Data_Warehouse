@@ -10,7 +10,6 @@ function getCityById(id) {
 
 }
 
-
 function getRegionById(id) {
     return getResource(createUrlById('regions', id));
 }
