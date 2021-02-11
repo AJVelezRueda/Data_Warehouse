@@ -11,13 +11,13 @@ function createSelectedContactsSection() {
     const selectedInfoDiv = createDiv('selected-contacts-div', 'selected-contacts-div');
     const selectedIfoDivText = document.createElement('p');
     const deleteContactDiv = createDiv('delete-contacts', 'delete-contacts');
-    const trashFig = addFigureWithCaption(deleteContactDiv, "./assets/images/trash.png", 'Eliminar contactos');
+    addFigureWithCaption(deleteContactDiv, "./assets/images/trash.png", 'Eliminar contactos');
 
     selectedIfoDivText.id = 'checkbox-counter';
     selectedIfoDivText.innerText = String(checkedCheckBoCounter()) + " Contacto seleccionado";
     selectedInfoDiv.appendChild(selectedIfoDivText);
     selectionInfoSection.appendChild(selectedInfoDiv);
-    //selectionInfoSection.appendChild(trashFig);
+    selectionInfoSection.appendChild(deleteContactDiv);
 
     enableDomObject(selectionInfoSection);
 }
@@ -108,9 +108,7 @@ async function contactRow(contactObject) {
         checkingRow(tableRow);
         if (document.getElementById('checkbox-counter')) {
             const text = document.getElementById('checkbox-counter')
-
-            text.innerHTML = String(checkedCheckBoCounter()) + " contactos seleccionados";;
-            console.log('nada');
+            text.innerHTML = String(checkedCheckBoCounter()) + " contactos seleccionados";
         } else {
             createSelectedContactsSection(checkedCheckBoCounter());
         }
