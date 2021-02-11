@@ -231,15 +231,22 @@ function createActionsDiv() {
 
     imgTrash.src = "./assets/images/trash.png";
     imgTrash.alt = "trash";
+    imgTrash.classList.add('disable');
 
     imgPen.src = "./assets/images/pen.png";
     imgPen.alt = "pen";
+    imgPen.classList.add('disable');
 
     mainDiv.appendChild(imgActions);
     div.appendChild(imgTrash);
     div.appendChild(imgPen);
     mainDiv.appendChild(div);
 
+    imgActions.addEventListener('click', () => {
+        imgActions.classList.add('disable');
+        imgTrash.classList.remove('disable');
+        imgPen.classList.remove('disable');
+    })
     return mainDiv;
 }
 
@@ -299,4 +306,8 @@ function createSecondaryText(text) {
     p.innerHTML = text;
 
     return p;
+}
+
+function getingInputData(input) {
+    return input.value;
 }

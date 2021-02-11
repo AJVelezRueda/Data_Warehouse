@@ -43,7 +43,7 @@ function renderNewContactSection() {
     const countrySelect = createSelect('pais', 'pais', 'Paises');
     const citySelect = createSelect('ciudad', 'ciudad', 'Ciudades');
     const citySelectLabel = createLabel("citySeleLabelF", "Ciudad");
-    const cvLabel = createLabel("fname", "CV");
+    const cvLabel = createLabel("fname", "Cargar datos");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
     const closeButton = createCloseButton();
@@ -129,9 +129,10 @@ function createContactTableHeader() {
 
 async function contactRow(contactObject) {
     const contactId = contactObject.id;
+    const contactname = contactObject.contact_name;
     const city = await getCityById(contactObject.cities_id);
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
-    const tableRow = createSection("contacts-grid", "contacts-grid" + String(contactId));
+    const tableRow = createSection("contacts-grid", contactname);
     const selecColumn = createDiv('select-column', 'select-column-row' + String(contactId));
     const nameColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const contactName = createPrincipalText(contactObject.contact_name);

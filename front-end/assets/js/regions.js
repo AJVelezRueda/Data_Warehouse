@@ -45,6 +45,8 @@ async function createCity(cityName, countries_id) {
     await createResource('cities', resourceData);
 }
 
+
+
 function createIconsSection(tittleText) {
     const iconSection = document.createElement('div');
     const tittle = document.createElement('h3');
@@ -59,13 +61,6 @@ function createIconsSection(tittleText) {
     iconSection.appendChild(editImg);
 
     return iconSection;
-}
-
-
-function regionObjCreateByLabel(input) {
-    const regionData = {};
-    regionData.name = input.value;
-    return regionData;
 }
 
 function regionHeaderRender(parent, tittleText, buttonText) {
@@ -96,9 +91,12 @@ function regionHeaderRender(parent, tittleText, buttonText) {
         enableDomObject(divInput);
     });
 
-    input.addEventListener('keypress' , () => {
-        regionObjCreateByLabel(input) 
+    input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            createRegion(getingInputData(input));
+        }
     });
+
 }
 
 function createCountrySection(countryName) {
@@ -123,6 +121,12 @@ function createCountrySection(countryName) {
 
     addButton.addEventListener("click", () => {
         createRegion(enableDomObject(countryInputDiv));
+    });
+
+    input.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            console.log(getingInputData(input));
+        }
     });
 
     return countryRow;
@@ -159,7 +163,6 @@ function regionSectionAnable() {
 
     });
 }
-
 
 regionsButton.addEventListener("click", () => {
     regionSectionAnable();
