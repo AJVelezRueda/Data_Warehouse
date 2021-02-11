@@ -57,6 +57,13 @@ function createIconsSection(tittleText) {
     return iconSection;
 }
 
+
+function regionObjCreateByLabel(input) {
+    const regionData = {};
+    regionData.name = input.value;
+    return regionData;
+}
+
 function regionHeaderRender(parent, tittleText, buttonText) {
     const divTittle = document.createElement('div');
     const divInput = document.createElement('div');
@@ -142,7 +149,7 @@ function regionSectionAnable() {
         disableDomObject(regionSection);
         objectBluringAndFocusing(contactsSection);
 
-    })
+    });
 }
 
 
