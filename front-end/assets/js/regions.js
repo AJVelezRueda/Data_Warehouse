@@ -5,6 +5,10 @@ function getRegions() {
     return getResource(createUrl('regions'));
 }
 
+function getCountries() {
+    return getResource(createUrl('countries'));
+}
+
 function getCityById(id) {
     return getResource(createUrlById('cities', id));
 

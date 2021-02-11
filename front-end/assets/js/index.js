@@ -115,6 +115,23 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
+function createSelect(selectId, selectName, valuesList){
+    const select = document.createElement('select');
+
+    select.id = selectId;
+    select.name = selectName;
+
+    valuesList.forEach(element => {
+        const option = document.createElement('option');
+
+        option.value = element;
+        option.innerHTML = element;
+        select.appendChild(option);
+    });
+
+    return select;
+}
+
 function checkedCheckBoCounter() {
     return document.querySelectorAll('input[type="checkbox"]:checked').length;
 }
