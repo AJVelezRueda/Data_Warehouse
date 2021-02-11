@@ -39,15 +39,17 @@ function renderNewContactSection() {
     const companyLabel = createLabel("companif", "Compañía");
     const companyInput = createInputTextType("companyf", "Compañía...");
     //hacer get de los paises
-    const countrySelect = createSelect('pais', 'pais', ['Arg', 'Peru']);
-    const citySelect = createSelect('ciudad', 'ciudad', ['CABA', 'Córdoba']);
-    const cvLabel = createLabel("fname", "Nombre");
+    const countrySelectLabel = createLabel("citySeleLabelF", "País");
+    const countrySelect = createSelect('pais', 'pais', 'Argentina');
+    const citySelect = createSelect('ciudad', 'ciudad', 'Caba');
+    const citySelectLabel = createLabel("citySeleLabelF", "Ciudad");
+    const cvLabel = createLabel("fname", "CV");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
 
 
     contactButton.classList.add("upload-button");
-    contactButton.classList.add("upload-button");
+    cvButton.classList.add("upload-button");
     formHeader.classList.add('header-form');
     formTail.classList.add('tail-form');
 
@@ -60,7 +62,9 @@ function renderNewContactSection() {
     formHeader.appendChild(companyLabel);
     formHeader.appendChild(companyInput);
 
+    formTail.appendChild(countrySelectLabel);
     formTail.appendChild(countrySelect);
+    formTail.appendChild(citySelectLabel);
     formTail.appendChild(citySelect);
     formTail.appendChild(cvLabel);
     formTail.appendChild(cvButton);

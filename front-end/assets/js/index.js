@@ -115,21 +115,22 @@ function createInputTextType(inputId, placeholderText) {
     return input;
 }
 
-function createSelect(selectId, selectName, valuesList){
+function createSelect(selectId, selectName, values) {
     const select = document.createElement('select');
+    const option = document.createElement('option');
 
     select.id = selectId;
     select.name = selectName;
 
-    valuesList.forEach(element => {
-        const option = document.createElement('option');
-
-        option.value = element;
-        option.innerHTML = element;
-        select.appendChild(option);
-    });
+    option.value = values;
+    option.innerHTML = values;
+    select.appendChild(option);
 
     return select;
+}
+
+function addValuesToaSelect(selectParent, listOfvalues) {
+
 }
 
 function checkedCheckBoCounter() {
