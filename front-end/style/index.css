@@ -128,7 +128,6 @@ input {
 label {
     margin-top: 4%;
     margin-right: 5px;
-    padding-left: 15px;
 }
 
 select {
@@ -259,6 +258,11 @@ select {
 .new-contact img {
     margin-top: -17px;
     margin-left: 93%;
+}
+
+.new-contact input {
+    width: 13em;
+    margin-left: 0;
 }
 
 .select-column {
