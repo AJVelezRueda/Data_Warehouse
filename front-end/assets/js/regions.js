@@ -91,6 +91,10 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     addButton.addEventListener("click", () => {
         enableDomObject(divInput);
     });
+
+    input.addEventListener('keypress' , () => {
+        regionObjCreateByLabel(input) 
+    });
 }
 
 function createCountrySection(countryName) {
@@ -114,7 +118,7 @@ function createCountrySection(countryName) {
     countryRow.appendChild(countryRowHead);
 
     addButton.addEventListener("click", () => {
-        enableDomObject(countryInputDiv);
+        createRegion(enableDomObject(countryInputDiv));
     });
 
     return countryRow;
