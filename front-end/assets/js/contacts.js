@@ -26,25 +26,25 @@ function createSelectedContactsSection() {
 }
 
 
-function renderNewContactSection(){
+function renderNewContactSection() {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
     const formHeader = document.createElement('form');
     const formTail = document.createElement('form');
-    const fnameLabel =  createLabel("fname", "Nombre");
-    const inputFname = createInputTextType("fname", "Nombre...");
-    const lnameLabel =  createLabel("lname", "Apellido");
+    const fnameLabel = createLabel("fname", "Nombre");
+    const inputFname = createInputTextType("namef", "Nombre...");
+    const lnameLabel = createLabel("lname", "Apellido");
     const inputLname = createInputTextType("lname", "Apellido...");
-    const emailLabel =  createLabel("email", "Mail");
-    const emailInput = createInputTextType("mail", "Mail");
-    const companyLabel =  createLabel("companif", "Compañía");
+    const emailLabel = createLabel("emailf", "Mail");
+    const emailInput = createInputTextType("mailf", "Mail");
+    const companyLabel = createLabel("companif", "Compañía");
     const companyInput = createInputTextType("companyf", "Compañía...");
     //hacer get de los paises
-    const countrySelect = createSelect('pais', 'pais', ['Arg','Peru']);
-    const citySelect = createSelect('ciudad', 'ciudad', ['CABA','Córdoba']);
-    const cvLabel =  createLabel("fname", "Nombre");
-    const cvButton = createButton('Cargar CV','upload-button-cv');
-    const contactButton = createButton('Cargar contacto','upload-button-contact');
-    
+    const countrySelect = createSelect('pais', 'pais', ['Arg', 'Peru']);
+    const citySelect = createSelect('ciudad', 'ciudad', ['CABA', 'Córdoba']);
+    const cvLabel = createLabel("fname", "Nombre");
+    const cvButton = createButton('Cargar CV', 'upload-button-cv');
+    const contactButton = createButton('Cargar contacto', 'upload-button-contact');
+
     formHeader.classList.add('header-form');
     formTail.classList.add('tail-form');
 
