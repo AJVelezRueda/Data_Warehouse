@@ -1,2 +1,6 @@
 TODO
--pasar el createImg y button desde el region.js al index.js (front)
+-para levantar el server rápido se puede hacer :
+instalando 
+   npm install -g json-server
+luego deployando
+    json-server --watch db.json
