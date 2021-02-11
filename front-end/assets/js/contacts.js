@@ -45,8 +45,8 @@ function renderNewContactSection(){
     const cvButton = createButton('Cargar CV','upload-button-cv');
     const contactButton = createButton('Cargar contacto','upload-button-contact');
     
-    formHeader.classList = 'header-form';
-    formTail.classList = 'tail-form';
+    formHeader.classList.add('header-form');
+    formTail.classList.add('tail-form');
 
     formHeader.appendChild(fnameLabel);
     formHeader.appendChild(inputFname);
