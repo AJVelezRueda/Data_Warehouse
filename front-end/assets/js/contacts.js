@@ -40,12 +40,13 @@ function renderNewContactSection() {
     const companyInput = createInputTextType("companyf", "Compañía...");
     //hacer get de los paises
     const countrySelectLabel = createLabel("citySeleLabelF", "País");
-    const countrySelect = createSelect('pais', 'pais', 'Argentina');
-    const citySelect = createSelect('ciudad', 'ciudad', 'Caba');
+    const countrySelect = createSelect('pais', 'pais', 'Paises');
+    const citySelect = createSelect('ciudad', 'ciudad', 'Ciudades');
     const citySelectLabel = createLabel("citySeleLabelF", "Ciudad");
     const cvLabel = createLabel("fname", "CV");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
+    const closeButton = createCloseButton();
 
 
     contactButton.classList.add("upload-button");
@@ -72,9 +73,20 @@ function renderNewContactSection() {
 
     sectionFormHeader.appendChild(formHeader);
     sectionFormHeader.appendChild(formTail);
+    newContactSection.appendChild(closeButton);
     newContactSection.appendChild(sectionFormHeader);
 
     enableDomObject(newContactSection);
+    objectBluringAndFocusing(contactsSection);
+
+    closeButton.addEventListener("click", () => {
+        newContactSection.removeChild(sectionFormHeader);
+        newContactSection.removeChild(closeButton);
+
+        disableDomObject(newContactSection);
+        objectBluringAndFocusing(contactsSection);
+
+    });
 }
 
 function createContactTableHeader() {
