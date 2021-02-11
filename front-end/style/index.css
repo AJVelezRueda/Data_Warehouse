@@ -133,7 +133,7 @@ label {
 
 select {
     height: 2.5em;
-    width: 14vw;
+    width: 7vw;
     margin-top: 8px;
 }
 
@@ -246,24 +246,24 @@ select {
     width: 20px;
     margin-left: 8px;
 }
-.new-contact{
+
+.new-contact {
     margin: 1% 5%;
     border: 8px solid #2C719C;
 }
+
+
 }
 .select-column {
     margin-left: 15px;
 }
-
 .selected {
     background: #58E8D2;
 }
-
 .progress {
     display: flex;
     flex-direction: row;
 }
-
 progress {
     width: 125px;
     height: 12px;
@@ -271,7 +271,6 @@ progress {
     margin-left: 9px;
     border-radius: 35px;
 }
-
 .pages-displayer {
     display: flex;
     flex-direction: row;
@@ -279,51 +278,43 @@ progress {
     padding: 1% 8%;
     margin-top: -55px;
 }
-
 .add-rows {
     display: flex;
     flex-direction: row;
 }
-
 .add-rows img {
     width: 15px;
     margin-left: 10px;
     color: #9599bd;
 }
-
 .selected-contacts {
     flex-direction: row;
     justify-content: space-between;
     padding-left: 6%;
     padding-right: 6%;
 }
-
 .selected-contacts img {
     width: 15px;
     margin-right: 5px;
 }
-
 .selected-contacts-div:hover {
     background: #58E8D2;
     color: #2C719C;
     border: #2C719C solid 3px;
     height: 2.7em;
 }
-
 .selected-contacts-div {
     height: 2.5em;
     border: 2px solid #33739C;
     background: #58E8D2;
     padding: 10px 10px;
 }
-
 .delete-contacts {
     display: flex;
     flex-direction: row;
     justify-items: center;
     padding: 13px 0;
 }
-
 .users {
     padding: 5% 5%;
     border: #2C719C solid 2px;
@@ -331,18 +322,15 @@ progress {
     margin-left: 32%;
     margin-right: 32%;
 }
-
 .companies-section {
     flex-direction: column;
 }
-
 .companies-header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 2% 2%;
 }
-
 .companies-header button {
     height: 2.5em;
     width: 17em;
@@ -350,7 +338,6 @@ progress {
     font-weight: bold;
     background: #D9D9D9;
 }
-
 .region-section,
 .alert-section {
     border: 8px solid #33739C;
@@ -363,22 +350,18 @@ progress {
     background: white;
     flex-direction: column;
 }
-
 .region-section:hover {
     box-shadow: 5px -5px #0d4d4d21;
     transform: scale(1.1);
 }
-
 .region-section-header {
     display: flex;
     flex-direction: column;
 }
-
 .region-head {
     padding: 1% 0;
     justify-content: space-around;
 }
-
 .region-tittle {
     display: flex;
     flex-direction: row;
@@ -386,13 +369,11 @@ progress {
     margin-left: 0;
     padding: 2% 0;
 }
-
 .region-input,
 .country-input,
 .city-input {
     padding: 1% 24%;
 }
-
 .region-section button {
     height: 2.5em;
     width: 10em;
@@ -401,28 +382,23 @@ progress {
     background: #D9D9D9;
     margin-left: 25px;
 }
-
 .region-section button:hover {
     color: #D9D9D9;
     font-weight: bold;
     background: #33739C;
 }
-
 .country-row {
     padding: 1% 6%;
     justify-content: space-around;
 }
-
 .country-row img {
     height: 23px;
     margin-left: 2px;
 }
-
 .icons-section {
     display: flex;
     flex-direction: row;
 }
-
 .close-img {
     width: 20px;
     margin-top: -4%;

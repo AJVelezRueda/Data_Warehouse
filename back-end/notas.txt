@@ -7,7 +7,7 @@ luego deployando
 
 
 
-        <section class="new-contact anable" id="new-contact-section">
+    <section class="new-contacts2 anable" id="new-contact-section">
         <section class="new-contact-header">
             <form class="header-form">
                 <label for="fname">Nombre</label>
