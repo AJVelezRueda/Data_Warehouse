@@ -5,8 +5,18 @@ function getRegions() {
     return getResource(createUrl('regions'));
 }
 
+async function getListofRegions() {
+    const regions = await getRegions();
+    return regions.countries;
+}
+
 function getCountries() {
     return getResource(createUrl('countries'));
+}
+
+async function getListofCountries() {
+    const countries = await getCountries();
+    return countries.countries;
 }
 
 function getCityById(id) {
@@ -132,13 +142,31 @@ function createCountrySection(countryName) {
     return countryRow;
 }
 
-function regionSectionAnable() {
+function createCityySection(cityName) {
+    const cityRow = createSection("city-row", "city-row");
+    const cityTittleDiv = createDiv("region-tittle", "city-row-tittle");
+    const cityIconDiv = createIconsSection(cityName);
+
+    cityRow.appendChild(cityTittleDiv);
+    cityTittleDiv.appendChild(cityIconDiv);
+
+    return cityRow;
+}
+
+
+
+
+async function regionSectionAnable() {
     const sectionHeader = createSection("region-section-header", "region-section-header");
     const rowSection = createSection("region-row", "region-row");
     const rowHead = createSection("region-head", "region-head");
+    const countries = await getListofCountries();
+    const regions = await getListofRegions();
     ///Esta linea de abajo hay que agregarla despues del get a countries
-    const countryRow = createCountrySection('argentina');
-    const countryList = createDiv("countries-list", "coutries-list");
+    //const countryRow = createCountrySection('argentina');
+    const countryList = createDiv("countries-list", "countries-list");
+    const cityList = createDiv("cities-list", "cities-list");
+    const cityRow = createCityySection('sandanga');
     const closeButton = createCloseButton();
 
     objectBluringAndFocusing(contactsSection);
@@ -147,11 +175,16 @@ function regionSectionAnable() {
     regionHeaderRender(sectionHeader, 'region', 'Region');
     regionHeaderRender(rowHead, 'sudamerica', 'País');
 
+    countries.forEach(element => {
+        const countryRow = createCountrySection(element.name);
+        countryList.appendChild(countryRow);
+        countryRow.appendChild(cityList);
+    })
+
     regionSection.appendChild(sectionHeader);
     rowSection.appendChild(rowHead);
     rowSection.appendChild(countryList);
-    ///Esta linea de abajo hay que agregarla despues del get a countries 
-    countryList.appendChild(countryRow);
+    cityList.appendChild(cityRow);
     regionSection.appendChild(closeButton);
     regionSection.appendChild(rowSection);
 

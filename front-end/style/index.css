@@ -407,6 +407,10 @@ progress {
     padding: 1% 24%;
 }
 
+.city-row {
+    margin-left: 8%;
+}
+
 .region-section button {
     height: 2.5em;
     width: 10em;

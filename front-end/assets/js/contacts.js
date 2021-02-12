@@ -128,7 +128,6 @@ function createContactTableHeader() {
 
 async function contactRow(contactObject) {
     const contactId = contactObject.id;
-    const contactname = contactObject.contact_name;
     const city = await getCityById(contactObject.cities_id);
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
     const tableRow = createSection("contacts-grid row");
