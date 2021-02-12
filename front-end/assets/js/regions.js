@@ -118,10 +118,10 @@ function regionHeaderRender(parent, tittleText, buttonText) {
 
 }
 
-function createCountrySection(countryName, regionId) {
+function createCountrySection(countryName, regionId, countryId) {
     const countryRow = createSection("country-row", "country-row-" + countryName);
     const countryRowHead = createSection("country-section", "country-section");
-    const countryTittleDiv = createDiv("region-tittle", "country-row-tittle-" + countryName);
+    const countryTittleDiv = createDiv("country-tittle", "country-row-tittle-" + countryName);
     const countryInputDiv = createDiv("city-input disable", "city-input");
     const countryIconDiv = createIconsSection(countryName);
     const addButton = createButton('Agregar ciudad', "add-city");
@@ -129,6 +129,7 @@ function createCountrySection(countryName, regionId) {
     const input = createInputTextType("city-name", "City name...");
 
     countryRow.dataset.regionId = regionId;
+    countryTittleDiv.dataset.countryId = countryId;
     countryTittleDiv.appendChild(countryIconDiv);
     countryTittleDiv.appendChild(addButton);
     countryInputDiv.appendChild(label);
@@ -145,8 +146,9 @@ function createCountrySection(countryName, regionId) {
 
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            console.log(CountryName, regionsId);
-            input.innerHTML = '';
+            const countryId = input.closest(".country-tittle").dataset.countryId;
+            console.log(countryId);
+            //createCountry(getingInputData(input), countryId);
         }
     });
 
@@ -190,7 +192,7 @@ async function regionSectionAnable() {
 
 
         countries.forEach(it => {
-            const countryRow = createCountrySection(it.name, it.regions_id);
+            const countryRow = createCountrySection(it.name, it.regions_id, it.id);
             const cityList = createDiv("cities-list", "cities-list");
 
             if (it.regions_id === regionId) {
@@ -203,7 +205,7 @@ async function regionSectionAnable() {
                     if (city.countries_id === country_id) {
                         const cityRow = createCitySection(city.name, city.name);
 
-                        cityRow.dataset.countryDd = country_id;
+                        cityRow.dataset.countryId = country_id;
                         cityList.appendChild(cityRow);
                     }
                 })

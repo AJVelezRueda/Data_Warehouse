@@ -393,7 +393,8 @@ progress {
     justify-content: space-around;
 }
 
-.region-tittle {
+.region-tittle,
+.country-tittle {
     display: flex;
     flex-direction: row;
     justify-content: left;
