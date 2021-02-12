@@ -177,7 +177,7 @@ async function regionSectionAnable() {
     objectBluringAndFocusing(contactsSection);
     enableDomObject(regionSection);
 
-    regionHeaderRender(sectionHeader, 'region', 'Region');
+    regionHeaderRender(sectionHeader, '', 'Region');
 
     regions.forEach(element => {
         const rowSection = createSection("region-row", "region-row-" + element.name);
