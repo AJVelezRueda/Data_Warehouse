@@ -18,10 +18,6 @@ function getCities() {
     return getResource(createUrl('cities'));
 }
 
-async function getListofCities() {
-    const cities = await getCities();
-    return cities.cities;
-}
 
 async function getListofCountries() {
     const countries = await getCountries();
@@ -73,7 +69,7 @@ function createIconsSection(tittleText) {
     const editImg = creatImgObject("./assets/images/pen.png", "pen", "pen");
 
     iconSection.className = "icons-section";
-    tittle.innerHTML = `${ tittleText }`;
+    tittle.innerHTML = `${tittleText}`;
 
     iconSection.appendChild(tittle);
     iconSection.appendChild(deleteImg);
@@ -94,7 +90,7 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     divTittle.className = 'region-tittle';
     divInput.className = `region-input disable`;
 
-    tittle.innerHTML = `${ tittleText }`;
+    tittle.innerHTML = `${tittleText}`;
 
     divTittle.appendChild(tittle);
     divTittle.appendChild(addButton);
@@ -169,9 +165,8 @@ async function regionSectionAnable() {
     const regionListSection = createSection("region-list", "region-list");
     const countries = await getListofCountries();
     const regions = await getListofRegions();
-    const countryList = createDiv("countries-list", "countries-list");
-    const cityList = createDiv("cities-list", "cities-list");
-    const cityRow = createCityySection('sandanga');
+    const cities = await getCities()
+    const listOfCities = cities.cities;
     const closeButton = createCloseButton();
 
     objectBluringAndFocusing(contactsSection);
@@ -179,27 +174,35 @@ async function regionSectionAnable() {
 
     regionHeaderRender(sectionHeader, '', 'Region');
 
-    regions.forEach(element => {
-        const rowSection = createSection("region-row", "region-row-" + element.name);
-        const rowHead = createSection("region-head", "region-head");
-        regionHeaderRender(rowHead, element.name, 'País');
+    regions.forEach(region => {
+        const regionRowSection = createSection("region-row", "region-row-" + region.name);
+        const regionRowHead = createSection("region-head", "region-head");
+        const countryList = createDiv("countries-list", "countries-list");
+        regionHeaderRender(regionRowHead, region.name, 'País');
 
-        rowSection.dataset.regionId = element.id;
-        const regionId = element.id;
+        regionRowSection.dataset.regionId = region.id;
+        const regionId = region.id;
+
 
         countries.forEach(it => {
             const countryRow = createCountrySection(it.name, it.regions_id);
+            const cityList = createDiv("cities-list", "cities-list");
+            const cityRow = createCityySection('sandanga');
 
             if (it.regions_id === regionId) {
-                console.log(it.regions_id, regionId);
                 countryList.appendChild(countryRow);
                 countryRow.appendChild(cityList);
                 cityList.appendChild(cityRow);
-                rowSection.appendChild(rowHead);
-                rowSection.appendChild(countryList);
             }
+
+            listOfCities.forEach(city => {
+                console.log(city.countries_id);
+            })
         })
-        regionListSection.appendChild(rowSection);
+
+        regionRowSection.appendChild(regionRowHead);
+        regionRowSection.appendChild(countryList);
+        regionListSection.appendChild(regionRowSection);
     })
 
     regionSection.appendChild(sectionHeader);
