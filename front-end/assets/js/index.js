@@ -109,7 +109,6 @@ function createInputTextType(inputId, placeholderText) {
 
     input.type = "text";
     input.name = `${ inputId }-name`;
-    input.id = `${ inputId }-name`;
     input.placeholder = `${ placeholderText }`;
 
     return input;
