@@ -14,6 +14,15 @@ function getCountries() {
     return getResource(createUrl('countries'));
 }
 
+function getCities() {
+    return getResource(createUrl('cities'));
+}
+
+async function getListofCities() {
+    const cities = await getCities();
+    return cities.cities;
+}
+
 async function getListofCountries() {
     const countries = await getCountries();
     return countries.countries;
