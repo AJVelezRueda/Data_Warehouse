@@ -190,15 +190,15 @@ async function regionSectionAnable() {
         countries.forEach(it => {
             const countryRow = createCountrySection(it.name, it.regions_id);
 
-            if (regionId === it.regions_id) {
+            if (it.regions_id === regionId) {
+                console.log(it.regions_id, regionId);
                 countryList.appendChild(countryRow);
                 countryRow.appendChild(cityList);
                 cityList.appendChild(cityRow);
+                rowSection.appendChild(rowHead);
+                rowSection.appendChild(countryList);
             }
         })
-
-        rowSection.appendChild(rowHead);
-        rowSection.appendChild(countryList);
         regionListSection.appendChild(rowSection);
     })
 
@@ -209,8 +209,7 @@ async function regionSectionAnable() {
 
     closeButton.addEventListener("click", () => {
         regionSection.removeChild(sectionHeader);
-        regionSection.removeChild(rowSection);
-        rowSection.removeChild(countryList);
+        regionSection.removeChild(regionListSection);
         regionSection.removeChild(closeButton);
 
         disableDomObject(regionSection);
