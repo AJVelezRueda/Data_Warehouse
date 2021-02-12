@@ -18,7 +18,6 @@ function getCities() {
     return getResource(createUrl('cities'));
 }
 
-
 async function getListofCountries() {
     const countries = await getCountries();
     return countries.countries;
@@ -108,7 +107,12 @@ function regionHeaderRender(parent, tittleText, buttonText) {
 
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            createRegion(getingInputData(input));
+            try {
+                const regionId = input.closest(".region-row").dataset.regionId;
+                createCountry(getingInputData(input), regionId);
+            } catch {
+                createRegion(getingInputData(input));
+            }
         }
     });
 
@@ -141,7 +145,8 @@ function createCountrySection(countryName, regionId) {
 
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            console.log(getingInputData(input));
+            console.log(CountryName, regionsId);
+            input.innerHTML = '';
         }
     });
 
@@ -198,7 +203,7 @@ async function regionSectionAnable() {
                     if (city.countries_id === country_id) {
                         const cityRow = createCitySection(city.name, city.name);
 
-                        cityRow.dataset.country_id = country_id;
+                        cityRow.dataset.countryDd = country_id;
                         cityList.appendChild(cityRow);
                     }
                 })
