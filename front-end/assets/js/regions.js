@@ -148,9 +148,9 @@ function createCountrySection(countryName, regionId) {
     return countryRow;
 }
 
-function createCityySection(cityName, countryId) {
-    const cityRow = createSection("city-row", "city-row");
-    const cityTittleDiv = createDiv("region-tittle", "city-row-tittle");
+function createCitySection(cityName, countryId) {
+    const cityRow = createSection("city-row", "city-row-" + cityName);
+    const cityTittleDiv = createDiv("region-tittle", "city-row-tittle-" + cityName);
     const cityIconDiv = createIconsSection(cityName);
 
     cityRow.dataset.country = countryId;
@@ -187,7 +187,6 @@ async function regionSectionAnable() {
         countries.forEach(it => {
             const countryRow = createCountrySection(it.name, it.regions_id);
             const cityList = createDiv("cities-list", "cities-list");
-            const cityRow = createCityySection('sandanga');
 
             if (it.regions_id === regionId) {
                 const country_id = it.id;
@@ -197,7 +196,9 @@ async function regionSectionAnable() {
 
                 listOfCities.forEach(city => {
                     if (city.countries_id === country_id) {
-                        const cityRow = createCityySection(city.name);
+                        const cityRow = createCitySection(city.name, city.name);
+
+                        cityRow.dataset.country_id = country_id;
                         cityList.appendChild(cityRow);
                     }
                 })
