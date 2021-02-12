@@ -190,14 +190,18 @@ async function regionSectionAnable() {
             const cityRow = createCityySection('sandanga');
 
             if (it.regions_id === regionId) {
+                const country_id = it.id;
+
                 countryList.appendChild(countryRow);
                 countryRow.appendChild(cityList);
-                cityList.appendChild(cityRow);
-            }
 
-            listOfCities.forEach(city => {
-                console.log(city.countries_id);
-            })
+                listOfCities.forEach(city => {
+                    if (city.countries_id === country_id) {
+                        const cityRow = createCityySection(city.name);
+                        cityList.appendChild(cityRow);
+                    }
+                })
+            }
         })
 
         regionRowSection.appendChild(regionRowHead);
