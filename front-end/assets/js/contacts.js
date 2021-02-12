@@ -131,7 +131,7 @@ async function contactRow(contactObject) {
     const contactname = contactObject.contact_name;
     const city = await getCityById(contactObject.cities_id);
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
-    const tableRow = createSection("contacts-grid row", contactname);
+    const tableRow = createSection("contacts-grid row");
     const selecColumn = createDiv('select-column', 'select-column-row' + String(contactId));
     const nameColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const contactName = createPrincipalText(contactObject.contact_name);

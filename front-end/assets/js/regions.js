@@ -120,7 +120,7 @@ function createCountrySection(countryName) {
     countryRow.appendChild(countryRowHead);
 
     addButton.addEventListener("click", () => {
-        createRegion(enableDomObject(countryInputDiv));
+        enableDomObject(countryInputDiv);
     });
 
     input.addEventListener('keypress', function(e) {
@@ -136,7 +136,9 @@ function regionSectionAnable() {
     const sectionHeader = createSection("region-section-header", "region-section-header");
     const rowSection = createSection("region-row", "region-row");
     const rowHead = createSection("region-head", "region-head");
+    ///Esta linea de abajo hay que agregarla despues del get a countries
     const countryRow = createCountrySection('argentina');
+    const countryList = createDiv("countries-list", "coutries-list");
     const closeButton = createCloseButton();
 
     objectBluringAndFocusing(contactsSection);
@@ -147,15 +149,17 @@ function regionSectionAnable() {
 
     regionSection.appendChild(sectionHeader);
     rowSection.appendChild(rowHead);
+    rowSection.appendChild(countryList);
+    ///Esta linea de abajo hay que agregarla despues del get a countries 
+    countryList.appendChild(countryRow);
     regionSection.appendChild(closeButton);
     regionSection.appendChild(rowSection);
-    regionSection.appendChild(countryRow);
 
 
     closeButton.addEventListener("click", () => {
         regionSection.removeChild(sectionHeader);
         regionSection.removeChild(rowSection);
-        regionSection.removeChild(countryRow);
+        rowSection.removeChild(countryList);
         regionSection.removeChild(closeButton);
 
         disableDomObject(regionSection);

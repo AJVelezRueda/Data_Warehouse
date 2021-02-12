@@ -6,33 +6,34 @@ luego deployando
     json-server --watch db.json
 
 
+//Ejemplo de estructura para las regiones y paises => falta generar dinamicamente los countries rows y las regiones y ponerles el data-cityId usando el region id del padre
 
-    <section class="new-contacts2 anable" id="new-contact-section">
-        <section class="new-contact-header">
-            <form class="header-form">
-                <label for="fname">Nombre</label>
-                <input type="text" id="fname" name="firstname" placeholder="Nombre.." required>
-                <label for="lname">Apellido</label>
-                <input type="text" id="lname" name="lastname" placeholder=" Apellido.." required>
-                <label for="lname">Email</label>
-                <input type="text" id="email" name="email" placeholder=" Email.." required>
-                <label for="lname">Institución</label>
-                <input type="text" id="company" name="company" placeholder=" Comisión.." required>
-            </form>
-            <form class="tail-form">
-                <label for="country">País</label>
-                <select id="pais" name="pais">
-				  <option value="latam">Argentina</option>
-				  <option value="europa">Bolivia</option>
-				</select>
-                <label for="region">Provincia</label>
-                <select id="region" name="region">
-					<option value="bsas">Buenos Aires</option>
-					<option value="cordoba">Córdoba</option>
-                </select>
-                <label for="cv">CV</label>
-                <button class="upload-button" id="upload-cv">Cargar CV</button>
-                <button class="upload-button" id="upload-button">Cargar Contacto</button>
-            </form>
-        </section>
-    </section>
+<div class="regions-list">
+  <section class="region-row" data-regionId="1"> (1)
+    ...
+    <div class="countries-list">
+      <section class="country-row" data-countryId="1">
+    		...
+        <div class="cities-list">
+          <section class="city-row" data-cityId="1">
+						(2)
+          </section>
+        </div>
+        ...
+      </section>
+    </div>
+    ...
+  </section>
+</div>
+
+
+(1)
+elemento.dataset.regionId = 1
+
+
+(2)
+element.addClickListener(() => {
+   let name = ...;
+	 let countryId = element.closest(".country-row").dataset.countryId;
+   createCity(name, countryId)
+})
