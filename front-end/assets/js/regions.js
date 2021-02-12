@@ -119,15 +119,14 @@ function regionHeaderRender(parent, tittleText, buttonText) {
 }
 
 function createCountrySection(countryName, regionId) {
-    const countryRow = createSection("country-row", "country-row");
+    const countryRow = createSection("country-row", "country-row-" + countryName);
     const countryRowHead = createSection("country-section", "country-section");
-    const countryTittleDiv = createDiv("region-tittle", "country-row-tittle");
+    const countryTittleDiv = createDiv("region-tittle", "country-row-tittle-" + countryName);
     const countryInputDiv = createDiv("city-input disable", "city-input");
     const countryIconDiv = createIconsSection(countryName);
     const addButton = createButton('Agregar ciudad', "add-city");
     const label = createLabel("city-name", "Ciudad ");
     const input = createInputTextType("city-name", "City name...");
-
 
     countryRow.dataset.regionId = regionId;
     countryTittleDiv.appendChild(countryIconDiv);
@@ -153,11 +152,12 @@ function createCountrySection(countryName, regionId) {
     return countryRow;
 }
 
-function createCityySection(cityName) {
+function createCityySection(cityName, countryId) {
     const cityRow = createSection("city-row", "city-row");
     const cityTittleDiv = createDiv("region-tittle", "city-row-tittle");
     const cityIconDiv = createIconsSection(cityName);
 
+    cityRow.dataset.country = countryId;
     cityRow.appendChild(cityTittleDiv);
     cityTittleDiv.appendChild(cityIconDiv);
 
@@ -166,12 +166,13 @@ function createCityySection(cityName) {
 
 async function regionSectionAnable() {
     const sectionHeader = createSection("region-section-header", "region-section-header");
-    const rowSection = createSection("region-row", "region-row");
-    const rowHead = createSection("region-head", "region-head");
+    const regionListSection = createSection("region-list", "region-list");
+    //const rowSection = createSection("region-row", "region-row");
+    //const rowHead = createSection("region-head", "region-head");
     const countries = await getListofCountries();
     const regions = await getListofRegions();
     const countryList = createDiv("countries-list");
-    const cityList = createDiv("cities-list");
+    const cityList = createDiv("cities-list", "cities-list");
     const cityRow = createCityySection('sandanga');
     const closeButton = createCloseButton();
 
@@ -179,20 +180,32 @@ async function regionSectionAnable() {
     enableDomObject(regionSection);
 
     regionHeaderRender(sectionHeader, 'region', 'Region');
-    regionHeaderRender(rowHead, 'sudamerica', 'País');
 
-    countries.forEach(element => {
-        const countryRow = createCountrySection(element.name);
-        countryList.appendChild(countryRow);
-        countryRow.appendChild(cityList);
+    regions.forEach(element => {
+        const rowSection = createSection("region-row", "region-row-" + element.name);
+        const rowHead = createSection("region-head", "region-head");
+        regionHeaderRender(rowHead, element.name, 'País');
+
+        rowSection.dataset.regionId = element.id;
+        const regionId = element.id;
+
+        countries.forEach(it => {
+            const countryRow = createCountrySection(it.name, it.regions_id);
+            if (regionId == it.regions_id) {
+                countryList.appendChild(countryRow);
+                countryRow.appendChild(cityList);
+                cityList.appendChild(cityRow);
+            }
+        })
+
+        rowSection.appendChild(rowHead);
+        rowSection.appendChild(countryList);
+        regionListSection.appendChild(rowSection);
     })
 
     regionSection.appendChild(sectionHeader);
-    rowSection.appendChild(rowHead);
-    rowSection.appendChild(countryList);
-    cityList.appendChild(cityRow);
+    regionSection.appendChild(regionListSection);
     regionSection.appendChild(closeButton);
-    regionSection.appendChild(rowSection);
 
 
     closeButton.addEventListener("click", () => {
