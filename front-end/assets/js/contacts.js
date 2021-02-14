@@ -48,7 +48,11 @@ function renderNewContactSection() {
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
     const closeButton = createCloseButton();
 
-
+    inputFname.id = "fname";
+    inputLname.id = "flname";
+    emailInput.id = "femail";
+    companyInput = "fcompany";
+    
     contactButton.classList.add("upload-button");
     cvButton.classList.add("upload-button");
     formHeader.classList.add('header-form');

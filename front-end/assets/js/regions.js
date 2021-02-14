@@ -129,7 +129,7 @@ function createCountrySection(countryName, regionId, countryId) {
     const input = createInputTextType("city-name", "City name...");
 
     countryRow.dataset.regionId = regionId;
-    countryTittleDiv.dataset.countryId = countryId;
+    countryRowHead.dataset.country = countryId;
     countryTittleDiv.appendChild(countryIconDiv);
     countryTittleDiv.appendChild(addButton);
     countryInputDiv.appendChild(label);
@@ -146,7 +146,7 @@ function createCountrySection(countryName, regionId, countryId) {
 
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
-            const countryId = input.closest(".country-tittle").dataset.countryId;
+            const countryId = input.closest(".country-section").dataset.country;
             console.log(countryId);
             //createCountry(getingInputData(input), countryId);
         }
