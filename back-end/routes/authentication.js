@@ -1,4 +1,7 @@
 const jwt = require('jsonwebtoken');
+const { db } = require("../database");
+const { QueryTypes } = require("sequelize");
+
 
 function authenticateToken(req, res, next) {
     if (req.path === '/login' || req.path === '/users' && req.method === 'POST') {
@@ -27,7 +30,7 @@ function filterAdmin(req, res, next) {
 }
 
 async function findUserRole(id) {
-    const users = await db.query(`select rol from users where id = :id`, {
+    const users = await db.query(`select role from users where id = :id`, {
         replacements: { id: id },
         type: QueryTypes.SELECT
     });
