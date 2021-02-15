@@ -40,7 +40,7 @@ function renderListOfCities(list, parentDiv){
         const option = document.createElement('option');
         
         option.value = element;
-        option.innerHTML = element;        
+        option.innerHTML = element;  
 
         parentDiv.appendChild(option);
     })
@@ -77,6 +77,9 @@ function renderNewContactSection() {
     cvButton.classList.add("upload-button");
     formHeader.classList.add('header-form');
     formTail.classList.add('tail-form');
+
+    renderListOfCities(["Argentina","Chile"], countrySelect);
+    renderListOfCities(["Buenos aires","Santiago"], citySelect);
 
     formHeader.appendChild(fnameLabel);
     formHeader.appendChild(inputFname);
