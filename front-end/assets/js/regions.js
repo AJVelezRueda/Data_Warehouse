@@ -147,8 +147,7 @@ function createCountrySection(countryName, regionId, countryId) {
     input.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             const countryId = input.closest(".country-section").dataset.country;
-            console.log(countryId);
-            //createCountry(getingInputData(input), countryId);
+            createCity(getingInputData(input), countryId);
         }
     });
 

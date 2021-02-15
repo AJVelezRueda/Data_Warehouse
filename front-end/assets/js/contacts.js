@@ -26,6 +26,26 @@ function createSelectedContactsSection() {
 }
 
 
+function filterCitiesByCountryId(countryId,listCities){
+    const cities = [];
+    listCities.forEach(city => {
+        if( city.id === countryId){
+                cities.push(city.name);
+        }
+    });
+}
+
+function renderListOfCities(list, parentDiv){
+    list.forEach( element => {
+        const option = document.createElement('option');
+        
+        option.value = element;
+        option.innerHTML = element;        
+
+        parentDiv.appendChild(option);
+    })
+}
+
 function renderNewContactSection() {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
     const formHeader = document.createElement('form');
@@ -51,7 +71,7 @@ function renderNewContactSection() {
     inputFname.id = "fname";
     inputLname.id = "flname";
     emailInput.id = "femail";
-    companyInput = "fcompany";
+    companyInput.id = "fcompany";
     
     contactButton.classList.add("upload-button");
     cvButton.classList.add("upload-button");
