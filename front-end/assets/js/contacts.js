@@ -46,7 +46,7 @@ function renderListOfCities(list, parentDiv){
     })
 }
 
-function renderNewContactSection() {
+async function renderNewContactSection() {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
     const formHeader = document.createElement('form');
     const formTail = document.createElement('form');
@@ -67,7 +67,11 @@ function renderNewContactSection() {
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
     const closeButton = createCloseButton();
-
+    const countriesList = await getListofCountries();
+    const cities = await getCities();
+    const listOfCities = cities.cities;
+    const countriesNames = [];
+    
     inputFname.id = "fname";
     inputLname.id = "flname";
     emailInput.id = "femail";
@@ -78,8 +82,8 @@ function renderNewContactSection() {
     formHeader.classList.add('header-form');
     formTail.classList.add('tail-form');
 
-    renderListOfCities(["Argentina","Chile"], countrySelect);
-    renderListOfCities(["Buenos aires","Santiago"], citySelect);
+    countriesList.forEach( country  => { countriesNames.push(country.name)})
+    renderListOfCities(countriesNames, countrySelect);
 
     formHeader.appendChild(fnameLabel);
     formHeader.appendChild(inputFname);
@@ -113,6 +117,19 @@ function renderNewContactSection() {
         disableDomObject(newContactSection);
         objectBluringAndFocusing(contactsSection);
 
+    });
+
+    citySelect.addEventListener('click', () => {
+        const value = countrySelect.options[countrySelect.selectedIndex].value; 
+        const selectedCountry = countriesList.find(element => element.name === value);
+        const citiesToRender = [];
+
+        listOfCities.forEach(city =>{
+            if(city.countries_id === selectedCountry.id){
+                citiesToRender.push(city);
+            }
+        });
+        renderListOfCities(citiesToRender, citySelect);
     });
 }
 

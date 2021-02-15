@@ -171,7 +171,7 @@ async function regionSectionAnable() {
     const regionListSection = createSection("region-list", "region-list");
     const countries = await getListofCountries();
     const regions = await getListofRegions();
-    const cities = await getCities()
+    const cities = await getCities();
     const listOfCities = cities.cities;
     const closeButton = createCloseButton();
 
