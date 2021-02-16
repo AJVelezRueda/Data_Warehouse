@@ -47,23 +47,22 @@ function renderListOfCities(list, parentDiv){
 }
 
 
-function newContactCreate(fnameInput,lnameInput, emailInput, companyInput, countrySelect , citySelect, channelSelect, preferenceSelect, chargeButton) {
+function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, citySelect, channelSelect, preferenceSelect, cities_id, chargeButton) {
     const firstName = getingInputData(fnameInput);
     const lastName = getingInputData(lnameInput);
     const email = getingInputData(emailInput);
-    const companyName = getingInputData(companyInput);
-    const countryName = countrySelect.options[countrySelect.selectedIndex].value;
+    const telephone = getingInputData(telehoneInput);
     const channel = channelSelect.options[countrySelect.selectedIndex].value;
     const cityName = citySelect.options[countrySelect.selectedIndex].value;
     const preference = preferenceSelect.options[countrySelect.selectedIndex].value;
 
     const newContact = {
-        preferences: [{ channel: 'Whatsapp', intrest: 70 }],
-        contact_name: "Lola Mora",
+        preferences: [{ channel:channel , intrest: Number(preference) }],
+        contact_name: firstName + " "+ lastName,
         cities_id: cities_id,
-        contact_email: "laLola@gmail.com",
-        contact_adress: "calle falsa 1234",
-        contact_phone: "2222515442",
+        contact_email: email,
+        contact_adress:"",
+        contact_phone: telephone,
     };
 }
 
@@ -79,6 +78,8 @@ async function renderNewContactSection() {
     const inputLname = createInputTextType("lname", "Apellido...");
     const emailLabel = createLabel("emailf", "Mail");
     const emailInput = createInputTextType("mailf", "Mail");
+    const addressLabel = createLabel("addressf", "Dirección");
+    const addressInput = createInputTextType("adressf", "Dirección...");
     const telephoneLabel = createLabel("telephonef", "Telefono");
     const telephoneInput = createInputTextType("telephonef", "Telefono...");
     //hacer get de los paises
@@ -90,7 +91,7 @@ async function renderNewContactSection() {
     const preferenceInput = createLabel("preferenceF", "Preferencia");
     const channelLabel = createLabel("fchannel", "Canal");
     const channelSelect = createSelect('channelabel', 'channelSelect', 'Canales');
-    const cvLabel = createLabel("fname", "Cargar datos");
+    const cvLabel = createLabel("fname", "Cargar CV");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
     const closeButton = createCloseButton();
@@ -105,6 +106,7 @@ async function renderNewContactSection() {
     telephoneInput.id = "fcompany";
     channelSelect.id = "channelF";
     preferenceSelect.id = "preference";
+    addressInput.id = "addressF";
 
     contactButton.classList.add("upload-button");
     cvButton.classList.add("upload-button");
@@ -135,6 +137,8 @@ async function renderNewContactSection() {
     formTail.appendChild(countrySelect);
     formTail.appendChild(citySelectLabel);
     formTail.appendChild(citySelect);
+    formTail.appendChild(addressLabel);
+    formTail.appendChild(addressInput);
     formTail.appendChild(cvLabel);
     formTail.appendChild(cvButton);
     formTail.appendChild(contactButton);
