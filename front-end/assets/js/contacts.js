@@ -47,23 +47,26 @@ function renderListOfCities(list, parentDiv){
 }
 
 
-function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, citySelect, channelSelect, preferenceSelect, cities_id, chargeButton) {
+function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
     const firstName = getingInputData(fnameInput);
     const lastName = getingInputData(lnameInput);
     const email = getingInputData(emailInput);
     const telephone = getingInputData(telehoneInput);
-    const channel = channelSelect.options[countrySelect.selectedIndex].value;
-    const cityName = citySelect.options[countrySelect.selectedIndex].value;
-    const preference = preferenceSelect.options[countrySelect.selectedIndex].value;
+    const address = getingInputData(addressInput);
+    const channel = channelSelect.options[channelSelect.selectedIndex].value;
+    const preference = preferenceSelect.options[preferenceSelect.selectedIndex].value;
+    const cityValue = cityIput.options[cityIput.selectedIndex].value;
+    const cityId = listCities.filter(city => city.name === cityValue)[0].id;
 
     const newContact = {
         preferences: [{ channel:channel , intrest: Number(preference) }],
         contact_name: firstName + " "+ lastName,
-        cities_id: cities_id,
+        cities_id: cityId,
         contact_email: email,
-        contact_adress:"",
+        contact_adress: address,
         contact_phone: telephone,
     };
+    return newContact;
 }
 
 
@@ -172,6 +175,11 @@ async function renderNewContactSection() {
         });
         removeAllOptions(citySelect)
         renderListOfCities(citiesToRender, citySelect);
+    });
+
+    contactButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        newContactCreate(inputFname,inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
     });
 }
 
