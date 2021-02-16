@@ -76,7 +76,7 @@ async function renderNewContactSection() {
     const inputFname = createInputTextType("namef", "Nombre...");
     const lnameLabel = createLabel("lname", "Apellido");
     const inputLname = createInputTextType("lname", "Apellido...");
-    const emailLabel = createLabel("emailf", "Mail");
+    const emailLabel = createLabel("emailf", "Mail...");
     const emailInput = createInputTextType("mailf", "Mail");
     const addressLabel = createLabel("addressf", "Dirección");
     const addressInput = createInputTextType("adressf", "Dirección...");
