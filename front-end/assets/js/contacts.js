@@ -134,7 +134,7 @@ async function renderNewContactSection() {
                 citiesToRender.push(city.name);
             }
         });
-
+        removeAllOptions(citySelect)
         renderListOfCities(citiesToRender, citySelect);
     });
 }
