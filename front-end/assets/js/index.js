@@ -310,3 +310,8 @@ function createSecondaryText(text) {
 function getingInputData(input) {
     return input.value;
 }
+
+function removeAllOptions(select){
+    Array.from(select.options).slice(1).forEach(it => select.removeChild(it))
+ }
+ 

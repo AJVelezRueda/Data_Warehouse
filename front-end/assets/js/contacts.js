@@ -47,8 +47,17 @@ function renderListOfCities(list, parentDiv){
 }
 
 
-function removeAllOptions(select){
-   Array.from(select.options).slice(1).forEach(it => select.removeChild(it))
+function newContactCreate(fnameInput,lnameInput, emailInput, companyInput, countrySelect , citySelect, chargeButton) {
+    const firstName = getingInputData(fnameInput);
+    const lastName = getingInputData(lnameInput);
+    const email = getingInputData(emailInput);
+    const companyName = getingInputData(companyInput);
+    const countryName = countrySelect.options[countrySelect.selectedIndex].value;
+    const cityName = citySelect.options[countrySelect.selectedIndex].value;
+
+    const newContact = {
+
+    };
 }
 
 async function renderNewContactSection() {
@@ -68,6 +77,10 @@ async function renderNewContactSection() {
     const countrySelect = createSelect('pais', 'pais', 'Paises');
     const citySelect = createSelect('ciudad', 'ciudad', 'Ciudades');
     const citySelectLabel = createLabel("citySeleLabelF", "Ciudad");
+    const preferenceLabel = createSelect('preferenceabel', 'preferenceLabel', 'Preferencia');
+    const preferenceInput = createLabel("preferenceF", "Preferencia");
+    const channelLabel = createLabel("fchannel", "Canal");
+    const channelInput = createInputTextType("channelInput", "Canal...");
     const cvLabel = createLabel("fname", "Cargar datos");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
@@ -81,7 +94,9 @@ async function renderNewContactSection() {
     inputLname.id = "flname";
     emailInput.id = "femail";
     companyInput.id = "fcompany";
-    
+    channelInput.id = "channelF";
+    preferenceLabel.id = "preference";
+
     contactButton.classList.add("upload-button");
     cvButton.classList.add("upload-button");
     formHeader.classList.add('header-form');
@@ -99,6 +114,10 @@ async function renderNewContactSection() {
     formHeader.appendChild(companyLabel);
     formHeader.appendChild(companyInput);
 
+    formTail.appendChild(channelLabel);
+    formTail.appendChild(channelInput);
+    formTail.appendChild(preferenceInput);
+    formTail.appendChild(preferenceLabel);
     formTail.appendChild(countrySelectLabel);
     formTail.appendChild(countrySelect);
     formTail.appendChild(citySelectLabel);
