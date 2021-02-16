@@ -48,10 +48,7 @@ function renderListOfCities(list, parentDiv){
 
 
 function removeAllOptions(select){
-    const initialOption = document.createElement("option");
-    if (select.length >= 0) {
-        select.remove(select.length-1);
-    }
+   Array.from(select.options).slice(1).forEach(it => select.removeChild(it))
 }
 
 async function renderNewContactSection() {
@@ -137,7 +134,7 @@ async function renderNewContactSection() {
                 citiesToRender.push(city.name);
             }
         });
-        removeAllOptions(citySelect);
+
         renderListOfCities(citiesToRender, citySelect);
     });
 }
