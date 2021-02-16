@@ -315,3 +315,12 @@ function removeAllOptions(select){
     Array.from(select.options).slice(1).forEach(it => select.removeChild(it))
  }
  
+
+ function createOptionForLabel(select, listOfOptions){
+    listOfOptions.forEach( element => {
+        const option = document.createElement("option");
+
+        option.innerHTML = element;
+        select.appendChild(option);
+    });
+}

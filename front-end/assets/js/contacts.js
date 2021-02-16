@@ -47,18 +47,27 @@ function renderListOfCities(list, parentDiv){
 }
 
 
-function newContactCreate(fnameInput,lnameInput, emailInput, companyInput, countrySelect , citySelect, chargeButton) {
+function newContactCreate(fnameInput,lnameInput, emailInput, companyInput, countrySelect , citySelect, channelSelect, preferenceSelect, chargeButton) {
     const firstName = getingInputData(fnameInput);
     const lastName = getingInputData(lnameInput);
     const email = getingInputData(emailInput);
     const companyName = getingInputData(companyInput);
     const countryName = countrySelect.options[countrySelect.selectedIndex].value;
+    const channel = channelSelect.options[countrySelect.selectedIndex].value;
     const cityName = citySelect.options[countrySelect.selectedIndex].value;
+    const preference = preferenceSelect.options[countrySelect.selectedIndex].value;
 
     const newContact = {
-
+        preferences: [{ channel: 'Whatsapp', intrest: 70 }],
+        contact_name: "Lola Mora",
+        cities_id: cities_id,
+        contact_email: "laLola@gmail.com",
+        contact_adress: "calle falsa 1234",
+        contact_phone: "2222515442",
     };
 }
+
+
 
 async function renderNewContactSection() {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
@@ -70,17 +79,17 @@ async function renderNewContactSection() {
     const inputLname = createInputTextType("lname", "Apellido...");
     const emailLabel = createLabel("emailf", "Mail");
     const emailInput = createInputTextType("mailf", "Mail");
-    const companyLabel = createLabel("companif", "Compañía");
-    const companyInput = createInputTextType("companyf", "Compañía...");
+    const telephoneLabel = createLabel("telephonef", "Telefono");
+    const telephoneInput = createInputTextType("telephonef", "Telefono...");
     //hacer get de los paises
     const countrySelectLabel = createLabel("citySeleLabelF", "País");
     const countrySelect = createSelect('pais', 'pais', 'Paises');
     const citySelect = createSelect('ciudad', 'ciudad', 'Ciudades');
     const citySelectLabel = createLabel("citySeleLabelF", "Ciudad");
-    const preferenceLabel = createSelect('preferenceabel', 'preferenceLabel', 'Preferencia');
+    const preferenceSelect = createSelect('preferenceabel', 'preferenceSelect', 'Preferencia');
     const preferenceInput = createLabel("preferenceF", "Preferencia");
     const channelLabel = createLabel("fchannel", "Canal");
-    const channelInput = createInputTextType("channelInput", "Canal...");
+    const channelSelect = createSelect('channelabel', 'channelSelect', 'Canales');
     const cvLabel = createLabel("fname", "Cargar datos");
     const cvButton = createButton('Cargar CV', 'upload-button-cv');
     const contactButton = createButton('Cargar contacto', 'upload-button-contact');
@@ -93,9 +102,9 @@ async function renderNewContactSection() {
     inputFname.id = "fname";
     inputLname.id = "flname";
     emailInput.id = "femail";
-    companyInput.id = "fcompany";
-    channelInput.id = "channelF";
-    preferenceLabel.id = "preference";
+    telephoneInput.id = "fcompany";
+    channelSelect.id = "channelF";
+    preferenceSelect.id = "preference";
 
     contactButton.classList.add("upload-button");
     cvButton.classList.add("upload-button");
@@ -105,19 +114,23 @@ async function renderNewContactSection() {
     countriesList.forEach( country  => { countriesNames.push(country.name)})
     renderListOfCities(countriesNames, countrySelect);
 
+    createOptionForLabel(preferenceSelect, [100,70,50,20]);
+    createOptionForLabel(channelSelect, ["Whatsapp","Facebook","Mail","Telefono"]);
+
+
     formHeader.appendChild(fnameLabel);
     formHeader.appendChild(inputFname);
     formHeader.appendChild(lnameLabel);
     formHeader.appendChild(inputLname);
     formHeader.appendChild(emailLabel);
     formHeader.appendChild(emailInput);
-    formHeader.appendChild(companyLabel);
-    formHeader.appendChild(companyInput);
+    formHeader.appendChild(telephoneLabel);
+    formHeader.appendChild(telephoneInput);
 
     formTail.appendChild(channelLabel);
-    formTail.appendChild(channelInput);
+    formTail.appendChild(channelSelect);
     formTail.appendChild(preferenceInput);
-    formTail.appendChild(preferenceLabel);
+    formTail.appendChild(preferenceSelect);
     formTail.appendChild(countrySelectLabel);
     formTail.appendChild(countrySelect);
     formTail.appendChild(citySelectLabel);
