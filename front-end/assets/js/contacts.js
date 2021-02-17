@@ -236,6 +236,7 @@ async function contactRow(contactObject) {
     const contactId = contactObject.id;
     const city = await getCityById(contactObject.cities_id);
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
+    //const preferences = contactObject.preferences;
     const tableRow = createSection("contacts-grid row");
     const selecColumn = createDiv('select-column', 'select-column-row' + String(contactId));
     const nameColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
@@ -251,7 +252,6 @@ async function contactRow(contactObject) {
     const checkbox = createACheckBox();
     const contactRole = createPrincipalText('Student');
     const contactCompany = createPrincipalText('CONICET');;
-    //const preferences = contactObject.preferences;
     //const contactRole = contactObject.role;
     //const contactCompany = contactObject.company;
 
