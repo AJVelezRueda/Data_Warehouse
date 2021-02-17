@@ -48,7 +48,6 @@ function renderListOfCities(list, parentDiv){
 
 
 function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
-    
     try{
         const firstName = getingInputData(fnameInput);
         const lastName = getingInputData(lnameInput);
@@ -75,8 +74,6 @@ function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, addr
     }
 
 }
-
-
 
 async function renderNewContactSection() {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
@@ -193,7 +190,8 @@ async function renderNewContactSection() {
 
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
-        newContactCreate(inputFname,inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
+        const newContact = newContactCreate(inputFname,inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
+        createResource("contacts", newContact)
     });
 }
 
