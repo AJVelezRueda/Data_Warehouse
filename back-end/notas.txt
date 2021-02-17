@@ -1,11 +1,9 @@
 TODO
--para levantar el server rápido se puede hacer :
-instalando 
-   npm install -g json-server
-luego deployando
-    json-server --watch db.json
+-falta que el back traiga las preferencias de cada conacto
 
 
+
+NOTAS
 //Ejemplo de estructura para las regiones y paises => falta generar dinamicamente los countries rows y las regiones y ponerles el data-cityId usando el region id del padre
 
 <div class="regions-list">
