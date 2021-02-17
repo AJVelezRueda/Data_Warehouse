@@ -191,7 +191,8 @@ async function renderNewContactSection() {
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
         const newContact = newContactCreate(inputFname,inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
-        createResource("contacts", newContact)
+        createResource("contacts", newContact);
+        alert("El contacto se creo satisfactoriamente. Recargue la pagina");
     });
 }
 

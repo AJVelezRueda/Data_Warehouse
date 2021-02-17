@@ -110,8 +110,10 @@ function regionHeaderRender(parent, tittleText, buttonText) {
             try {
                 const regionId = input.closest(".region-row").dataset.regionId;
                 createCountry(getingInputData(input), regionId);
+                alert("Se ha creado un País");
             } catch {
                 createRegion(getingInputData(input));
+                alert("Se creó un Region. Recargue la pagina");
             }
         }
     });
@@ -148,6 +150,7 @@ function createCountrySection(countryName, regionId, countryId) {
         if (e.key === 'Enter') {
             const countryId = input.closest(".country-section").dataset.country;
             createCity(getingInputData(input), countryId);
+            alert("Se ha creado una ciudad Recargue la pagina");
         }
     });
 
