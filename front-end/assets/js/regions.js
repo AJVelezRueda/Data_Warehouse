@@ -142,6 +142,14 @@ function createCountrySection(countryName, regionId, countryId) {
 
     countryRow.appendChild(countryRowHead);
 
+    countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
+        console.log("soy un trash");
+    });
+
+    countryIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
+        console.log("soy un pen");
+    });
+
     addButton.addEventListener("click", () => {
         enableDomObject(countryInputDiv);
     });
@@ -161,6 +169,16 @@ function createCitySection(cityName, countryId) {
     const cityRow = createSection("city-row", "city-row-" + cityName);
     const cityTittleDiv = createDiv("region-tittle", "city-row-tittle-" + cityName);
     const cityIconDiv = createIconsSection(cityName);
+
+    cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
+        console.log("soy un trash");
+        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".city-row").dataset.countryId);
+    });
+
+    cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
+        console.log("soy un pen");
+        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".city-row").dataset.countryId);
+    });
 
     cityRow.dataset.country = countryId;
     cityRow.appendChild(cityTittleDiv);

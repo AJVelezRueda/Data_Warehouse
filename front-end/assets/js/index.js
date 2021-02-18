@@ -55,6 +55,7 @@ function creatImgObject(imgSrc, imgClassName, imgAltName) {
     img.className = imgClassName;
     img.alt = imgAltName;
     img.src = imgSrc;
+    img.className = imgAltName;
     return img
 }
 
