@@ -144,10 +144,13 @@ function createCountrySection(countryName, regionId, countryId) {
 
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         console.log("soy un trash");
+        const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
+
     });
 
     countryIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
         console.log("soy un pen");
+        const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
     });
 
     addButton.addEventListener("click", () => {
