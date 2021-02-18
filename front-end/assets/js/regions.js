@@ -168,11 +168,12 @@ function createCountrySection(countryName, regionId, countryId) {
     return countryRow;
 }
 
-function createCitySection(cityName, countryId) {
+function createCitySection(cityName, countryId, cityId) {
     const cityRow = createSection("city-row", "city-row-" + cityName);
     const cityTittleDiv = createDiv("region-tittle", "city-row-tittle-" + cityName);
     const cityIconDiv = createIconsSection(cityName);
 
+    cityTittleDiv.dataset.cityId = cityId;
     cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         console.log("soy un trash");
         console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".city-row").dataset.countryId);
@@ -226,7 +227,7 @@ async function regionSectionAnable() {
 
                 listOfCities.forEach(city => {
                     if (city.countries_id === country_id) {
-                        const cityRow = createCitySection(city.name, city.name);
+                        const cityRow = createCitySection(city.name, city.name,city.id);
 
                         cityRow.dataset.countryId = country_id;
                         cityList.appendChild(cityRow);
