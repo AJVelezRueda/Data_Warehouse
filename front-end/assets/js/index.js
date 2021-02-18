@@ -54,7 +54,6 @@ function creatImgObject(imgSrc, imgClassName, imgAltName) {
     const img = document.createElement('img');
     img.className = imgClassName;
     img.alt = imgAltName;
-    img.id = imgAltName;
     img.src = imgSrc;
     return img
 }

@@ -60,11 +60,10 @@ async function createCity(cityName, countries_id) {
 }
 
 
-
 function createIconsSection(tittleText) {
     const iconSection = document.createElement('div');
     const tittle = document.createElement('h3');
-    const deleteImg = creatImgObject("./assets/images/trash.png", "trash", "trash");
+    const deleteImg = creatImgObject("./assets/images/trash.png", "trash","trash");
     const editImg = creatImgObject("./assets/images/pen.png", "pen", "pen");
 
     iconSection.className = "icons-section";
@@ -126,6 +125,7 @@ function createCountrySection(countryName, regionId, countryId) {
     const countryTittleDiv = createDiv("country-tittle", "country-row-tittle-" + countryName);
     const countryInputDiv = createDiv("city-input disable", "city-input");
     const countryIconDiv = createIconsSection(countryName);
+    
     const addButton = createButton('Agregar ciudad', "add-city");
     const label = createLabel("city-name", "Ciudad ");
     const input = createInputTextType("city-name", "City name...");
