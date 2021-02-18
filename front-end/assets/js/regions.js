@@ -143,15 +143,16 @@ function createCountrySection(countryName, regionId, countryId) {
     countryRow.appendChild(countryRowHead);
 
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
-        console.log("soy un trash");
         const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
+        deleteResource("countries", countryId);
 
     });
 
-    countryIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
-        console.log("soy un pen");
-        const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
-    });
+    // countryIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
+    //     const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
+
+    //     deleteResource("countries", countryId)
+    // });
 
     addButton.addEventListener("click", () => {
         enableDomObject(countryInputDiv);
@@ -175,14 +176,20 @@ function createCitySection(cityName, countryId, cityId) {
 
     cityTittleDiv.dataset.cityId = cityId;
     cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
-        console.log("soy un trash");
-        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
+        deleteResource(
+            "cities", 
+            cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
+            .then(response => {
+                console.log("alallalala")
+                if (response.message) {
+                    alert(response.message);
+                }
+            });
     });
 
-    cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
-        console.log("soy un pen");
-        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
-    });
+    // cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
+    //     deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
+    // });
 
     cityRow.dataset.country = countryId;
     cityRow.appendChild(cityTittleDiv);

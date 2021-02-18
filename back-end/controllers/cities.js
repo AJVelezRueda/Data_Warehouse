@@ -37,8 +37,12 @@ async function get(req, res) {
 }
 
 async function remove(req, res) {
-    await deleteResoueceById('cities', Number(req.params.id));
-    res.status(200).end();
+    try{
+        await deleteResoueceById('cities', Number(req.params.id));
+        res.status(200).end();
+    } catch (e){
+        res.status(400).json({ message: "No se puede eliminar. Verificá que ciudad no esté en uso" });
+    }
 }
 
 

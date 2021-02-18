@@ -46,7 +46,10 @@ function deleteResource(resource, id) {
                 'Content-Type': 'application/json'
             }
         }).catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+        .then(response => {
+            console.log('Success:', response);
+            return response.json();
+        });
 }
 
 function creatImgObject(imgSrc, imgClassName, imgAltName) {
