@@ -176,12 +176,12 @@ function createCitySection(cityName, countryId, cityId) {
     cityTittleDiv.dataset.cityId = cityId;
     cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         console.log("soy un trash");
-        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".city-row").dataset.countryId);
+        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
     });
 
     cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
         console.log("soy un pen");
-        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".city-row").dataset.countryId);
+        console.log(cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
     });
 
     cityRow.dataset.country = countryId;
