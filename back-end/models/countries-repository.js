@@ -1,5 +1,5 @@
 const { QueryTypes } = require("sequelize");
-const { db } = require("../database");
+const { db, findOne } = require("../database");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const salt = 10;
@@ -17,19 +17,15 @@ async function insertNewCountry(newCountry) {
     return result[0];
 }
 
-async function getCountriesByID(countries_id) {
-    const countries = await db.query(`SELECT
-    countries.name as name,
-    regions.name as region_name,
-    regions.id as region_id
-    FROM countries
-    INNER JOIN regions ON regions.id = countries.regions_id
-    WHERE countries.id = :countries_id
-    `, {
-        replacements: { countries_id },
-        type: QueryTypes.SELECT
-    });
-    return countries[0];
+function getCountriesByID(id) {
+    return findOne(`SELECT
+        countries.name as name,
+        regions.name as region_name,
+        regions.id as region_id
+        FROM countries
+        INNER JOIN regions ON regions.id = countries.regions_id
+        WHERE countries.id = :id
+        `, id, 'pais');
 }
 
 

@@ -6,16 +6,21 @@ const db = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, 'D4T4IS@W
     dialect: 'mysql'
 })
 
-async function getResourceById(table, id) {
-    const resource = await db.query(`select * from ${table} where id = :id`, {
-        replacements: { id: id },
+async function findOne(query, id, type) {
+    const results = await db.query(query, {
+        replacements: { id },
         type: QueryTypes.SELECT
     });
-    if (resource.length === 0) {
-        throw new Error(`No existe el recurso en ${table}`);
+    
+    if (results.length === 0) {
+        throw new Error(`No existe ${type} con id ${id}`);
     }
+    return results[0];
+}
 
-    return resource[0];
+
+function getResourceById(table, id) {
+    return findOne(`select * from ${table} where id = :id`, id, table);
 };
 
 async function getAllResources(table) {
@@ -36,10 +41,13 @@ async function cleanTable(table) {
     await db.query("SET FOREIGN_KEY_CHECKS = 1;");
 }
 
+
+
 module.exports = {
     db,
     getResourceById,
     getAllResources,
     deleteResoueceById,
-    cleanTable
+    cleanTable,
+    findOne
 };

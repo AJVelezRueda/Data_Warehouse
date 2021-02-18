@@ -90,6 +90,12 @@ describe('Countries', () => {
                 countries_name: 'Argentina'
             });
         });
+
+        it('should return 404 status when city does not exist', async() => {
+            const res = await withToken(agent.get('/cities/1'));
+            assert.equal(res.status, 404);
+            assert.deepEqual(res.body, {});
+        });
     });
 
 
@@ -108,9 +114,10 @@ describe('Countries', () => {
 
             const res = await withToken(agent.delete(`/cities/1`));
             assert.equal(res.status, 200);
-            
-            const resultGet = await withToken(agent.get('/cities/1'));
-            assert.equal(resultGet.status, 200);
+
+            const newres = await withToken(agent.get('/cities'))
+            assert.equal(newres.status, 200);
+            assert.deepEqual(newres.body, { cities: [] });
         });
     });
 });

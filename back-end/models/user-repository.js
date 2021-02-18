@@ -1,5 +1,5 @@
 const { QueryTypes } = require("sequelize");
-const { db } = require("../database");
+const { db, findOne } = require("../database");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const salt = 10;
@@ -21,16 +21,7 @@ async function insert(user) {
 
 
 async function findUserById(id) {
-    const users = await db.query(`select id, name, username, email from users where id = :id`, {
-        replacements: { id: id },
-        type: QueryTypes.SELECT
-    });
-
-    if (users.length === 0) {
-        throw new Error('No existe el usuario');
-    }
-
-    return users[0];
+    return findOne(`select id, name, username, email from users where id = :id`, id, 'usuario');
 }
 
 

@@ -28,8 +28,12 @@ async function listAll(req, res) {
 }
 
 async function get(req, res) {
-    const city = await getCityByID(Number(req.params.id))
-    res.json(city).status(200);
+    try {
+        const city = await getCityByID(Number(req.params.id))
+        res.json(city).status(200);
+    } catch (e) {
+        res.status(404).end();
+    }
 }
 
 async function remove(req, res) {
