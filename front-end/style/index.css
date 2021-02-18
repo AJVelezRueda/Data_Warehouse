@@ -156,7 +156,13 @@ select {
 .more-options {
     border: 1px solid #33739C;
     margin-top: 5px;
-    padding: 2% 1%;
+    padding: 3% 7%;
+    flex-direction: column;
+}
+
+.more-options-inputs{
+    display: flex;
+    flex-direction: column;
 }
 
 .header-form,

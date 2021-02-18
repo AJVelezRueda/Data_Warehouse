@@ -10,6 +10,7 @@
     <script src="assets/js/index.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="assets/js/regions.js" type="text/javascript" charset="utf-8" defer></script>
     <script src="assets/js/contacts.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="assets/js/search.js" type="text/javascript" charset="utf-8" defer></script>
 </head>
 
 <body>
@@ -33,21 +34,16 @@
         </nav>
     </header>
     <section class="keypad" id="keypad-section">
-        <div class="search-section">
+        <div class="search-section" id="search-section">
             <input type="text" placeholder="  Buscar..." name="search" class="search-input" id="search-input">
             <img src="./assets/images/drop-down-arrow.png" alt="expand-options" class="expand-options-img" id="expand-options-img">
             <img src="./assets/images/lupa _fina.png" alt="lupa" class="lupa-img" id="lupa">
-            <div class="more-options disable">
-                <div><label for="name">Nombre</label>
-                    <input type="text" id="contact-name" class="name" placeholder=" Nombre del contacto..." required>
-                    <label for="company">Company</label>
-                    <input type="text" id="company" class="company" placeholder=" Company..." required>
-                </div>
-                <div>
-                    <label for="comission-search-label">Comisión</label>
-                    <select id="comission-search" name="comission-search">
-					    <option value="all">Todos</option>
-                    </select>
+            <div class="more-options disable" id="more-options">
+                <div class="more-options-inputs" id="more-options-inputs">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="contact-name-search" class="name" placeholder=" Nombre del contacto..." required>
+                    <label for="role">Cargo</label>
+                    <input type="text" id="role-search" class="role-search" placeholder=" Cargo del contacto..." required>
                 </div>
                 <div>
                     <label for="company-search-label">Compañia  </label>
@@ -56,8 +52,20 @@
                     </select>
                 </div>
                 <div>
+                    <label for="channel-search-label">Canal</label>
+                    <select id="channel-search" name="channel-search">
+					    <option value="all">Todos</option>
+                    </select>
+                </div>
+                <div>
                     <label for="progress-search-label">Interés</label>
                     <select id="progress-search" name="progress-search">
+					    <option value="all">Todos</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="country-search-label">Pais</label>
+                    <select id="country-search" name="country-search">
 					    <option value="all">Todos</option>
                     </select>
                 </div>

@@ -108,10 +108,9 @@ describe('Countries', () => {
 
             const res = await withToken(agent.delete(`/cities/1`));
             assert.equal(res.status, 200);
-
-
+            
             const resultGet = await withToken(agent.get('/cities/1'));
-            assert.equal(resultGet.status, 404);
+            assert.equal(resultGet.status, 200);
         });
     });
 });
