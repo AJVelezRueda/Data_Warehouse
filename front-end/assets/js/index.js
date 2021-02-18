@@ -45,8 +45,7 @@ function deleteResource(resource, id) {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
+        }).catch(error => console.error('Error:', error))
         .then(response => console.log('Success:', response));
 }
 

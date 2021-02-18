@@ -33,7 +33,7 @@ async function get(req, res) {
 }
 
 async function remove(req, res) {
-    deleteResoueceById('cities', Number(req.params.id));
+    await deleteResoueceById('cities', Number(req.params.id));
     res.status(200).end();
 }
 

@@ -31,7 +31,7 @@ async function get(req, res) {
 
 
 async function remove(req, res) {
-    deleteResoueceById('regions', Number(req.params.id));
+    await deleteResoueceById('regions', Number(req.params.id));
     res.status(200).end();
 }
 

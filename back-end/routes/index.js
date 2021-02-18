@@ -1,3 +1,4 @@
+const cors = require('cors')
 const user = require('../controllers/user');
 const session = require('../controllers/session');
 const regions = require('../controllers/regions');
@@ -13,19 +14,19 @@ function routes(app) {
     app.post('/users', user.create);
 
     app.put('/users/:id', user.update);
-    app.delete('/users/:id', user.remove, filterAdmin);
+    app.delete('/users/:id', user.remove, filterAdmin, cors());
 
     app.get('/regions', regions.listAll, filterAdmin);
     app.get('/regions/:id', regions.get, filterAdmin);
     app.post('/regions', regions.create, filterAdmin);
 
-    app.delete('/regions/:id', regions.remove, filterAdmin);
+    app.delete('/regions/:id', regions.remove, filterAdmin, cors());
 
     app.get('/countries', countries.listAll, filterAdmin);
     app.get('/countries/:id', countries.get, filterAdmin);
     app.post('/countries', countries.create, filterAdmin);
 
-    app.delete('/countries/:id', countries.remove, filterAdmin);
+    app.delete('/countries/:id', countries.remove, filterAdmin, cors());
 
     app.get('/cities', cities.listAll, filterAdmin);
     app.post('/cities', cities.create, filterAdmin);
@@ -37,8 +38,7 @@ function routes(app) {
     app.get('/contacts', contacts.listAll, filterAdmin);
     app.get('/contacts/:id', contacts.get, filterAdmin);
 
-
-    app.delete('/contacts/:id', contacts.remove, filterAdmin);
+    app.delete('/contacts/:id', contacts.remove, filterAdmin, cors());
 
     app.post('/login', session.login);
 }
