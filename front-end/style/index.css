@@ -156,8 +156,12 @@ select {
 .more-options {
     border: 1px solid #33739C;
     margin-top: 5px;
-    padding: 3% 7%;
+    padding: 3% 2%;
     flex-direction: column;
+    position: absolute;
+    background: white;
+    width: 33.1vw;
+    margin-left: 4px;
 }
 
 .more-options-inputs{
