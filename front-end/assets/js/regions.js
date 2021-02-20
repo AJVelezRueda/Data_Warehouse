@@ -193,7 +193,8 @@ function createCitySection(cityName, countryId, cityId) {
     cityTittleDiv.dataset.cityId = cityId;
     cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         const alertSection = document.getElementById("alert-section");
-        const cityId = cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId;
+        const $cityRow = $(cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle"));
+        const cityId = $cityRow.data("cityId");
         const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
         objectBluringAndFocusing(regionSection);
 
@@ -208,7 +209,9 @@ function createCitySection(cityName, countryId, cityId) {
                         alertSection.removeChild(alertDiv)
                         canNotDeleteAlert(response.message, regionSection);
                     }
-                });
+                })
+            
+            $cityRow.remove(); 
         });
     });
 
