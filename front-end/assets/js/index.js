@@ -49,7 +49,7 @@ function deleteResource(resource, id) {
         .then(response => {
             console.log('Success:', response);
             return response.json();
-        });
+        }).catch(error => ({}));
 }
 
 function creatImgObject(imgSrc, imgClassName, imgAltName) {

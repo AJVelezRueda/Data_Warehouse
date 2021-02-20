@@ -63,7 +63,7 @@ async function createCity(cityName, countries_id) {
 function createIconsSection(tittleText) {
     const iconSection = document.createElement('div');
     const tittle = document.createElement('h3');
-    const deleteImg = creatImgObject("./assets/images/trash.png", "trash","trash");
+    const deleteImg = creatImgObject("./assets/images/trash.png", "trash", "trash");
     const editImg = creatImgObject("./assets/images/pen.png", "pen", "pen");
 
     iconSection.className = "icons-section";
@@ -104,7 +104,7 @@ function regionHeaderRender(parent, tittleText, buttonText) {
         enableDomObject(divInput);
     });
 
-    input.addEventListener('keypress', function(e) {
+    input.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             try {
                 const regionId = input.closest(".region-row").dataset.regionId;
@@ -125,40 +125,39 @@ function createCountrySection(countryName, regionId, countryId) {
     const countryTittleDiv = createDiv("country-tittle", "country-row-tittle-" + countryName);
     const countryInputDiv = createDiv("city-input disable", "city-input");
     const countryIconDiv = createIconsSection(countryName);
-    
+
     const addButton = createButton('Agregar ciudad', "add-city");
     const label = createLabel("city-name", "Ciudad ");
     const input = createInputTextType("city-name", "City name...");
-    
+
     countryRow.dataset.regionId = regionId;
     countryRowHead.dataset.country = countryId;
     countryTittleDiv.appendChild(countryIconDiv);
     countryTittleDiv.appendChild(addButton);
     countryInputDiv.appendChild(label);
     countryInputDiv.appendChild(input);
-    
+
     countryRowHead.appendChild(countryTittleDiv);
     countryRowHead.appendChild(countryInputDiv);
-    
+
     countryRow.appendChild(countryRowHead);
-    
+
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         const alertSection = document.getElementById("alert-section");
         const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
         const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
         objectBluringAndFocusing(regionSection);
-       
+
+
         alertDiv.addEventListener("click", () => {
             objectBluringAndFocusing(regionSection);
-            alertSection.removeChild(alertDiv);
             alertSection.classList.remove("enable");
             alertSection.classList.add("disable");
-            console.log(countryId);
-            //deleteResource("countries", countryId).then(response => {
-            //         if (response.message) {
-            //             canNotDeleteAlert(response.message, regionSection);
-            //         }
-            //     });
+            deleteResource("countries", countryId).then(response => {
+                if (response.message) {
+                    canNotDeleteAlert(response.message, regionSection);
+                }
+            });
         });
 
     });
@@ -173,7 +172,7 @@ function createCountrySection(countryName, regionId, countryId) {
         enableDomObject(countryInputDiv);
     });
 
-    input.addEventListener('keypress', function(e) {
+    input.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             const countryId = input.closest(".country-section").dataset.country;
             createCity(getingInputData(input), countryId);
@@ -198,16 +197,16 @@ function createCitySection(cityName, countryId, cityId) {
 
         alertDiv.addEventListener("click", () => {
             objectBluringAndFocusing(regionSection);
-            alertSection.removeChild(alertDiv);
             alertSection.classList.remove("enable");
             alertSection.classList.add("disable");
             console.log(cityId);
-            // deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
-            //     .then(response => {
-            //         if (response.message) {
-            //             canNotDeleteAlert(response.message, regionSection);
-            //         }
-            //     });
+            deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
+                .then(response => {
+                    if (response.message) {
+                        alertSection.removeChild(alertDiv)
+                        canNotDeleteAlert(response.message, regionSection);
+                    }
+                });
         });
     });
 
@@ -258,7 +257,7 @@ async function regionSectionAnable() {
 
                 listOfCities.forEach(city => {
                     if (city.countries_id === country_id) {
-                        const cityRow = createCitySection(city.name, city.name,city.id);
+                        const cityRow = createCitySection(city.name, city.name, city.id);
 
                         cityRow.dataset.countryId = country_id;
                         cityList.appendChild(cityRow);
