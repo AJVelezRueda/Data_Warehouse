@@ -17,52 +17,54 @@ function createSelectedContactsSection() {
     addFigureWithCaption(deleteContactDiv, "./assets/images/trash.png", 'Eliminar contactos');
 
     selectedIfoDivText.id = 'checkbox-counter';
+
     selectedIfoDivText.innerText = String(checkedCheckBoCounter()) + " Contacto seleccionado";
+
     selectedInfoDiv.appendChild(selectedIfoDivText);
     selectionInfoSection.appendChild(selectedInfoDiv);
     selectionInfoSection.appendChild(deleteContactDiv);
-    
+
     enableDomObject(selectionInfoSection);
 
     $("#delete-contacts").on("click", () => {
         deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
 
-        $("#alert-button").on("click", () => { 
+        $("#alert-button").on("click", () => {
             $(".contacts-grid.row.selected").each((idx, e) => {
-                deleteResource("contacts",$(e).data("contact-id"));
+                deleteResource("contacts", $(e).data("contact-id"));
                 $(e).remove();
             });
             objectBluringAndFocusing(mainSection);
-            $("#alert-section").toggleClass(["disable","enable"]);
+            $("#alert-section").toggleClass(["disable", "enable"]);
             $("#alert-div").remove();
         })
     })
 }
 
 
-function filterCitiesByCountryId(countryId,listCities){
+function filterCitiesByCountryId(countryId, listCities) {
     const cities = [];
     listCities.forEach(city => {
-        if( city.id === countryId){
-                cities.push(city.name);
+        if (city.id === countryId) {
+            cities.push(city.name);
         }
     });
 }
 
-function renderListOfCities(list, parentDiv){
-    list.forEach( element => {
+function renderListOfCities(list, parentDiv) {
+    list.forEach(element => {
         const option = document.createElement('option');
-        
+
         option.value = element;
-        option.innerHTML = element;  
+        option.innerHTML = element;
 
         parentDiv.appendChild(option);
     })
 }
 
 
-function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
-    try{
+function newContactCreate(fnameInput, lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
+    try {
         const firstName = getingInputData(fnameInput);
         const lastName = getingInputData(lnameInput);
         const email = getingInputData(emailInput);
@@ -70,20 +72,20 @@ function newContactCreate(fnameInput,lnameInput, emailInput, telehoneInput, addr
         const address = getingInputData(addressInput);
         const channel = channelSelect.options[channelSelect.selectedIndex].value;
         const preference = preferenceSelect.options[preferenceSelect.selectedIndex].value;
-        const cityValue = cityIput.options[cityIput.selectedIndex].value; 
+        const cityValue = cityIput.options[cityIput.selectedIndex].value;
         const city = listCities.filter(city => city.name === cityValue)[0]
         const cityId = city.id;
-    
+
         const newContact = {
-            preferences: [{ channel:channel , intrest: Number(preference) }],
-            contact_name: firstName + " "+ lastName,
+            preferences: [{ channel: channel, intrest: Number(preference) }],
+            contact_name: firstName + " " + lastName,
             cities_id: cityId,
             contact_email: email,
             contact_adress: address,
             contact_phone: telephone,
         };
         return newContact;
-    }catch{
+    } catch{
         alert("*Required fields")
     }
 
@@ -120,7 +122,7 @@ async function renderNewContactSection() {
     const cities = await getCities();
     const listOfCities = cities.cities;
     const countriesNames = [];
-    
+
     inputFname.id = "fname";
     inputFname.required = true;
     inputLname.id = "flname";
@@ -141,11 +143,11 @@ async function renderNewContactSection() {
     formHeader.classList.add('header-form');
     formTail.classList.add('tail-form');
 
-    countriesList.forEach( country  => { countriesNames.push(country.name)})
+    countriesList.forEach(country => { countriesNames.push(country.name) })
     renderListOfCities(countriesNames, countrySelect);
 
-    createOptionForLabel(preferenceSelect, [100,70,50,20]);
-    createOptionForLabel(channelSelect, ["Whatsapp","Facebook","Mail","Telefono"]);
+    createOptionForLabel(preferenceSelect, [100, 70, 50, 20]);
+    createOptionForLabel(channelSelect, ["Whatsapp", "Facebook", "Mail", "Telefono"]);
 
 
     formHeader.appendChild(fnameLabel);
@@ -189,12 +191,12 @@ async function renderNewContactSection() {
     });
 
     countrySelect.addEventListener('change', () => {
-        const value = countrySelect.options[countrySelect.selectedIndex].value; 
+        const value = countrySelect.options[countrySelect.selectedIndex].value;
         const selectedCountry = countriesList.find(element => element.name === value);
         const citiesToRender = [];
- 
-        listOfCities.forEach(city =>{
-            if(city.countries_id === selectedCountry.id){
+
+        listOfCities.forEach(city => {
+            if (city.countries_id === selectedCountry.id) {
                 citiesToRender.push(city.name);
             }
         });
@@ -204,7 +206,7 @@ async function renderNewContactSection() {
 
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
-        const newContact = newContactCreate(inputFname,inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
+        const newContact = newContactCreate(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
         createResource("contacts", newContact);
         alert("El contacto se creo satisfactoriamente. Recargue la pagina");
     });
@@ -293,11 +295,17 @@ async function contactRow(contactObject) {
 
     checkbox.addEventListener('click', () => {
         checkingRow(tableRow);
-        if (document.getElementById('checkbox-counter')) {
-            const text = document.getElementById('checkbox-counter')
-            text.innerHTML = String(checkedCheckBoCounter()) + " contactos seleccionados";
+
+        if (checkedCheckBoCounter() > 0) {
+            if (document.getElementById('checkbox-counter')) {
+                const text = document.getElementById('checkbox-counter')
+                text.innerHTML = String(checkedCheckBoCounter()) + " contactos seleccionados";
+                enableDomObject($("#selected-contacts")[0]);
+            } else {
+                createSelectedContactsSection(checkedCheckBoCounter());
+            }
         } else {
-            createSelectedContactsSection(checkedCheckBoCounter());
+            disableDomObject($("#selected-contacts")[0]);
         }
     });
 
