@@ -192,7 +192,7 @@ function createProgressDiv(className, progressmount) {
 
 function deleteActionAlert(textMessage) {
     const alertDiv = createDiv('alert-div', 'alert-div');
-    const confirmButton = createButton("¿Desea continuar?", 'alert-button');
+    const confirmButton = createButton("Continuar", 'alert-button');
     const alertTittle = document.createElement('h2');
     const closeButton = createCloseButton();
     const alertSection = document.getElementById('alert-section');
