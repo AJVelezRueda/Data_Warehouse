@@ -1,5 +1,6 @@
 TODO
--falta que el back traiga las preferencias de cada conacto
+- Generalizar el mensaje de alerta cuando se intenta eliminar un pais, region si se está usando
+
 
 
 
