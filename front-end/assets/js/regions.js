@@ -129,25 +129,37 @@ function createCountrySection(countryName, regionId, countryId) {
     const addButton = createButton('Agregar ciudad', "add-city");
     const label = createLabel("city-name", "Ciudad ");
     const input = createInputTextType("city-name", "City name...");
-
+    
     countryRow.dataset.regionId = regionId;
     countryRowHead.dataset.country = countryId;
     countryTittleDiv.appendChild(countryIconDiv);
     countryTittleDiv.appendChild(addButton);
     countryInputDiv.appendChild(label);
     countryInputDiv.appendChild(input);
-
+    
     countryRowHead.appendChild(countryTittleDiv);
     countryRowHead.appendChild(countryInputDiv);
-
+    
     countryRow.appendChild(countryRowHead);
-
+    
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
+        const alertSection = document.getElementById("alert-section");
         const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
-        
         const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
-        
-        //deleteResource("countries", countryId);
+        objectBluringAndFocusing(regionSection);
+       
+        alertDiv.addEventListener("click", () => {
+            objectBluringAndFocusing(regionSection);
+            alertSection.removeChild(alertDiv);
+            alertSection.classList.remove("enable");
+            alertSection.classList.add("disable");
+            console.log(countryId);
+            //deleteResource("countries", countryId).then(response => {
+            //         if (response.message) {
+            //             canNotDeleteAlert(response.message, regionSection);
+            //         }
+            //     });
+        });
 
     });
 
@@ -179,15 +191,24 @@ function createCitySection(cityName, countryId, cityId) {
 
     cityTittleDiv.dataset.cityId = cityId;
     cityIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
-        deleteResource(
-            "cities", 
-            cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
-            .then(response => {
-                console.log("alallalala")
-                if (response.message) {
-                    alert(response.message);
-                }
-            });
+        const alertSection = document.getElementById("alert-section");
+        const cityId = cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId;
+        const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
+        objectBluringAndFocusing(regionSection);
+
+        alertDiv.addEventListener("click", () => {
+            objectBluringAndFocusing(regionSection);
+            alertSection.removeChild(alertDiv);
+            alertSection.classList.remove("enable");
+            alertSection.classList.add("disable");
+            console.log(cityId);
+            // deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
+            //     .then(response => {
+            //         if (response.message) {
+            //             canNotDeleteAlert(response.message, regionSection);
+            //         }
+            //     });
+        });
     });
 
     // cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {

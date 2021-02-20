@@ -213,9 +213,34 @@ function deleteActionAlert(textMessage) {
         alertSection.removeChild(alertDiv);
 
         disableDomObject(alertSection);
-        objectBluringAndFocusing(contactsSection);
     })
+    
+    return alertDiv;
+}
 
+function canNotDeleteAlert(textMessage, sectionToBlur) {
+    const alertDiv = createDiv('alert-div', 'alert-div');
+    const alertTittle = document.createElement('h2');
+    const closeButton = createCloseButton();
+    const alertSection = document.getElementById('alert-section');
+
+
+    objectBluringAndFocusing(sectionToBlur);
+    enableDomObject(alertSection);
+
+    alertTittle.innerHTML = textMessage;
+
+    alertDiv.appendChild(closeButton);
+    alertDiv.appendChild(alertTittle);
+    alertSection.appendChild(alertDiv)
+
+    closeButton.addEventListener("click", () => {
+        alertSection.removeChild(alertDiv);
+        objectBluringAndFocusing(sectionToBlur);
+        disableDomObject(alertSection);
+    })
+    
+    return alertDiv;
 }
 
 function createActionsDiv() {
