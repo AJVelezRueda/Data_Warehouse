@@ -21,8 +21,21 @@ function createSelectedContactsSection() {
     selectedInfoDiv.appendChild(selectedIfoDivText);
     selectionInfoSection.appendChild(selectedInfoDiv);
     selectionInfoSection.appendChild(deleteContactDiv);
-
+    
     enableDomObject(selectionInfoSection);
+
+    $("#delete-contacts").on("click", () => {
+        deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
+
+        $("#alert-button").on("click", () => { 
+            //$(".contacts-grid.row.selected").each((idx, e) => deleteResource($(e).data("contact-id")));
+            objectBluringAndFocusing(mainSection);
+            $("#alert-section").toggleClass(["disable","enable"]);
+            $("#alert-div").remove();
+            // alertSection.classList.remove("enable");
+            // alertSection.classList.add("disable");
+        })
+    })
 }
 
 
@@ -256,6 +269,7 @@ async function contactRow(contactObject) {
     //const contactRole = contactObject.role;
     //const contactCompany = contactObject.company;
 
+    tableRow.dataset.contactId = contactId;
     nameColumn.appendChild(contactName);
     nameColumn.appendChild(contactEmail);
     countryColumn.appendChild(contactCity);

@@ -190,6 +190,12 @@ function createProgressDiv(className, progressmount) {
     return div;
 }
 
+function closeAlert(mainSection){
+    objectBluringAndFocusing(mainSection);
+    $("#alert-section").toggleClass(["disable","enable"]);
+    $("#alert-div").remove();
+}
+
 function deleteActionAlert(textMessage) {
     const alertDiv = createDiv('alert-div', 'alert-div');
     const confirmButton = createButton("Continuar", 'alert-button');
@@ -210,9 +216,7 @@ function deleteActionAlert(textMessage) {
     alertSection.appendChild(alertDiv)
 
     closeButton.addEventListener("click", () => {
-        alertSection.removeChild(alertDiv);
-
-        disableDomObject(alertSection);
+        closeAlert(mainSection);
     })
     
     return alertDiv;
