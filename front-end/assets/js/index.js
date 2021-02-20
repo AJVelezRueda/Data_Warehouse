@@ -190,17 +190,19 @@ function createProgressDiv(className, progressmount) {
     return div;
 }
 
-function deleteActionAlert() {
+function deleteActionAlert(textMessage) {
     const alertDiv = createDiv('alert-div', 'alert-div');
     const confirmButton = createButton("¿Desea continuar?", 'alert-button');
     const alertTittle = document.createElement('h2');
     const closeButton = createCloseButton();
     const alertSection = document.getElementById('alert-section');
 
+
+    confirmButton.className = "alert-button";
     objectBluringAndFocusing(contactsSection);
     enableDomObject(alertSection);
 
-    alertTittle.innerHTML = 'Está a punto de elminar un contacto';
+    alertTittle.innerHTML = textMessage;
 
     alertDiv.appendChild(closeButton);
     alertDiv.appendChild(alertTittle);

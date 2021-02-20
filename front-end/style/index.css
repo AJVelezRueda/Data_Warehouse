@@ -383,6 +383,11 @@ progress {
     background: white;
     flex-direction: column;
 }
+.alert-button{
+    height: 44px;
+    width: 149px;
+    background: white;
+}
 
 .region-section:hover {
     box-shadow: 5px -5px #0d4d4d21;

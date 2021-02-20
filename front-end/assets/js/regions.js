@@ -144,7 +144,10 @@ function createCountrySection(countryName, regionId, countryId) {
 
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
-        deleteResource("countries", countryId);
+        
+        const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
+        
+        //deleteResource("countries", countryId);
 
     });
 
