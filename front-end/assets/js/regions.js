@@ -144,7 +144,7 @@ function createCountrySection(countryName, regionId, countryId) {
 
     countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
         const alertSection = document.getElementById("alert-section");
-        const $countryRow = $(countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section"));
+        const $countryRow = $(countryIconDiv).find(".trash").closest(".country-section");
         const countryId = $countryRow.data("country");
         const alertDiv = deleteActionAlert("Está a punto de eleminar una Ciudad");
         objectBluringAndFocusing(regionSection);
@@ -203,7 +203,7 @@ function createCitySection(cityName, countryId, cityId) {
             alertSection.classList.remove("enable");
             alertSection.classList.add("disable");
             console.log(cityId);
-            deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId)
+            deleteResource("cities", cityId)
                 .then(response => {
                     if (response.message) {
                         alertSection.removeChild(alertDiv)
