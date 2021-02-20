@@ -28,12 +28,13 @@ function createSelectedContactsSection() {
         deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
 
         $("#alert-button").on("click", () => { 
-            //$(".contacts-grid.row.selected").each((idx, e) => deleteResource($(e).data("contact-id")));
+            $(".contacts-grid.row.selected").each((idx, e) => {
+                deleteResource("contacts",$(e).data("contact-id"));
+                $(e).remove();
+            });
             objectBluringAndFocusing(mainSection);
             $("#alert-section").toggleClass(["disable","enable"]);
             $("#alert-div").remove();
-            // alertSection.classList.remove("enable");
-            // alertSection.classList.add("disable");
         })
     })
 }
