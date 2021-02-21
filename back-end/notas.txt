@@ -1,7 +1,3 @@
-TODO
-- Generalizar el mensaje de alerta cuando se intenta eliminar un pais, region si se está usando
-
-
 
 
 NOTAS
