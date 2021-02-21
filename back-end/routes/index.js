@@ -35,6 +35,7 @@ function routes(app) {
     app.delete('/cities/:id', cities.remove, filterAdmin);
 
     app.post('/contacts', contacts.create, filterAdmin);
+    app.put('/contacts/:id', contacts.update, filterAdmin);
     app.get('/contacts', contacts.listAll, filterAdmin);
     app.get('/contacts/:id', contacts.get, filterAdmin);
 

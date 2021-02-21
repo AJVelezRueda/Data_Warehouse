@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const { db, cleanTable, getAllResources, deleteResoueceById } = require("../database");
-const { insertNewContact, getCtactsByID } = require("../models/contacts-repository");
+const { insertNewContact, getContactById, updateContactData } = require("../models/contacts-repository");
 const { insertNewPreference, getPreferencesByID, deletePreferencesItems } = require("../models/preferences-repository");
 
 
@@ -52,7 +52,7 @@ async function listAll(req, res) {
 }
 
 async function get(req, res) {
-    const contact = await getCtactsByID(Number(req.params.id));
+    const contact = await getContactById(Number(req.params.id));
     contact.preferences = await getPreferencesByID(contact.cities_id);
     res.json(contact).status(200);
 }
@@ -62,10 +62,28 @@ async function remove(req, res) {
     res.status(200).end();
 }
 
+async function update(req, res) {
+    const id = Number(req.params.id)
+    const contact = await getContactById(id);
+
+    contact.id = id;
+    contact.cities_id = req.body.cities_id;
+    contact.contact_name = req.body.contact_name;
+    contact.contact_email = req.body.contact_email;
+    contact.contact_adress = req.body.contact_adress;
+    contact.contact_phone = req.body.contact_phone;
+
+    await updateContactData(contact);
+
+    res.status(200).end();
+}
+
+
 module.exports = {
     clean,
     create,
     listAll,
     get,
+    update,
     remove
 }

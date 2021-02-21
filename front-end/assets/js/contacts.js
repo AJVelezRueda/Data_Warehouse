@@ -2,7 +2,7 @@ const mainSection = document.getElementById('contacts-section');
 const contactTable = document.getElementById('contacts-table');
 const newContactForm = document.getElementById('new-contact-section');
 const newContactButton = document.getElementById('add');
-const newContactSection = document.getElementById('new-contact-section');
+const contactSection = document.getElementById('new-contact-section');
 const selectionInfoSection = document.getElementById('selected-contacts');
 
 async function getContacts() {
@@ -27,8 +27,8 @@ function createSelectedContactsSection() {
     enableDomObject(selectionInfoSection);
 
     $("#delete-contacts").on("click", () => {
-        const alterDiv = deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
-        $(alterDiv).find("#alert-button").on("click", () => {
+        const alertDiv = deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
+        $(alertDiv).find("#alert-button").on("click", () => {
             $(".contacts-grid.row.selected").each((idx, e) => {
                 deleteContactRow($(e));
             });
@@ -71,7 +71,7 @@ function renderListOfCities(list, parentDiv) {
 }
 
 
-function newContactCreate(fnameInput, lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
+function buildContact(fnameInput, lnameInput, emailInput, telehoneInput, addressInput, channelSelect, preferenceSelect, cityIput, listCities) {
     try {
         const firstName = getingInputData(fnameInput);
         const lastName = getingInputData(lnameInput);
@@ -99,7 +99,7 @@ function newContactCreate(fnameInput, lnameInput, emailInput, telehoneInput, add
 
 }
 
-async function renderNewContactSection() {
+async function renderContactSection(contactObject, callback) {
     const sectionFormHeader = createSection('new-contact-header', 'new-contact-header');
     const formHeader = document.createElement('form');
     const formTail = document.createElement('form');
@@ -133,10 +133,13 @@ async function renderNewContactSection() {
 
     inputFname.id = "fname";
     inputFname.required = true;
+
     inputLname.id = "flname";
     inputLname.required = true;
+
     emailInput.id = "femail";
     emailInput.required = true;
+
     telephoneInput.id = "fteephone";
     telephoneInput.required = true;
     channelSelect.id = "channelF";
@@ -157,6 +160,19 @@ async function renderNewContactSection() {
     createOptionForLabel(preferenceSelect, [100, 70, 50, 20]);
     createOptionForLabel(channelSelect, ["Whatsapp", "Facebook", "Mail", "Telefono"]);
 
+
+    if (contactObject) {
+        const [firstName, lastName] = (contactObject.contact_name || "").split(" ");
+        //const [{ channel: channel, intrest: preference }] = contactObject.preferences;
+
+        inputFname.value = firstName;
+        inputLname.value = lastName;
+        emailInput.value = contactObject.contact_email;
+        addressInput.value = contactObject.contact_adress;
+        telephoneInput.value = contactObject.contact_phone;
+        ///channelSelect.value = "Whatsapp";
+        //preferenceSelect.value = preference;
+    }
 
     formHeader.appendChild(fnameLabel);
     formHeader.appendChild(inputFname);
@@ -183,17 +199,17 @@ async function renderNewContactSection() {
 
     sectionFormHeader.appendChild(formHeader);
     sectionFormHeader.appendChild(formTail);
-    newContactSection.appendChild(closeButton);
-    newContactSection.appendChild(sectionFormHeader);
+    contactSection.appendChild(closeButton);
+    contactSection.appendChild(sectionFormHeader);
 
-    enableDomObject(newContactSection);
+    enableDomObject(contactSection);
     objectBluringAndFocusing(contactsSection);
 
     closeButton.addEventListener("click", () => {
-        newContactSection.removeChild(sectionFormHeader);
-        newContactSection.removeChild(closeButton);
+        contactSection.removeChild(sectionFormHeader);
+        contactSection.removeChild(closeButton);
 
-        disableDomObject(newContactSection);
+        disableDomObject(contactSection);
         objectBluringAndFocusing(contactsSection);
 
     });
@@ -214,8 +230,7 @@ async function renderNewContactSection() {
 
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
-        const newContact = newContactCreate(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
-        createResource("contacts", newContact);
+        callback(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
         alert("El contacto se creo satisfactoriamente. Recargue la pagina");
     });
 }
@@ -281,6 +296,7 @@ async function contactRow(contactObject) {
     //const contactRole = contactObject.role;
     //const contactCompany = contactObject.company;
     const $trashButton = $(actionColumn).find(".trash");
+    const $penButton = $(actionColumn).find(".pen");
 
     tableRow.dataset.contactId = contactId;
     nameColumn.appendChild(contactName);
@@ -321,11 +337,26 @@ async function contactRow(contactObject) {
 
     $trashButton.on('click', () => {        
         console.log("Trash clicked");
-        const alterDiv = deleteActionAlert(`Está a punto de eliminar un contacto ¿Desea continuar?`);
-        $(alterDiv).find("#alert-button").on("click", () => {
+        const alertDiv = deleteActionAlert(`Está a punto de eliminar un contacto ¿Desea continuar?`);
+        $(alertDiv).find("#alert-button").on("click", () => {
             deleteContactRow($tableRow);
             closeDeleteActionAlert();
         })
+    })
+
+    $penButton.on('click', () => {        
+        console.log("Pen clicked");
+
+        renderContactSection(contactObject, (inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities) => {
+            console.log("Editing contact");
+            const editedContact = buildContact(
+                inputFname, 
+                inputLname, emailInput, telephoneInput,
+                addressInput, channelSelect, 
+                preferenceSelect, citySelect, listOfCities);
+            editedContact.id = contactObject.id;
+            editResource("contacts", editedContact);
+        });
     })
     contactTable.appendChild(tableRow);
 }
@@ -354,7 +385,10 @@ async function renderContactDataRow() {
 }
 
 newContactButton.addEventListener('click', () => {
-    renderNewContactSection();
+    renderContactSection(null, (inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities) => {
+        const newContact = buildContact(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
+        createResource("contacts", newContact);
+    });
 })
 
 createContactTableHeader();

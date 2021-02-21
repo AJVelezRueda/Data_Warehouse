@@ -17,8 +17,24 @@ async function insertNewContact(contact) {
     return result[0];
 }
 
+async function updateContactData(contact) {
+    await db.query(`
+    update contacts set 
+    cities_id = :cities_id,
+    contact_name = :contact_name,
+    contact_email = :contact_email,
+    contact_adress = :contact_adress,
+    contact_phone = :contact_phone    
+    where id = :id
+`, {
+        replacements: contact,
+        type: QueryTypes.UPDATE
+    });
+}
 
-function getCtactsByID(id) {
+
+
+function getContactById(id) {
     return findOne(`SELECT
         cities.id as cities_id,
         contact_name,
@@ -27,11 +43,12 @@ function getCtactsByID(id) {
         contact_phone
         FROM contacts
         INNER JOIN cities ON cities.id = contacts.cities_id
-        WHERE cities.id = :id
+        WHERE contacts.id = :id
         `, id, 'contactos');
 };
 
 module.exports = {
     insertNewContact,
-    getCtactsByID
+    getContactById,
+    updateContactData
 }

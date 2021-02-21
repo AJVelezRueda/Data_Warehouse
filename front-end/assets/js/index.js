@@ -35,6 +35,22 @@ function createResource(resource, resourceData) {
         .then(response => console.log('Success:', response));
 }
 
+function editResource(resource, resourceData) {
+    const url = createUrlById(resource, resourceData.id);
+
+    return fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(resourceData),
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }).catch(error => console.error('Error:', error))
+        .then(response => {
+            console.log('Success:', response);
+            return response.json();
+        }).catch(error => ({}));
+}
 
 function deleteResource(resource, id) {
     const url = createUrlById(resource, id);
