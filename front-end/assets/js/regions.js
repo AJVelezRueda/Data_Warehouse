@@ -84,6 +84,7 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     const label = createLabel(tittleText + "-name", buttonText + " name");
     const input = createInputTextType(tittleText + "-name", buttonText + " name...");
     const actions = createActionsDiv();
+    const $actions = $(actions);
     
     divTittle.className = 'region-tittle';
     divInput.className = `region-input disable`;
@@ -119,6 +120,30 @@ function regionHeaderRender(parent, tittleText, buttonText) {
             }
         }
     });
+
+
+    $actions.find(".trash").on("click", () => {
+        const alertSection = document.getElementById("alert-section");
+        const alertDiv = deleteActionAlert("Está a punto de eleminar una Region");
+        objectBluringAndFocusing(regionSection);
+
+    })
+    // countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
+    //     const $countryRow = $(countryIconDiv).find(".trash").closest(".country-section");
+    //     const countryId = $countryRow.data("country");
+
+
+    //     alertDiv.addEventListener("click", () => {
+    //         objectBluringAndFocusing(regionSection);
+    //         alertSection.classList.remove("enable");
+    //         alertSection.classList.add("disable");
+    //         deleteResource("countries", countryId).then(response => {
+    //             if (response.message) {
+    //                 canNotDeleteAlert(response.message, regionSection);
+    //             }
+    //         });
+    //         $countryRow.remove();
+    //     });
 
 }
 
@@ -243,57 +268,59 @@ async function regionSectionAnable() {
     enableDomObject(regionSection);
 
     regionHeaderRender(sectionHeader, '', 'Region');
-
+    
     regions.forEach(region => {
         const regionRowSection = createSection("region-row", "region-row-" + region.name);
         const regionRowHead = createSection("region-head", "region-head");
         const countryList = createDiv("countries-list", "countries-list");
         regionHeaderRender(regionRowHead, region.name, 'País');
-
+        
         regionRowSection.dataset.regionId = region.id;
         const regionId = region.id;
-
-
+        
+        
         countries.forEach(it => {
             const countryRow = createCountrySection(it.name, it.regions_id, it.id);
             const cityList = createDiv("cities-list", "cities-list");
-
+            
             if (it.regions_id === regionId) {
                 const country_id = it.id;
-
+                
                 countryList.appendChild(countryRow);
                 countryRow.appendChild(cityList);
-
+                
                 listOfCities.forEach(city => {
                     if (city.countries_id === country_id) {
                         const cityRow = createCitySection(city.name, city.name, city.id);
-
+                        
                         cityRow.dataset.countryId = country_id;
                         cityList.appendChild(cityRow);
                     }
                 })
             }
         })
-
+        
         regionRowSection.appendChild(regionRowHead);
         regionRowSection.appendChild(countryList);
         regionListSection.appendChild(regionRowSection);
     })
-
+    
     regionSection.appendChild(sectionHeader);
     regionSection.appendChild(regionListSection);
     regionSection.appendChild(closeButton);
-
-
+    
+    
     closeButton.addEventListener("click", () => {
         regionSection.removeChild(sectionHeader);
         regionSection.removeChild(regionListSection);
         regionSection.removeChild(closeButton);
-
+        
         disableDomObject(regionSection);
         objectBluringAndFocusing(contactsSection);
-
+        
     });
+    
+    $(".region-section-header .contact-table-row .actions").addClass("disable")
 }
 
 regionsButton.addEventListener("click", () => {

@@ -276,6 +276,7 @@ function createActionsDiv() {
 
     imgActions.src = "./assets/images/actions.png";
     imgActions.alt = "actions";
+    imgActions.className = "actions";
 
     imgTrash.src = "./assets/images/trash.png";
     imgTrash.alt = "trash";
