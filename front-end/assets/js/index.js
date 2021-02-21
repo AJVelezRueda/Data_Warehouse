@@ -263,10 +263,12 @@ function createActionsDiv() {
 
     imgTrash.src = "./assets/images/trash.png";
     imgTrash.alt = "trash";
+    imgTrash.className = "trash";
     imgTrash.classList.add('disable');
 
     imgPen.src = "./assets/images/pen.png";
     imgPen.alt = "pen";
+    imgPen.className = "pen"; 
     imgPen.classList.add('disable');
 
     mainDiv.appendChild(imgActions);

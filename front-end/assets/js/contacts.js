@@ -3,6 +3,7 @@ const contactTable = document.getElementById('contacts-table');
 const newContactForm = document.getElementById('new-contact-section');
 const newContactButton = document.getElementById('add');
 const newContactSection = document.getElementById('new-contact-section');
+const selectionInfoSection = document.getElementById('selected-contacts');
 
 async function getContacts() {
     const result = await getResource(createUrl('contacts'));
@@ -10,7 +11,6 @@ async function getContacts() {
 }
 
 function createSelectedContactsSection() {
-    const selectionInfoSection = document.getElementById('selected-contacts');
     const selectedInfoDiv = createDiv('selected-contacts-div', 'selected-contacts-div');
     const selectedIfoDivText = document.createElement('p');
     const deleteContactDiv = createDiv('delete-contacts', 'delete-contacts');
@@ -27,20 +27,28 @@ function createSelectedContactsSection() {
     enableDomObject(selectionInfoSection);
 
     $("#delete-contacts").on("click", () => {
-        deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
-
-        $("#alert-button").on("click", () => {
+        const alterDiv = deleteActionAlert(`Está a punto de eliminar ${String(checkedCheckBoCounter())} contactos ¿Desea continuar?`);
+        $(alterDiv).find("#alert-button").on("click", () => {
             $(".contacts-grid.row.selected").each((idx, e) => {
-                deleteResource("contacts", $(e).data("contact-id"));
-                $(e).remove();
+                deleteContactRow($(e));
             });
-            objectBluringAndFocusing(mainSection);
-            $("#alert-section").toggleClass(["disable", "enable"]);
-            $("#alert-div").remove();
+            closeDeleteActionAlert();
+            disableDomObject(selectionInfoSection);
         })
     })
 }
 
+function closeDeleteActionAlert() {
+    objectBluringAndFocusing(mainSection);
+    $("#alert-section").toggleClass(["disable", "enable"]);
+    $("#alert-div").remove();
+}
+
+function deleteContactRow($row) {
+    console.log("deleteContactRow")
+    deleteResource("contacts", $row.data("contact-id"));
+    $row.remove();
+}
 
 function filterCitiesByCountryId(countryId, listCities) {
     const cities = [];
@@ -255,6 +263,7 @@ async function contactRow(contactObject) {
     const preferences = [{ channel: 'Whatsapp', intrest: 70 }];
     //const preferences = contactObject.preferences;
     const tableRow = createSection("contacts-grid row");
+    const $tableRow = $(tableRow);
     const selecColumn = createDiv('select-column', 'select-column-row' + String(contactId));
     const nameColumn = createDiv("contact-table-row", "contact-table-row" + String(contactId));
     const contactName = createPrincipalText(contactObject.contact_name);
@@ -271,6 +280,7 @@ async function contactRow(contactObject) {
     const contactCompany = createPrincipalText('CONICET');;
     //const contactRole = contactObject.role;
     //const contactCompany = contactObject.company;
+    const $trashButton = $(actionColumn).find(".trash");
 
     tableRow.dataset.contactId = contactId;
     nameColumn.appendChild(contactName);
@@ -300,15 +310,23 @@ async function contactRow(contactObject) {
             if (document.getElementById('checkbox-counter')) {
                 const text = document.getElementById('checkbox-counter')
                 text.innerHTML = String(checkedCheckBoCounter()) + " contactos seleccionados";
-                enableDomObject($("#selected-contacts")[0]);
+                enableDomObject(selectionInfoSection);
             } else {
                 createSelectedContactsSection(checkedCheckBoCounter());
             }
         } else {
-            disableDomObject($("#selected-contacts")[0]);
+            disableDomObject(selectionInfoSection);
         }
     });
 
+    $trashButton.on('click', () => {        
+        console.log("Trash clicked");
+        const alterDiv = deleteActionAlert(`Está a punto de eliminar un contacto ¿Desea continuar?`);
+        $(alterDiv).find("#alert-button").on("click", () => {
+            deleteContactRow($tableRow);
+            closeDeleteActionAlert();
+        })
+    })
     contactTable.appendChild(tableRow);
 }
 
