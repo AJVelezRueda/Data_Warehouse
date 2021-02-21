@@ -121,30 +121,7 @@ function regionHeaderRender(parent, tittleText, buttonText) {
         }
     });
 
-
-    $actions.find(".trash").on("click", () => {
-        const alertSection = document.getElementById("alert-section");
-        const alertDiv = deleteActionAlert("Está a punto de eleminar una Region");
-        objectBluringAndFocusing(regionSection);
-
-    })
-    // countryIconDiv.getElementsByClassName("trash")[0].addEventListener("click", () => {
-    //     const $countryRow = $(countryIconDiv).find(".trash").closest(".country-section");
-    //     const countryId = $countryRow.data("country");
-
-
-    //     alertDiv.addEventListener("click", () => {
-    //         objectBluringAndFocusing(regionSection);
-    //         alertSection.classList.remove("enable");
-    //         alertSection.classList.add("disable");
-    //         deleteResource("countries", countryId).then(response => {
-    //             if (response.message) {
-    //                 canNotDeleteAlert(response.message, regionSection);
-    //             }
-    //         });
-    //         $countryRow.remove();
-    //     });
-
+        
 }
 
 function createCountrySection(countryName, regionId, countryId) {
@@ -319,7 +296,7 @@ async function regionSectionAnable() {
         objectBluringAndFocusing(contactsSection);
         
     });
-    
+
     $(".region-section-header .contact-table-row .actions").addClass("disable")
 }
 
