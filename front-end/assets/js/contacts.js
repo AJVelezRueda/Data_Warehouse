@@ -231,6 +231,8 @@ async function renderContactSection(contactObject, callback) {
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
         callback(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
+        alert("El contacto se modificó correctamente");
+        window.location.href = 'index.html';
     });
 }
 

@@ -83,13 +83,14 @@ function regionHeaderRender(parent, tittleText, buttonText) {
     const addButton = createButton('Agregar ' + buttonText, "add-" + buttonText);
     const label = createLabel(tittleText + "-name", buttonText + " name");
     const input = createInputTextType(tittleText + "-name", buttonText + " name...");
-
-
+    const actions = createActionsDiv();
+    
     divTittle.className = 'region-tittle';
     divInput.className = `region-input disable`;
-
+    
     tittle.innerHTML = `${tittleText}`;
-
+    
+    divTittle.appendChild(actions);
     divTittle.appendChild(tittle);
     divTittle.appendChild(addButton);
 
