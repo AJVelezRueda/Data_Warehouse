@@ -231,7 +231,6 @@ async function renderContactSection(contactObject, callback) {
     contactButton.addEventListener('click', (event) => {
         event.preventDefault();
         callback(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
-        alert("El contacto se creo satisfactoriamente. Recargue la pagina");
     });
 }
 
@@ -388,6 +387,8 @@ newContactButton.addEventListener('click', () => {
     renderContactSection(null, (inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities) => {
         const newContact = buildContact(inputFname, inputLname, emailInput, telephoneInput, addressInput, channelSelect, preferenceSelect, citySelect, listOfCities);
         createResource("contacts", newContact);
+        alert("El contacto se creó correctamente");
+        window.location.href = 'index.html';
     });
 })
 

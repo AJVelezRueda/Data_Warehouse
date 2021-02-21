@@ -109,10 +109,12 @@ function regionHeaderRender(parent, tittleText, buttonText) {
             try {
                 const regionId = input.closest(".region-row").dataset.regionId;
                 createCountry(getingInputData(input), regionId);
-                alert("Se ha creado un País");
+                alert("El país se creó correctamente");
+                window.location.href = 'index.html';
             } catch {
                 createRegion(getingInputData(input));
-                alert("Se creó un Region. Recargue la pagina");
+                alert("La región se creó correctamente");
+                window.location.href = 'index.html';
             }
         }
     });
@@ -178,7 +180,8 @@ function createCountrySection(countryName, regionId, countryId) {
         if (e.key === 'Enter') {
             const countryId = input.closest(".country-section").dataset.country;
             createCity(getingInputData(input), countryId);
-            alert("Se ha creado una ciudad Recargue la pagina");
+            alert("La ciudad se creó correctamente");
+            window.location.href = 'index.html';
         }
     });
 
