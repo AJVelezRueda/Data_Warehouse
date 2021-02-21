@@ -121,6 +121,16 @@ function regionHeaderRender(parent, tittleText, buttonText) {
         }
     });
 
+    $actions.find(".trash").on("click", () => {
+        const alertDiv = deleteActionAlert("Está a punto de eleminar una Region");
+        const $alertDiv = $(alertDiv);
+        objectBluringAndFocusing(regionSection);
+                
+        $alertDiv.on("click", () => {
+            $("#alert-section").toggleClass(["enable","disable"])
+            objectBluringAndFocusing(regionSection);
+        });
+    });
         
 }
 
@@ -169,11 +179,6 @@ function createCountrySection(countryName, regionId, countryId) {
 
     });
 
-    // countryIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
-    //     const countryId = countryIconDiv.getElementsByClassName("trash")[0].closest(".country-section").dataset.country;
-
-    //     deleteResource("countries", countryId)
-    // });
 
     addButton.addEventListener("click", () => {
         enableDomObject(countryInputDiv);
@@ -220,10 +225,6 @@ function createCitySection(cityName, countryId, cityId) {
             $cityRow.remove(); 
         });
     });
-
-    // cityIconDiv.getElementsByClassName("pen")[0].addEventListener("click", () => {
-    //     deleteResource("cities", cityIconDiv.getElementsByClassName("trash")[0].closest(".region-tittle").dataset.cityId);
-    // });
 
     cityRow.dataset.country = countryId;
     cityRow.appendChild(cityTittleDiv);
